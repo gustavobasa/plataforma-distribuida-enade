@@ -1,0 +1,11 @@
+.val-grade { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+@media (max-width: 900px) { .val-grade { grid-template-columns: 1fr; } }
+.val-pdf img { width: 100%; height: auto; border: 1px solid var(--borda); border-radius: 6px; margin-bottom: 8px; background: #fff; }
+.val-pdf, .val-ext { min-width: 0; }
+.val-ext .bloco { background: var(--superficie); border: 1px solid var(--borda); border-radius: 8px; padding: 10px 12px; margin-bottom: 10px; overflow-wrap: anywhere; }
+.val-ext table { border-collapse: collapse; display: block; overflow-x: auto; }
+.val-ext td, .val-ext th { border: 1px solid var(--borda); padding: 3px 6px; font-size: 12px; }
+.crit { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--borda); }
+.crit .opcoes { display: flex; gap: 10px; }
+textarea { width: 100%; font: inherit; border: 1px solid var(--borda); border-radius: 6px; background: var(--superficie); color: var(--texto); }
+.sec-link { background: transparent; color: var(--texto); border: 1px solid var(--borda); }

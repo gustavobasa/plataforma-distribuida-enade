@@ -1,0 +1,17 @@
+ Container enade-testes-kerberos-run-a261b61ba1a8 Creating 
+ Container enade-testes-kerberos-run-a261b61ba1a8 Created 
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.3.5, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /app
+plugins: anyio-4.16.0
+collecting ... collected 7 items
+
+testes/test_seguranca_kerberos.py::test_kdc_emite_ticket_e_klist PASSED  [ 14%]
+testes/test_seguranca_kerberos.py::test_es_sem_credencial_401 PASSED     [ 28%]
+testes/test_seguranca_kerberos.py::test_es_spnego_autenticacao_mutua PASSED [ 42%]
+testes/test_seguranca_kerberos.py::test_es_principal_sem_papel_403 PASSED [ 57%]
+testes/test_seguranca_kerberos.py::test_kafka_sem_sasl_rejeitado PASSED  [ 71%]
+testes/test_seguranca_kerberos.py::test_kafka_principal_autorizado_le_metadados PASSED [ 85%]
+testes/test_seguranca_kerberos.py::test_kafka_intruso_sem_acl_nao_publica PASSED [100%]
+
+============================== 7 passed in 1.46s ===============================

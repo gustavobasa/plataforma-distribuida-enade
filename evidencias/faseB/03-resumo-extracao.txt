@@ -1,0 +1,9 @@
+TOTAL {'provas': 84, 'questoes_validas': 3360, 'questoes_invalidas': 0, 'falhas': 0, 'segundos': 640.9}
+provas por ano Counter({2021: 30, 2023: 28, 2022: 26})
+confianca {'alta': 3318, 'baixa': 11, 'media': 31}
+alertas {'alternativas_nao_detectadas': 11, 'quatro_alternativas': 29, 'citacao_no_fim_do_corpo': 2}
+ano/tipo [((2021, 'discursiva'), 150), ((2021, 'objetiva'), 1050), ((2022, 'discursiva'), 130), ((2022, 'objetiva'), 910), ((2023, 'discursiva'), 56), ((2023, 'objetiva'), 1064)]
+componente {'FG': 840, 'CE': 2520}
+area {'Engenharias e Arquitetura': 480, 'Ciências da Saúde': 520, 'Ciências Agrárias': 160, 'Ciências Sociais Aplicadas': 920, 'Linguística, Letras e Artes': 360, 'Ciências Humanas': 440, 'Computação e Tecnologia da Informação': 240, 'Ciências Exatas e da Terra': 160, 'Ciências Biológicas': 80}
+questoes com figura 1192 | com formula LaTeX 281 | com tabela Markdown 280
+anuladas 14 | objetivas sem gabarito 0

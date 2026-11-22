@@ -57,6 +57,10 @@ def main() -> int:
         evento(LOG, "Elasticsearch indisponível", nivel=40)
         return 1
 
+    if "--recriar" in sys.argv[1:]:
+        # usado apenas no experimento de falha/reprocessamento: o índice é derivado do tópico Kafka
+        s.delete(f"{base}/{CFG.es_indice}")
+        evento(LOG, "índice removido para reprocessamento completo", indice=CFG.es_indice)
     if s.head(f"{base}/{CFG.es_indice}").status_code == 404:
         r = s.put(f"{base}/{CFG.es_indice}", json=json.loads(MAPPING.read_text(encoding="utf-8")))
         r.raise_for_status()

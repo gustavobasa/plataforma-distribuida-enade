@@ -330,6 +330,8 @@ def extrair_prova(caminho: str | Path, recortar_figuras: bool = True) -> ProvaEx
             tu = t.upper()
             if "VALIDINEP" in tu or RE_BARRAS.match(t) or tu in ("LOGO", "ÁREA LIVRE", "AREA LIVRE"):
                 continue
+            if l.y0 > h - 40 and l.tipo == "texto":
+                continue  # faixa de rodapé (nº de página, nome do curso, rótulos de diagramação como "MATÉRIA")
             if ultima and t == ultima.texto and abs(l.y0 - ultima.y0) < 5:
                 continue  # sombra/duplicata do mesmo texto
             ultima = l

@@ -1,0 +1,1259 @@
+ Image grafana/k6:0.54.0 Pulling 
+ 4f4fb700ef54 Pulling fs layer 0B
+ 707af19e45d8 Pulling fs layer 0B
+ 43c4264eed91 Pulling fs layer 0B
+ 2961e627175d Pulling fs layer 0B
+ 4f4fb700ef54 Already exists 0B
+ 4f4fb700ef54 Pull complete 0B
+ 707af19e45d8 Downloading 932B
+ 707af19e45d8 Download complete 0B
+ 2961e627175d Downloading 2.097MB
+ 2961e627175d Downloading 3.146MB
+ 43c4264eed91 Downloading 2.097MB
+ 2961e627175d Downloading 4.194MB
+ 2961e627175d Downloading 6.291MB
+ 43c4264eed91 Download complete 0B
+ 43c4264eed91 Extracting 1B
+ 2961e627175d Downloading 8.389MB
+ 43c4264eed91 Extracting 1B
+ 220862cf6e3f Download complete 0B
+ 2961e627175d Downloading 10.49MB
+ 43c4264eed91 Extracting 1B
+ 2961e627175d Downloading 12.58MB
+ 43c4264eed91 Extracting 1B
+ 2961e627175d Downloading 13.63MB
+ 707af19e45d8 Pull complete 0B
+ 43c4264eed91 Pull complete 0B
+ 2961e627175d Downloading 15.73MB
+ 2961e627175d Downloading 15.73MB
+ 2961e627175d Downloading 16.78MB
+ 2961e627175d Downloading 18.87MB
+ 2961e627175d Downloading 20.97MB
+ 2961e627175d Downloading 20.97MB
+ 2961e627175d Downloading 22.02MB
+ 2961e627175d Downloading 22.02MB
+ 2961e627175d Downloading 23.07MB
+ 2961e627175d Downloading 23.07MB
+ 2961e627175d Downloading 23.07MB
+ 2961e627175d Downloading 25.17MB
+ 2961e627175d Downloading 26.21MB
+ 2961e627175d Downloading 27.26MB
+ 2961e627175d Downloading 28.31MB
+ 2961e627175d Downloading 29.36MB
+ 2961e627175d Downloading 29.36MB
+ 2961e627175d Downloading 30.22MB
+ 2961e627175d Downloading 30.22MB
+ 2961e627175d Downloading 30.22MB
+ 2961e627175d Downloading 30.22MB
+ 2961e627175d Download complete 0B
+ 2961e627175d Extracting 1B
+ 2961e627175d Extracting 1B
+ 2961e627175d Extracting 1B
+ 2961e627175d Extracting 1B
+ 2961e627175d Pull complete 0B
+ Image grafana/k6:0.54.0 Pulled 
+ Container enade-k6-run-f7a5a26b7f8c Creating 
+ Container enade-k6-run-f7a5a26b7f8c Created 
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: /scripts/busca.js
+        output: -
+
+     scenarios: (100.00%) 3 scenarios, 61 max VUs, 3m35s max duration (incl. graceful stop):
+              * sem_cache: 20.00 iterations/s for 1m0s (maxVUs: 20-60, exec: semCache, gracefulStop: 30s)
+              * aquecimento: 1 iterations for each of 1 VUs (maxDuration: 2m0s, exec: aquecer, startTime: 1m5s, gracefulStop: 30s)
+              * com_cache: 20.00 iterations/s for 1m0s (maxVUs: 20-60, exec: comCache, startTime: 1m40s, gracefulStop: 30s)
+
+
+running (0m01.0s), 01/21 VUs, 19 complete and 0 interrupted iterations
+sem_cache     [   2% ] 01/20 VUs  0m01.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    1m04.0s      
+com_cache   • [   0% ] waiting    1m39.0s      
+
+running (0m02.0s), 01/21 VUs, 39 complete and 0 interrupted iterations
+sem_cache     [   3% ] 01/20 VUs  0m02.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    1m03.0s      
+com_cache   • [   0% ] waiting    1m38.0s      
+
+running (0m03.0s), 07/21 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [   5% ] 07/20 VUs  0m03.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    1m02.0s      
+com_cache   • [   0% ] waiting    1m37.0s      
+
+running (0m04.0s), 23/25 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [   7% ] 23/24 VUs  0m04.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    1m01.0s      
+com_cache   • [   0% ] waiting    1m36.0s      
+
+running (0m05.0s), 33/35 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [   8% ] 33/34 VUs  0m05.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    1m00.0s      
+com_cache   • [   0% ] waiting    1m35.0s      
+
+running (0m06.0s), 43/45 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  10% ] 43/44 VUs  0m06.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m59.0s      
+com_cache   • [   0% ] waiting    1m34.0s      
+
+running (0m07.0s), 53/55 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  12% ] 53/54 VUs  0m07.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m58.0s      
+com_cache   • [   0% ] waiting    1m33.0s      
+time="2026-11-22T21:40:22Z" level=warning msg="Insufficient VUs, reached 60 active VUs and cannot initialize more" executor=constant-arrival-rate scenario=sem_cache
+
+running (0m08.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  13% ] 60/60 VUs  0m08.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m57.0s      
+com_cache   • [   0% ] waiting    1m32.0s      
+
+running (0m09.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  15% ] 60/60 VUs  0m09.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m56.0s      
+com_cache   • [   0% ] waiting    1m31.0s      
+
+running (0m10.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  17% ] 60/60 VUs  0m10.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m55.0s      
+com_cache   • [   0% ] waiting    1m30.0s      
+
+running (0m11.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  18% ] 60/60 VUs  0m11.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m54.0s      
+com_cache   • [   0% ] waiting    1m29.0s      
+
+running (0m12.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  20% ] 60/60 VUs  0m12.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m53.0s      
+com_cache   • [   0% ] waiting    1m28.0s      
+
+running (0m13.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  22% ] 60/60 VUs  0m13.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m52.0s      
+com_cache   • [   0% ] waiting    1m27.0s      
+
+running (0m14.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  23% ] 60/60 VUs  0m14.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m51.0s      
+com_cache   • [   0% ] waiting    1m26.0s      
+
+running (0m15.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  25% ] 60/60 VUs  0m15.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m50.0s      
+com_cache   • [   0% ] waiting    1m25.0s      
+
+running (0m16.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  27% ] 60/60 VUs  0m16.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m49.0s      
+com_cache   • [   0% ] waiting    1m24.0s      
+
+running (0m17.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  28% ] 60/60 VUs  0m17.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m48.0s      
+com_cache   • [   0% ] waiting    1m23.0s      
+
+running (0m18.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  30% ] 60/60 VUs  0m18.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m47.0s      
+com_cache   • [   0% ] waiting    1m22.0s      
+
+running (0m19.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  32% ] 60/60 VUs  0m19.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m46.0s      
+com_cache   • [   0% ] waiting    1m21.0s      
+
+running (0m20.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  33% ] 60/60 VUs  0m20.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m45.0s      
+com_cache   • [   0% ] waiting    1m20.0s      
+
+running (0m21.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  35% ] 60/60 VUs  0m21.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m44.0s      
+com_cache   • [   0% ] waiting    1m19.0s      
+
+running (0m22.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  37% ] 60/60 VUs  0m22.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m43.0s      
+com_cache   • [   0% ] waiting    1m18.0s      
+
+running (0m23.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  38% ] 60/60 VUs  0m23.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m42.0s      
+com_cache   • [   0% ] waiting    1m17.0s      
+
+running (0m24.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  40% ] 60/60 VUs  0m24.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m41.0s      
+com_cache   • [   0% ] waiting    1m16.0s      
+
+running (0m25.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  42% ] 60/60 VUs  0m25.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m40.0s      
+com_cache   • [   0% ] waiting    1m15.0s      
+
+running (0m26.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  43% ] 60/60 VUs  0m26.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m39.0s      
+com_cache   • [   0% ] waiting    1m14.0s      
+
+running (0m27.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  45% ] 60/60 VUs  0m27.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m38.0s      
+com_cache   • [   0% ] waiting    1m13.0s      
+
+running (0m28.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  47% ] 60/60 VUs  0m28.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m37.0s      
+com_cache   • [   0% ] waiting    1m12.0s      
+
+running (0m29.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  48% ] 60/60 VUs  0m29.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m36.0s      
+com_cache   • [   0% ] waiting    1m11.0s      
+
+running (0m30.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  50% ] 60/60 VUs  0m30.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m35.0s      
+com_cache   • [   0% ] waiting    1m10.0s      
+
+running (0m31.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  52% ] 60/60 VUs  0m31.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m34.0s      
+com_cache   • [   0% ] waiting    1m09.0s      
+
+running (0m32.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  53% ] 60/60 VUs  0m32.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m33.0s      
+com_cache   • [   0% ] waiting    1m08.0s      
+
+running (0m33.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  55% ] 60/60 VUs  0m33.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m32.0s      
+com_cache   • [   0% ] waiting    1m07.0s      
+
+running (0m34.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  57% ] 60/60 VUs  0m34.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m31.0s      
+com_cache   • [   0% ] waiting    1m06.0s      
+
+running (0m35.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  58% ] 60/60 VUs  0m35.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m30.0s      
+com_cache   • [   0% ] waiting    1m05.0s      
+
+running (0m36.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  60% ] 60/60 VUs  0m36.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m29.0s      
+com_cache   • [   0% ] waiting    1m04.0s      
+
+running (0m37.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  62% ] 60/60 VUs  0m37.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m28.0s      
+com_cache   • [   0% ] waiting    1m03.0s      
+
+running (0m38.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  63% ] 60/60 VUs  0m38.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m27.0s      
+com_cache   • [   0% ] waiting    1m02.0s      
+
+running (0m39.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  65% ] 60/60 VUs  0m39.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m26.0s      
+com_cache   • [   0% ] waiting    1m01.0s      
+
+running (0m40.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  67% ] 60/60 VUs  0m40.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m25.0s      
+com_cache   • [   0% ] waiting    1m00.0s      
+
+running (0m41.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  68% ] 60/60 VUs  0m41.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m24.0s      
+com_cache   • [   0% ] waiting    0m59.0s      
+
+running (0m42.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  70% ] 60/60 VUs  0m42.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m23.0s      
+com_cache   • [   0% ] waiting    0m58.0s      
+
+running (0m43.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  72% ] 60/60 VUs  0m43.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m22.0s      
+com_cache   • [   0% ] waiting    0m57.0s      
+
+running (0m44.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  73% ] 60/60 VUs  0m44.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m21.0s      
+com_cache   • [   0% ] waiting    0m56.0s      
+
+running (0m45.0s), 60/61 VUs, 53 complete and 0 interrupted iterations
+sem_cache     [  75% ] 60/60 VUs  0m45.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m20.0s      
+com_cache   • [   0% ] waiting    0m55.0s      
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&ano=2023&cache=false\": read tcp 172.18.0.9:59360->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:59344->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&ano=2023&cache=false\": read tcp 172.18.0.9:59328->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:59312->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&tipo=objetiva&cache=false\": read tcp 172.18.0.9:59308->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&componente=FG&cache=false\": read tcp 172.18.0.9:59292->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&ano=2023&cache=false\": read tcp 172.18.0.9:59282->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&componente=FG&cache=false\": read tcp 172.18.0.9:59270->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": read tcp 172.18.0.9:59260->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&tipo=objetiva&cache=false\": read tcp 172.18.0.9:59246->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": read tcp 172.18.0.9:59236->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:59224->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=programa%C3%A7%C3%A3o&tipo=objetiva&cache=false\": read tcp 172.18.0.9:59222->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:59218->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&cache=false\": read tcp 172.18.0.9:59214->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:60214->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:60184->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&componente=FG&cache=false\": read tcp 172.18.0.9:60202->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&componente=FG&cache=false\": read tcp 172.18.0.9:60186->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&tipo=objetiva&cache=false\": read tcp 172.18.0.9:60176->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": read tcp 172.18.0.9:60160->172.18.0.8:8000: read: connection reset by peer"
+
+running (0m46.0s), 31/61 VUs, 82 complete and 0 interrupted iterations
+sem_cache     [  77% ] 31/60 VUs  0m46.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m19.0s      
+com_cache   • [   0% ] waiting    0m54.0s      
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&ano=2023&cache=false\": read tcp 172.18.0.9:59466->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:60140->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&cache=false\": read tcp 172.18.0.9:60148->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:59198->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": read tcp 172.18.0.9:59190->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&cache=false\": read tcp 172.18.0.9:59188->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:59184->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&componente=FG&cache=false\": read tcp 172.18.0.9:59178->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&tipo=objetiva&cache=false\": read tcp 172.18.0.9:59162->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&componente=FG&cache=false\": read tcp 172.18.0.9:59488->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": read tcp 172.18.0.9:60134->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica&ano=2023&cache=false\": read tcp 172.18.0.9:59478->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&cache=false\": read tcp 172.18.0.9:59206->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": read tcp 172.18.0.9:59446->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&cache=false\": read tcp 172.18.0.9:59468->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=gest%C3%A3o&ano=2023&cache=false\": read tcp 172.18.0.9:59366->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=algoritmo&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": read tcp 172.18.0.9:59368->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": read tcp 172.18.0.9:59362->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica&componente=FG&cache=false\": read tcp 172.18.0.9:59392->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&ano=2023&cache=false\": read tcp 172.18.0.9:59430->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&tipo=objetiva&cache=false\": read tcp 172.18.0.9:59410->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&ano=2022&componente=CE&cache=false\": read tcp 172.18.0.9:59382->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&cache=false\": read tcp 172.18.0.9:59456->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&cache=false\": read tcp 172.18.0.9:59434->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&tipo=objetiva&cache=false\": read tcp 172.18.0.9:59398->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&cache=false\": read tcp 172.18.0.9:59424->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&tipo=objetiva&cache=false\": read tcp 172.18.0.9:59404->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&ano=2023&cache=false\": read tcp 172.18.0.9:59442->172.18.0.8:8000: read: connection reset by peer"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:01Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+
+running (0m47.0s), 12/61 VUs, 121 complete and 0 interrupted iterations
+sem_cache     [  78% ] 12/60 VUs  0m47.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m18.0s      
+com_cache   • [   0% ] waiting    0m53.0s      
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=algoritmo&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=gest%C3%A3o&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=algoritmo&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=gest%C3%A3o&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=meio%20ambiente&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:02Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+
+running (0m48.0s), 00/61 VUs, 153 complete and 0 interrupted iterations
+sem_cache     [  80% ] 00/60 VUs  0m48.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m17.0s      
+com_cache   • [   0% ] waiting    0m52.0s      
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:03Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+
+running (0m49.0s), 00/61 VUs, 173 complete and 0 interrupted iterations
+sem_cache     [  82% ] 00/60 VUs  0m49.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m16.0s      
+com_cache   • [   0% ] waiting    0m51.0s      
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=desigualdade%20social&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:04Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+
+running (0m50.0s), 00/61 VUs, 193 complete and 0 interrupted iterations
+sem_cache     [  83% ] 00/60 VUs  0m50.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m15.0s      
+com_cache   • [   0% ] waiting    0m50.0s      
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&ano=2023&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=meio%20ambiente&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:05Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+
+running (0m51.0s), 00/61 VUs, 213 complete and 0 interrupted iterations
+sem_cache     [  85% ] 00/60 VUs  0m51.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m14.0s      
+com_cache   • [   0% ] waiting    0m49.0s      
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&tipo=objetiva&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica&componente=FG&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&ano=2022&componente=CE&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:06Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&area=Ci%C3%AAncias%20da%20Sa%C3%BAde&cache=false\": dial tcp 172.18.0.8:8000: connect: connection refused"
+
+running (0m52.0s), 11/61 VUs, 222 complete and 0 interrupted iterations
+sem_cache     [  87% ] 11/60 VUs  0m52.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m13.0s      
+com_cache   • [   0% ] waiting    0m48.0s      
+
+running (0m53.0s), 01/61 VUs, 252 complete and 0 interrupted iterations
+sem_cache     [  88% ] 01/60 VUs  0m53.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m12.0s      
+com_cache   • [   0% ] waiting    0m47.0s      
+
+running (0m54.0s), 01/61 VUs, 272 complete and 0 interrupted iterations
+sem_cache     [  90% ] 01/60 VUs  0m54.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m11.0s      
+com_cache   • [   0% ] waiting    0m46.0s      
+
+running (0m55.0s), 01/61 VUs, 292 complete and 0 interrupted iterations
+sem_cache     [  92% ] 01/60 VUs  0m55.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m10.0s      
+com_cache   • [   0% ] waiting    0m45.0s      
+
+running (0m56.0s), 01/61 VUs, 312 complete and 0 interrupted iterations
+sem_cache     [  93% ] 01/60 VUs  0m56.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m09.0s      
+com_cache   • [   0% ] waiting    0m44.0s      
+
+running (0m57.0s), 01/61 VUs, 332 complete and 0 interrupted iterations
+sem_cache     [  95% ] 01/60 VUs  0m57.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m08.0s      
+com_cache   • [   0% ] waiting    0m43.0s      
+
+running (0m58.0s), 01/61 VUs, 352 complete and 0 interrupted iterations
+sem_cache     [  97% ] 01/60 VUs  0m58.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m07.0s      
+com_cache   • [   0% ] waiting    0m42.0s      
+
+running (0m59.0s), 00/61 VUs, 373 complete and 0 interrupted iterations
+sem_cache     [  98% ] 00/60 VUs  0m59.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m06.0s      
+com_cache   • [   0% ] waiting    0m41.0s      
+
+running (1m00.0s), 00/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache     [ 100% ] 00/60 VUs  1m00.0s/1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m05.0s      
+com_cache   • [   0% ] waiting    0m40.0s      
+
+running (1m01.0s), 00/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m04.0s
+com_cache   • [   0% ] waiting    0m39.0s
+
+running (1m02.0s), 00/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m03.0s
+com_cache   • [   0% ] waiting    0m38.0s
+
+running (1m03.0s), 00/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m02.0s
+com_cache   • [   0% ] waiting    0m37.0s
+
+running (1m04.0s), 00/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m01.0s
+com_cache   • [   0% ] waiting    0m36.0s
+
+running (1m05.0s), 00/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s  20.00 iters/s
+aquecimento • [   0% ] waiting    0m00.0s
+com_cache   • [   0% ] waiting    0m35.0s
+
+running (1m06.0s), 01/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento   [   0% ] 1 VUs      0m01.0s/2m0s  0/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m34.0s      
+
+running (1m07.0s), 01/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento   [   0% ] 1 VUs      0m02.0s/2m0s  0/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m33.0s      
+
+running (1m08.0s), 01/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento   [   0% ] 1 VUs      0m03.0s/2m0s  0/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m32.0s      
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica\": EOF"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=desigualdade%20social\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=algoritmo\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=meio%20ambiente\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=gest%C3%A3o\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=programa%C3%A7%C3%A3o\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=desigualdade%20social&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=algoritmo&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=meio%20ambiente&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=gest%C3%A3o&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=programa%C3%A7%C3%A3o&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&ano=2023\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=desigualdade%20social&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=algoritmo&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=meio%20ambiente&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+
+running (1m09.0s), 01/61 VUs, 393 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento   [   0% ] 1 VUs      0m04.0s/2m0s  0/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m31.0s      
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=gest%C3%A3o&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=programa%C3%A7%C3%A3o&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&componente=FG\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=desigualdade%20social&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=algoritmo&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=meio%20ambiente&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=gest%C3%A3o&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=programa%C3%A7%C3%A3o&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&tipo=objetiva\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=desigualdade%20social&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=algoritmo&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=meio%20ambiente&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=gest%C3%A3o&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=programa%C3%A7%C3%A3o&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&ano=2022&componente=CE\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=%C3%A9tica&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=desigualdade%20social&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sustentabilidade&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=intelig%C3%AAncia%20artificial&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=sa%C3%BAde%20p%C3%BAblica&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=algoritmo&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=direitos%20humanos&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=educa%C3%A7%C3%A3o%20inclusiva&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=meio%20ambiente&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=democracia&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=vacina%C3%A7%C3%A3o&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=banco%20de%20dados&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=trabalho&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=cultura&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=pol%C3%ADtica%20p%C3%BAblica&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=viol%C3%AAncia&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=tecnologia&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=economia&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=fome&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=saneamento&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=acessibilidade&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=redes%20de%20computadores&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=gest%C3%A3o&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=comunica%C3%A7%C3%A3o&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=racismo&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=envelhecimento&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=energia&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=programa%C3%A7%C3%A3o&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=estat%C3%ADstica&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+time="2026-11-22T21:41:24Z" level=warning msg="Request Failed" error="Get \"http://api:8000/api/busca?q=urbaniza%C3%A7%C3%A3o&area=Ci%C3%AAncias%20da%20Sa%C3%BAde\": dial tcp 172.18.0.8:8000: connect: connection refused"
+
+running (1m10.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m30.0s      
+
+running (1m11.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m29.0s      
+
+running (1m12.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m28.0s      
+
+running (1m13.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m27.0s      
+
+running (1m14.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m26.0s      
+
+running (1m15.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m25.0s      
+
+running (1m16.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m24.0s      
+
+running (1m17.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m23.0s      
+
+running (1m18.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m22.0s      
+
+running (1m19.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m21.0s      
+
+running (1m20.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m20.0s      
+
+running (1m21.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m19.0s      
+
+running (1m22.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m18.0s      
+
+running (1m23.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m17.0s      
+
+running (1m24.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m16.0s      
+
+running (1m25.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m15.0s      
+
+running (1m26.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m14.0s      
+
+running (1m27.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m13.0s      
+
+running (1m28.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m12.0s      
+
+running (1m29.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m11.0s      
+
+running (1m30.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m10.0s      
+
+running (1m31.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m09.0s      
+
+running (1m32.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m08.0s      
+
+running (1m33.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m07.0s      
+
+running (1m34.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m06.0s      
+
+running (1m35.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m05.0s      
+
+running (1m36.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m04.0s      
+
+running (1m37.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m03.0s      
+
+running (1m38.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m02.0s      
+
+running (1m39.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m01.0s      
+
+running (1m40.0s), 00/61 VUs, 394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   • [   0% ] waiting    0m00.0s      
+
+running (1m41.0s), 00/61 VUs, 414 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [   2% ] 00/20 VUs  0m01.0s/1m0s  20.00 iters/s
+
+running (1m42.0s), 00/61 VUs, 434 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [   3% ] 00/20 VUs  0m02.0s/1m0s  20.00 iters/s
+
+running (1m43.0s), 00/61 VUs, 454 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [   5% ] 00/20 VUs  0m03.0s/1m0s  20.00 iters/s
+
+running (1m44.0s), 00/61 VUs, 474 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [   7% ] 00/20 VUs  0m04.0s/1m0s  20.00 iters/s
+
+running (1m45.0s), 00/61 VUs, 494 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [   8% ] 00/20 VUs  0m05.0s/1m0s  20.00 iters/s
+
+running (1m46.0s), 01/61 VUs, 513 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  10% ] 01/20 VUs  0m06.0s/1m0s  20.00 iters/s
+
+running (1m47.0s), 01/61 VUs, 533 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  12% ] 01/20 VUs  0m07.0s/1m0s  20.00 iters/s
+
+running (1m48.0s), 00/61 VUs, 554 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  13% ] 00/20 VUs  0m08.0s/1m0s  20.00 iters/s
+
+running (1m49.0s), 00/61 VUs, 574 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  15% ] 00/20 VUs  0m09.0s/1m0s  20.00 iters/s
+
+running (1m50.0s), 00/61 VUs, 594 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  17% ] 00/20 VUs  0m10.0s/1m0s  20.00 iters/s
+
+running (1m51.0s), 00/61 VUs, 614 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  18% ] 00/20 VUs  0m11.0s/1m0s  20.00 iters/s
+
+running (1m52.0s), 00/61 VUs, 634 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  20% ] 00/20 VUs  0m12.0s/1m0s  20.00 iters/s
+
+running (1m53.0s), 00/61 VUs, 654 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  22% ] 00/20 VUs  0m13.0s/1m0s  20.00 iters/s
+
+running (1m54.0s), 01/61 VUs, 673 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  23% ] 01/20 VUs  0m14.0s/1m0s  20.00 iters/s
+
+running (1m55.0s), 01/61 VUs, 693 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  25% ] 01/20 VUs  0m15.0s/1m0s  20.00 iters/s
+
+running (1m56.0s), 01/61 VUs, 713 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  27% ] 01/20 VUs  0m16.0s/1m0s  20.00 iters/s
+
+running (1m57.0s), 01/61 VUs, 734 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  28% ] 01/20 VUs  0m17.0s/1m0s  20.00 iters/s
+
+running (1m58.0s), 00/61 VUs, 754 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  30% ] 00/20 VUs  0m18.0s/1m0s  20.00 iters/s
+
+running (1m59.0s), 00/61 VUs, 774 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  32% ] 00/20 VUs  0m19.0s/1m0s  20.00 iters/s
+
+running (2m00.0s), 00/61 VUs, 794 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  33% ] 00/20 VUs  0m20.0s/1m0s  20.00 iters/s
+
+running (2m01.1s), 02/61 VUs, 814 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  35% ] 02/20 VUs  0m21.1s/1m0s  20.00 iters/s
+
+running (2m02.0s), 00/61 VUs, 834 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  37% ] 00/20 VUs  0m22.0s/1m0s  20.00 iters/s
+
+running (2m03.0s), 00/61 VUs, 854 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  38% ] 00/20 VUs  0m23.0s/1m0s  20.00 iters/s
+
+running (2m04.0s), 00/61 VUs, 874 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  40% ] 00/20 VUs  0m24.0s/1m0s  20.00 iters/s
+
+running (2m05.0s), 00/61 VUs, 894 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  42% ] 00/20 VUs  0m25.0s/1m0s  20.00 iters/s
+
+running (2m06.0s), 00/61 VUs, 914 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  43% ] 00/20 VUs  0m26.0s/1m0s  20.00 iters/s
+
+running (2m07.0s), 00/61 VUs, 934 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  45% ] 00/20 VUs  0m27.0s/1m0s  20.00 iters/s
+
+running (2m08.0s), 00/61 VUs, 954 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  47% ] 00/20 VUs  0m28.0s/1m0s  20.00 iters/s
+
+running (2m09.0s), 00/61 VUs, 974 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  48% ] 00/20 VUs  0m29.0s/1m0s  20.00 iters/s
+
+running (2m10.0s), 00/61 VUs, 994 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  50% ] 00/20 VUs  0m30.0s/1m0s  20.00 iters/s
+
+running (2m11.0s), 00/61 VUs, 1014 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  52% ] 00/20 VUs  0m31.0s/1m0s  20.00 iters/s
+
+running (2m12.0s), 00/61 VUs, 1034 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  53% ] 00/20 VUs  0m32.0s/1m0s  20.00 iters/s
+
+running (2m13.0s), 00/61 VUs, 1054 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  55% ] 00/20 VUs  0m33.0s/1m0s  20.00 iters/s
+
+running (2m14.0s), 00/61 VUs, 1074 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  57% ] 00/20 VUs  0m34.0s/1m0s  20.00 iters/s
+
+running (2m15.0s), 00/61 VUs, 1094 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  58% ] 00/20 VUs  0m35.0s/1m0s  20.00 iters/s
+
+running (2m16.0s), 00/61 VUs, 1114 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  60% ] 00/20 VUs  0m36.0s/1m0s  20.00 iters/s
+
+running (2m17.0s), 00/61 VUs, 1134 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  62% ] 00/20 VUs  0m37.0s/1m0s  20.00 iters/s
+
+running (2m18.0s), 00/61 VUs, 1154 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  63% ] 00/20 VUs  0m38.0s/1m0s  20.00 iters/s
+
+running (2m19.0s), 00/61 VUs, 1174 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  65% ] 00/20 VUs  0m39.0s/1m0s  20.00 iters/s
+
+running (2m20.0s), 00/61 VUs, 1194 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  67% ] 00/20 VUs  0m40.0s/1m0s  20.00 iters/s
+
+running (2m21.0s), 00/61 VUs, 1214 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  68% ] 00/20 VUs  0m41.0s/1m0s  20.00 iters/s
+
+running (2m22.0s), 00/61 VUs, 1234 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  70% ] 00/20 VUs  0m42.0s/1m0s  20.00 iters/s
+
+running (2m23.0s), 00/61 VUs, 1254 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  72% ] 00/20 VUs  0m43.0s/1m0s  20.00 iters/s
+
+running (2m24.0s), 00/61 VUs, 1274 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  73% ] 00/20 VUs  0m44.0s/1m0s  20.00 iters/s
+
+running (2m25.0s), 00/61 VUs, 1294 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  75% ] 00/20 VUs  0m45.0s/1m0s  20.00 iters/s
+
+running (2m26.0s), 00/61 VUs, 1314 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  77% ] 00/20 VUs  0m46.0s/1m0s  20.00 iters/s
+
+running (2m27.0s), 00/61 VUs, 1334 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  78% ] 00/20 VUs  0m47.0s/1m0s  20.00 iters/s
+
+running (2m28.0s), 00/61 VUs, 1354 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  80% ] 00/20 VUs  0m48.0s/1m0s  20.00 iters/s
+
+running (2m29.0s), 00/61 VUs, 1374 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  82% ] 00/20 VUs  0m49.0s/1m0s  20.00 iters/s
+
+running (2m30.0s), 00/61 VUs, 1394 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  83% ] 00/20 VUs  0m50.0s/1m0s  20.00 iters/s
+
+running (2m31.0s), 00/61 VUs, 1414 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  85% ] 00/20 VUs  0m51.0s/1m0s  20.00 iters/s
+
+running (2m32.0s), 00/61 VUs, 1434 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  87% ] 00/20 VUs  0m52.0s/1m0s  20.00 iters/s
+
+running (2m33.0s), 00/61 VUs, 1454 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  88% ] 00/20 VUs  0m53.0s/1m0s  20.00 iters/s
+
+running (2m34.0s), 00/61 VUs, 1474 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  90% ] 00/20 VUs  0m54.0s/1m0s  20.00 iters/s
+
+running (2m35.0s), 00/61 VUs, 1494 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  92% ] 00/20 VUs  0m55.0s/1m0s  20.00 iters/s
+
+running (2m36.0s), 00/61 VUs, 1514 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  93% ] 00/20 VUs  0m56.0s/1m0s  20.00 iters/s
+
+running (2m37.0s), 00/61 VUs, 1534 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  95% ] 00/20 VUs  0m57.0s/1m0s  20.00 iters/s
+
+running (2m38.0s), 00/61 VUs, 1554 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  97% ] 00/20 VUs  0m58.0s/1m0s  20.00 iters/s
+
+running (2m39.0s), 00/61 VUs, 1574 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [  98% ] 00/20 VUs  0m59.0s/1m0s  20.00 iters/s
+
+running (2m40.0s), 00/61 VUs, 1594 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache     [ 100% ] 00/20 VUs  1m00.0s/1m0s  20.00 iters/s
+
+     ✗ 200
+      ↳  89% — ✓ 1425 / ✗ 169
+
+     █ setup
+
+       ✓ login 200
+
+     cache_hit_rate.................: 84.92% 1020 out of 1201
+     checks.........................: 89.40% 1426 out of 1595
+     data_received..................: 32 MB  202 kB/s
+     data_sent......................: 280 kB 1.8 kB/s
+     dropped_iterations.............: 807    5.043213/s
+     http_req_blocked...............: avg=69.79µs  min=0s      med=5.65µs   p(50)=5.65µs   p(95)=302.34µs p(99)=509.96µs max=34.98ms  count=1775
+     http_req_connecting............: avg=54.72µs  min=0s      med=0s       p(50)=0s       p(95)=219.06µs p(99)=368.1µs  max=34.91ms  count=1775
+     http_req_duration..............: avg=1.41s    min=0s      med=4.63ms   p(50)=4.63ms   p(95)=190.55ms p(99)=42.42s   max=43.72s   count=1775
+       { expected_response:true }...: avg=21.83ms  min=2.36ms  med=4.87ms   p(50)=4.87ms   p(95)=53.62ms  p(99)=416.61ms max=725.17ms count=1426
+   ✗ http_req_failed................: 19.66% 349 out of 1775
+     http_req_receiving.............: avg=160.16µs min=0s      med=138.88µs p(50)=138.88µs p(95)=340.1µs  p(99)=725.65µs max=12.34ms  count=1775
+     http_req_sending...............: avg=217.78ms min=0s      med=32.53µs  p(50)=32.53µs  p(95)=69.6µs   p(99)=157.72µs max=43.51s   count=1775
+     http_req_tls_handshaking.......: avg=0s       min=0s      med=0s       p(50)=0s       p(95)=0s       p(99)=0s       max=0s       count=1775
+     http_req_waiting...............: avg=1.19s    min=0s      med=4.44ms   p(50)=4.44ms   p(95)=136.18ms p(99)=41.6s    max=43.72s   count=1775
+     http_reqs......................: 1775   11.092569/s
+     iteration_duration.............: avg=1.57s    min=448.5µs med=5.08ms   p(50)=5.08ms   p(95)=582.96ms p(99)=42.52s   max=43.73s   count=1595
+     iterations.....................: 1595   9.967689/s
+     latencia_com_cache.............: avg=10.82ms  min=2.36ms  med=4.63ms   p(50)=4.63ms   p(95)=30.03ms  p(99)=115.76ms max=424.04ms count=1201
+     latencia_sem_cache.............: avg=6.33s    min=0s      med=27.86ms  p(50)=27.86ms  p(95)=42.31s   p(99)=43.13s   max=43.72s   count=393 
+     vus............................: 0      min=0            max=60
+     vus_max........................: 61     min=21           max=61
+
+
+running (2m40.0s), 00/61 VUs, 1595 complete and 0 interrupted iterations
+sem_cache   ✓ [ 100% ] 00/60 VUs  1m0s          20.00 iters/s
+aquecimento ✓ [ 100% ] 1 VUs      0m04.0s/2m0s  1/1 iters, 1 per VU
+com_cache   ✓ [ 100% ] 00/20 VUs  1m0s          20.00 iters/s
+time="2026-11-22T21:42:55Z" level=error msg="thresholds on metrics 'http_req_failed' have been crossed"
+

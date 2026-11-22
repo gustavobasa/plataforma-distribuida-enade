@@ -1,0 +1,40 @@
+ Container enade-testes-run-7b569711b5c7 Creating 
+ Container enade-testes-run-7b569711b5c7 Created 
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-8.3.5, pluggy-1.7.0 -- /usr/local/bin/python
+rootdir: /app
+plugins: anyio-4.16.0
+collecting ... collected 30 items
+
+testes/test_integracao_api.py::test_login_invalido_401 PASSED            [  3%]
+testes/test_integracao_api.py::test_login_injecao_ldap_rejeitada PASSED  [  6%]
+testes/test_integracao_api.py::test_sem_autenticacao_401 PASSED          [ 10%]
+testes/test_integracao_api.py::test_perfis_vindos_do_ldap PASSED         [ 13%]
+testes/test_integracao_api.py::test_openapi_documentado PASSED           [ 16%]
+testes/test_integracao_api.py::test_parametro_invalido_422 PASSED        [ 20%]
+testes/test_integracao_api.py::test_busca_fulltext_highlight PASSED      [ 23%]
+testes/test_integracao_api.py::test_stemming_ptbr PASSED                 [ 26%]
+testes/test_integracao_api.py::test_sinonimos PASSED                     [ 30%]
+testes/test_integracao_api.py::test_interdisciplinar_varios_cursos PASSED [ 33%]
+testes/test_integracao_api.py::test_filtros_combinados PASSED            [ 36%]
+testes/test_integracao_api.py::test_filtro_competencia PASSED            [ 40%]
+testes/test_integracao_api.py::test_paginacao PASSED                     [ 43%]
+testes/test_integracao_api.py::test_colapsar_equivalentes PASSED         [ 46%]
+testes/test_integracao_api.py::test_equivalentes_em_outros_cursos PASSED [ 50%]
+testes/test_integracao_api.py::test_rastreabilidade PASSED               [ 53%]
+testes/test_integracao_api.py::test_estudante_nao_ve_gabarito_na_busca_nem_no_detalhe PASSED [ 56%]
+testes/test_integracao_api.py::test_estudante_rotas_restritas_403[/api/questoes/{id}/gabarito-GET] PASSED [ 60%]
+testes/test_integracao_api.py::test_estudante_rotas_restritas_403[/api/analitico-GET] PASSED [ 63%]
+testes/test_integracao_api.py::test_estudante_rotas_restritas_403[/api/carrinho/exportar?formato=json-GET] PASSED [ 66%]
+testes/test_integracao_api.py::test_estudante_rotas_restritas_403[/api/carrinho/exportar?formato=pdf-GET] PASSED [ 70%]
+testes/test_integracao_api.py::test_estudante_rotas_restritas_403[/api/admin/cache-GET] PASSED [ 73%]
+testes/test_integracao_api.py::test_estudante_rotas_restritas_403[/api/admin/ingestao-GET] PASSED [ 76%]
+testes/test_integracao_api.py::test_estudante_rotas_restritas_403[/api/admin/cache/invalidar-POST] PASSED [ 80%]
+testes/test_integracao_api.py::test_professor_ve_gabarito PASSED         [ 83%]
+testes/test_integracao_api.py::test_cache_nao_vaza_gabarito_entre_perfis PASSED [ 86%]
+testes/test_integracao_api.py::test_cache_hit_e_invalidacao PASSED       [ 90%]
+testes/test_integracao_api.py::test_carrinho_e_exportacao PASSED         [ 93%]
+testes/test_integracao_api.py::test_agregacoes PASSED                    [ 96%]
+testes/test_integracao_api.py::test_health_e_metricas PASSED             [100%]
+
+============================== 30 passed in 3.14s ==============================

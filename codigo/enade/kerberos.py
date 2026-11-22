@@ -27,14 +27,19 @@ def kafka_conf_base(extra: dict[str, Any] | None = None) -> dict[str, Any]:
 
 
 def es_cliente(timeout: int = 30):
-    """Cliente Elasticsearch autenticado via SPNEGO/Kerberos com autenticação mútua obrigatória."""
+    """Cliente Elasticsearch autenticado via SPNEGO/Kerberos com autenticação mútua obrigatória.
+
+    ATENÇÃO: o objeto HTTPSPNEGOAuth guarda contexto GSSAPI e NÃO é thread-safe. Compartilhá-lo entre threads
+    derrubou a API sob carga ("double free or corruption"). Use um cliente por thread (ver api/estado.py).
+    `opportunistic_auth` envia o token Kerberos já na primeira requisição (evita o ida-e-volta 401 -> Negotiate).
+    """
     from elasticsearch import Elasticsearch
     from requests_gssapi import REQUIRED, HTTPSPNEGOAuth
 
     return Elasticsearch(
         CFG.es_url,
         node_class="requests",
-        http_auth=HTTPSPNEGOAuth(mutual_authentication=REQUIRED),
+        http_auth=HTTPSPNEGOAuth(mutual_authentication=REQUIRED, opportunistic_auth=True),
         request_timeout=timeout,
         retry_on_timeout=True,
         max_retries=3,

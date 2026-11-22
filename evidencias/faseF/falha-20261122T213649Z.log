@@ -1,0 +1,39 @@
+2026-11-22T21:36:50.918Z ids distintos publicados (JSONL válidos) = 3360
+2026-11-22T21:36:50.966Z == estado inicial do grupo
+GROUP           TOPIC             PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                        HOST            CLIENT-ID
+enade-indexer   enade.questoes.v1 2          3383            3383            0               enade-indexer-312d2840-40d7-4ee1-a908-bfcc91d0ee25 /172.18.0.7     enade-indexer
+enade-indexer   enade.questoes.v1 1          3386            3386            0               enade-indexer-312d2840-40d7-4ee1-a908-bfcc91d0ee25 /172.18.0.7     enade-indexer
+enade-indexer   enade.questoes.v1 0          3316            3316            0               enade-indexer-312d2840-40d7-4ee1-a908-bfcc91d0ee25 /172.18.0.7     enade-indexer
+2026-11-22T21:36:55.984Z 1) parando indexer, recriando índice e reposicionando offsets no início
+ Container enade-es-setup-run-bb46d5b1eb1d Creating 
+ Container enade-es-setup-run-bb46d5b1eb1d Created 
+{"ts": "2026-11-22T21:36:59.612Z", "nivel": "INFO", "servico": "es-setup", "msg": "índice removido para reprocessamento completo", "indice": "enade-questoes-v1"}
+{"ts": "2026-11-22T21:37:00.186Z", "nivel": "INFO", "servico": "es-setup", "msg": "índice criado", "indice": "enade-questoes-v1"}
+{"ts": "2026-11-22T21:37:00.422Z", "nivel": "INFO", "servico": "es-setup", "msg": "papéis e role mappings Kerberos aplicados", "papeis": ["enade_indexer", "enade_api"], "mapeamentos": ["kerberos-indexer", "kerberos-api"]}
+ Container enade-kafka-setup-run-956bbff827cb Creating 
+ Container enade-kafka-setup-run-956bbff827cb Created 
+
+GROUP                          TOPIC                          PARTITION  NEW-OFFSET     enade-indexer                  enade.questoes.v1              2          0              enade-indexer                  enade.questoes.v1              1          0              enade-indexer                  enade.questoes.v1              0          0              [2026-11-22 21:37:05,649] WARN [Principal=admin@ENADE.LOCAL]: TGT renewal thread has been interrupted and will exit. (org.apache.kafka.common.security.kerberos.KerberosLogin)
+2026-11-22T21:37:07.296Z documentos no índice após recriação: 0
+2026-11-22T21:37:07.385Z 2) iniciando indexer
+2026-11-22T21:37:35.522Z    índice com 2056 docs -> SIGKILL no indexer (falha abrupta)
+2026-11-22T21:37:36.856Z    offsets confirmados no momento da queda:
+GROUP           TOPIC             PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                        HOST            CLIENT-ID
+enade-indexer   enade.questoes.v1 2          1450            3383            1933            enade-indexer-e040eade-6311-479d-9e4a-2c06900f6e83 /172.18.0.7     enade-indexer
+enade-indexer   enade.questoes.v1 1          1718            3386            1668            enade-indexer-e040eade-6311-479d-9e4a-2c06900f6e83 /172.18.0.7     enade-indexer
+enade-indexer   enade.questoes.v1 0          1432            3316            1884            enade-indexer-e040eade-6311-479d-9e4a-2c06900f6e83 /172.18.0.7     enade-indexer
+2026-11-22T21:37:41.193Z    documentos no índice após a queda: 3360
+2026-11-22T21:37:46.279Z 3) reiniciando indexer
+2026-11-22T21:38:12.616Z    índice com 3360 docs -> SIGKILL no Elasticsearch
+2026-11-22T21:38:47.276Z    Elasticsearch fora do ar há 30 s; lag do consumidor = 5485 (offsets não avançam sem confirmação do ES)
+2026-11-22T21:38:47.331Z 4) religando Elasticsearch
+2026-11-22T21:39:20.209Z    Elasticsearch saudável; aguardando lag zerar
+2026-11-22T21:39:35.752Z 5) lag = 0. documentos no índice = 3360; esperado = 3360
+GROUP           TOPIC             PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                        HOST            CLIENT-ID
+enade-indexer   enade.questoes.v1 2          3383            3383            0               enade-indexer-6226ed11-8575-437e-9a19-70a8bffd477a /172.18.0.7     enade-indexer
+enade-indexer   enade.questoes.v1 1          3386            3386            0               enade-indexer-6226ed11-8575-437e-9a19-70a8bffd477a /172.18.0.7     enade-indexer
+enade-indexer   enade.questoes.v1 0          3316            3316            0               enade-indexer-6226ed11-8575-437e-9a19-70a8bffd477a /172.18.0.7     enade-indexer
+2026-11-22T21:39:40.005Z    operações de indexação confirmadas desde o início do experimento (soma dos lotes no log; > esperado indica reprocessamento): 10080
+2026-11-22T21:39:41.013Z    retentativas por ES indisponível (log): 6
+2026-11-22T21:39:41.122Z    tempo total com falhas: 144.4s
+2026-11-22T21:39:41.175Z RESULTADO: SEM PERDA e SEM DUPLICATA (3360 de 3360 documentos)

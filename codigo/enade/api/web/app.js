@@ -11,8 +11,9 @@ const estado = { usuario: null, q: "", pagina: 1, filtros: {}, tax: { competenci
 mermaid.initialize({ startOnLoad: false, securityLevel: "strict" });
 
 async function api(caminho, opcoes = {}) {
-  const r = await fetch(caminho, { credentials: "same-origin", headers: { "Content-Type": "application/json" }, ...opcoes });
-  if (r.status === 401) { mostrarLogin(); throw new Error("não autenticado"); }
+  const { ehLogin, ...fetchOpcoes } = opcoes;
+  const r = await fetch(caminho, { credentials: "same-origin", headers: { "Content-Type": "application/json" }, ...fetchOpcoes });
+  if (r.status === 401 && !ehLogin) { mostrarLogin(); const e = new Error("sessão expirada ou inexistente"); e.status = 401; throw e; }
   let corpo = null;
   const tipo = r.headers.get("content-type") || "";
   if (tipo.includes("json")) corpo = await r.json();
@@ -50,7 +51,7 @@ $("#form-login").addEventListener("submit", async (ev) => {
   const f = new FormData(ev.target);
   $("#erro-login").textContent = "";
   try {
-    const { corpo } = await api("/api/auth/login", { method: "POST", body: JSON.stringify({ usuario: f.get("usuario"), senha: f.get("senha") }) });
+    const { corpo } = await api("/api/auth/login", { method: "POST", ehLogin: true, body: JSON.stringify({ usuario: f.get("usuario"), senha: f.get("senha") }) });
     ev.target.reset();
     await entrar({ usuario: corpo.usuario, nome: corpo.nome, perfil: corpo.perfil });
   } catch (e) { $("#erro-login").textContent = e.status === 401 ? "Usuário ou senha inválidos." : e.message; }

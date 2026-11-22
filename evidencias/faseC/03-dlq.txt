@@ -1,0 +1,33 @@
+# 2026-11-22T21:22:58Z injeção de 5 mensagens malformadas no tópico principal
+injetada teste-invalida-3 -> enade.questoes.v1[1]@2256 erro=None
+injetada teste-invalida-4 -> enade.questoes.v1[1]@2257 erro=None
+injetada teste-invalida-1 -> enade.questoes.v1[2]@2254 erro=None
+injetada teste-invalida-5 -> enade.questoes.v1[2]@2255 erro=None
+injetada teste-invalida-2 -> enade.questoes.v1[0]@2210 erro=None
+# logs do indexer
+{"ts": "2026-11-22T21:22:38.567Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 1.384}
+{"ts": "2026-11-22T21:22:38.991Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.423}
+{"ts": "2026-11-22T21:22:39.770Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.777}
+{"ts": "2026-11-22T21:22:40.354Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.583}
+{"ts": "2026-11-22T21:22:41.001Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.645}
+{"ts": "2026-11-22T21:22:41.834Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.832}
+{"ts": "2026-11-22T21:22:42.500Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.663}
+{"ts": "2026-11-22T21:22:43.995Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 1.494}
+{"ts": "2026-11-22T21:22:44.264Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.268}
+{"ts": "2026-11-22T21:22:44.492Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.226}
+{"ts": "2026-11-22T21:22:44.681Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.188}
+{"ts": "2026-11-22T21:22:44.948Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.265}
+{"ts": "2026-11-22T21:22:45.532Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.582}
+{"ts": "2026-11-22T21:22:45.797Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.262}
+{"ts": "2026-11-22T21:22:47.400Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 200, "indexados": 200, "dlq": 0, "segundos": 0.215}
+{"ts": "2026-11-22T21:22:48.541Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 160, "indexados": 160, "dlq": 0, "segundos": 0.137}
+{"ts": "2026-11-22T21:23:02.467Z", "nivel": "INFO", "servico": "indexer", "msg": "lote confirmado", "mensagens": 5, "indexados": 0, "dlq": 5, "segundos": 0.758}
+# conteúdo da DLQ (lido pelo principal api@ENADE.LOCAL)
+{"offset": 0, "chave": "teste-invalida-3", "motivo": "esquema_invalido", "etapa": "indexer", "origem": "enade.questoes.v1[1]@2256", "erro": "[{\"type\":\"string_too_short\",\"loc\":[\"id\"],\"msg\":\"String should have at least 8 characters\",\"input\":\"abc\",\"ctx\":{\"min_length\":8}},{\"type\":\"missing\",\"loc\":[\"area\"]"}
+{"offset": 1, "chave": "teste-invalida-4", "motivo": "esquema_invalido", "etapa": "indexer", "origem": "enade.questoes.v1[1]@2257", "erro": "id inconsistente com (ano, curso, tipo, número)"}
+{"offset": 2, "chave": "teste-invalida-1", "motivo": "json_invalido", "etapa": "indexer", "origem": "enade.questoes.v1[2]@2254", "erro": "Expecting value: line 1 column 1 (char 0)"}
+{"offset": 3, "chave": "teste-invalida-5", "motivo": "esquema_invalido", "etapa": "indexer", "origem": "enade.questoes.v1[2]@2255", "erro": "[{\"type\":\"extra_forbidden\",\"loc\":[\"campo_que_nao_existe_no_mapping\"],\"msg\":\"Extra inputs are not permitted\",\"input\":\"x\"}]"}
+{"offset": 4, "chave": "teste-invalida-2", "motivo": "json_invalido", "etapa": "indexer", "origem": "enade.questoes.v1[0]@2210", "erro": "JSON não é um objeto"}
+total na DLQ: 5
+# documentos no índice (deve continuar 3360):
+{"count":3360,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0}}

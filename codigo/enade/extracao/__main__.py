@@ -160,7 +160,8 @@ def main(argv: list[str] | None = None) -> int:
              "questoes_invalidas": sum(r.get("invalidas", 0) for r in relatorio),
              "falhas": sum(1 for r in relatorio if "erro" in r), "segundos": round(time.perf_counter() - t0, 1)}
     (saida / "relatorio_extracao.json").parent.mkdir(parents=True, exist_ok=True)
-    nome_rel = "relatorio_extracao.json" if not args.local else "relatorio_extracao_local.json"
+    nome_rel = ("relatorio_extracao_local.json" if args.local else
+                "relatorio_extracao_parcial.json" if args.cursos else "relatorio_extracao.json")
     (saida / nome_rel).write_text(json.dumps({"total": total, "provas": relatorio}, ensure_ascii=False, indent=1),
                                   encoding="utf-8")
     evento(LOG, "extração concluída", **total)

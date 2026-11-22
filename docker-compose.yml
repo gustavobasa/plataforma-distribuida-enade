@@ -308,6 +308,67 @@ services:
         volume: { subpath: ingestor }
     restart: "no"
 
+  # ---------------------------------------------------------------- Testes (sob demanda)
+  # docker compose --profile testes run --rm testes
+  testes:
+    <<: *app
+    profiles: ["testes"]
+    environment:
+      <<: *app-env
+      API_URL: http://api:8000
+      LDAP_SENHA_ESTUDANTES: ${LDAP_SENHA_ESTUDANTES}
+      LDAP_SENHA_PROFESSORES: ${LDAP_SENHA_PROFESSORES}
+    command: ["python", "-m", "pytest", "-v", "-p", "no:cacheprovider", "-W", "ignore::DeprecationWarning", "testes/test_integracao_api.py"]
+    restart: "no"
+
+  # docker compose --profile testes run --rm testes-kerberos
+  testes-kerberos:
+    <<: *app
+    profiles: ["testes"]
+    command: ["python", "-m", "pytest", "-v", "-p", "no:cacheprovider", "-W", "ignore::DeprecationWarning", "testes/test_seguranca_kerberos.py"]
+    volumes:
+      - *krb5-conf
+      - type: volume
+        source: keytabs
+        target: /keytabs/indexer
+        read_only: true
+        volume: { subpath: indexer }
+      - type: volume
+        source: keytabs
+        target: /keytabs/testes
+        read_only: true
+        volume: { subpath: testes }
+    restart: "no"
+
+  # ---------------------------------------------------------------- Métricas (RNF06)
+  prometheus:
+    image: prom/prometheus:v2.53.2
+    command: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.retention.time=7d"]
+    volumes:
+      - ./codigo/infra/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    ports:
+      - "127.0.0.1:9090:9090"
+    networks: [enade-net]
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------- Teste de carga (RNF01)
+  # docker compose --profile carga run --rm k6
+  k6:
+    image: grafana/k6:0.54.0
+    profiles: ["carga"]
+    command: ["run", "--summary-export=/resultados/k6-resumo.json", "/scripts/busca.js"]
+    environment:
+      API_URL: http://api:8000
+      SENHA: ${LDAP_SENHA_ESTUDANTES}
+      RPS: ${K6_RPS:-20}
+      DURACAO: ${K6_DURACAO:-60s}
+    volumes:
+      - ./scripts/carga:/scripts:ro
+      - ./evidencias/faseF:/resultados
+    networks: [enade-net]
+    restart: "no"
+
 networks:
   enade-net:
     name: enade-net
@@ -321,3 +382,4 @@ volumes:
   kafka-data:
   es-data:
   redis-data:
+  prometheus-data:

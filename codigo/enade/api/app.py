@@ -15,7 +15,7 @@ from pydantic import BaseModel, Field
 
 from ..config import CFG
 from ..logs import evento, obter_logger
-from . import busca, cache, exportar, monitor
+from . import busca, cache, exportar, monitor, validacao
 from .estado import M_REQ, es, redis_cli
 from .seguranca import (COOKIE, Usuario, autenticar_ldap, criar_sessao, encerrar_sessao, exige_professor,
                         registrar_falha, usuario_atual, verificar_bloqueio)
@@ -32,6 +32,7 @@ TAGS = [
     {"name": "carrinho", "description": "Lista de questões da sessão (Redis) e exportação (Professor)"},
     {"name": "analítico", "description": "Agregações (Professor)"},
     {"name": "operação", "description": "Saúde, métricas, cache e ingestão"},
+    {"name": "validação", "description": "Validação manual da extração (RNF03, Professor)"},
 ]
 
 app = FastAPI(
@@ -315,6 +316,9 @@ def cache_zerar(u: Usuario = Depends(exige_professor)):
 def ingestao(u: Usuario = Depends(exige_professor)):
     return monitor.ingestao()
 
+
+# ======================================================================== validação manual (RNF03)
+app.include_router(validacao.router)
 
 # ======================================================================== interface web
 if VENDOR.is_dir():

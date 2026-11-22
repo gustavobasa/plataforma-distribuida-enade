@@ -19,7 +19,7 @@ RECURSOS = Path(__file__).resolve().parent.parent / "recursos"
 
 # (regex sobre o slug, área). A primeira regra que casar vence.
 REGRAS_AREA: list[tuple[str, str]] = [
-    (r"engenharia|^arquitetura", "Engenharias e Arquitetura"),
+    (r"engenharia|^arquitetura|seguranca_(do_)?trabalho", "Engenharias e Arquitetura"),
     (r"computa|sistema_?s?_informacao|analise_desenvolvimento_sistemas|redes_computadores|tecnologia_informacao"
      r"|jogos_digitais|ciencia_dados|seguranca_informacao|banco_de_dados", "Computação e Tecnologia da Informação"),
     (r"medicina_veterinaria|agronom|zootecnia|agronegocio|florestal|aquicultura", "Ciências Agrárias"),

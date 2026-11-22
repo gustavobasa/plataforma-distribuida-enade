@@ -10,7 +10,7 @@ import re
 import unicodedata
 from typing import Literal
 
-from pydantic import BaseModel, Field, ValidationError, field_validator
+from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
 
 VERSAO_ESQUEMA = 1
 CAMPOS_RESTRITOS = ("gabarito", "padrao_resposta")  # visíveis apenas ao perfil Professor (RF24)
@@ -30,20 +30,25 @@ def grupo_equivalencia(enunciado: str, alternativas: list[dict]) -> str:
     return hashlib.sha1(texto[:1500].encode()).hexdigest()[:16]
 
 
-class Alternativa(BaseModel):
+class Estrito(BaseModel):
+    """Campos desconhecidos são erro (não são descartados silenciosamente) -> mensagem vai para a DLQ."""
+    model_config = ConfigDict(extra="forbid")
+
+
+class Alternativa(Estrito):
     letra: Literal["A", "B", "C", "D", "E"]
     texto: str
     texto_md: str = ""
 
 
-class Figura(BaseModel):
+class Figura(Estrito):
     pagina: int
     bbox: list[float]
     tipo: str
     arquivo: str | None = None
 
 
-class Midia(BaseModel):
+class Midia(Estrito):
     tem_formula: bool = False
     formulas_latex: list[str] = []
     tabelas_md: list[str] = []
@@ -52,7 +57,7 @@ class Midia(BaseModel):
     pendencias: list[str] = []
 
 
-class Origem(BaseModel):
+class Origem(Estrito):
     pdf: str
     url: str | None = None
     paginas: list[int] = Field(min_length=1)
@@ -62,14 +67,14 @@ class Origem(BaseModel):
     padrao_resposta_pdf: str | None = None
 
 
-class Extracao(BaseModel):
+class Extracao(Estrito):
     versao: str
     confianca: Literal["alta", "media", "baixa"]
     alertas: list[str] = []
     extraido_em: str
 
 
-class Questao(BaseModel):
+class Questao(Estrito):
     id: str = Field(min_length=8)
     schema_versao: int = VERSAO_ESQUEMA
     ano: int = Field(ge=2004, le=2100)

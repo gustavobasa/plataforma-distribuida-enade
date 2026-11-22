@@ -56,3 +56,34 @@ Formato: decisão — justificativa — trade-off. Atualizado a cada fase.
 - Os PDFs não informam a competência de cada questão. A taxonomia vem das portarias/diretrizes do INEP (fonte registrada em
   `dados/taxonomia/`) e a atribuição é feita por classificador léxico determinístico. O campo é marcado como `inferido` e sua
   qualidade será medida na amostra manual.
+
+## ADR-11 — librdkafka compilado com Cyrus SASL
+- **Problema observado:** o wheel binário do `confluent-kafka` 2.10.0 não traz GSSAPI ("No provider for SASL mechanism GSSAPI").
+- **Decisão:** estágio de build que compila o librdkafka 2.10.0 com `--enable-sasl` e instala o `confluent-kafka` sem wheel.
+- **Trade-off:** build ~2 min mais longo; ganho: Kerberos real no produtor/consumidor Python, sem trocar de biblioteca.
+
+## ADR-12 — Cadeia TLS do INEP
+- `download.inep.gov.br` envia só o certificado folha. Em vez de desativar a verificação TLS, o projeto versiona a CA
+  intermediária pública (RNP ICPEdu GR46 OV TLS CA 2025, emitida pela GlobalSign Root R46, obtida pela URL AIA do
+  próprio certificado) e a acrescenta ao bundle do `certifi`.
+
+## ADR-13 — Extração determinística (sem LLM) e suas limitações
+- PyMuPDF `rawdict` para reconstruir linhas; correções específicas dos PDFs do INEP (espaço espúrio de ligadura,
+  fonte Symbol, índices/expoentes por tamanho e linha de base -> LaTeX inline), detecção de duas colunas (2021/2022),
+  tabela de distribuição da capa para FG/CE, alternativas A–E ou A–D (Medicina 2023), tabelas com borda -> Markdown.
+- Figuras e diagramas são recortados como PNG e exibidos/exportados; **não** são convertidos para Mermaid (exigiria LLM).
+- Sem LLM o custo é zero e o resultado é reprodutível; a qualidade é medida na amostra manual (RNF03).
+
+## ADR-14 — Esquema estrito e validação dupla
+- O mesmo modelo Pydantic (`extra="forbid"`) valida no produtor e no consumidor; o mapping do ES é `dynamic: strict`.
+  Campos desconhecidos são erro explícito e a mensagem vai para a DLQ, nunca são descartados em silêncio.
+
+## ADR-15 — Ordem do analisador de busca
+- `lowercase → stop (_brazilian_) → asciifolding → stemmer light_portuguese → synonym_graph` (só na busca).
+- Sinônimos depois do stemming fazem as regras do dicionário serem radicalizadas pelo mesmo analisador; assim
+  "desigualdade" e "desigualdades" expandem para os mesmos sinônimos (falha encontrada pelo teste de integração).
+
+## ADR-16 — Segredos por serviço
+- Os contêineres não recebem o `.env` inteiro: cada serviço recebe só as variáveis de que precisa
+  (ex.: só o `es-setup` conhece `ELASTIC_PASSWORD`; só a API conhece a senha da conta LDAP somente leitura).
+- Cada serviço monta apenas o próprio subdiretório de keytab (volume `keytabs` com `subpath`).

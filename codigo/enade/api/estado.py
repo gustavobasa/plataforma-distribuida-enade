@@ -1,6 +1,7 @@
 """Recursos compartilhados da API (clientes criados uma única vez por processo) e métricas."""
 from __future__ import annotations
 
+import threading
 from functools import lru_cache
 
 import redis
@@ -22,7 +23,13 @@ def redis_cli() -> redis.Redis:
                        socket_timeout=3, decode_responses=True, health_check_interval=30)
 
 
-@lru_cache(maxsize=1)
+_local = threading.local()
+
+
 def es():
-    """Cliente Elasticsearch autenticado como api@ENADE.LOCAL (Kerberos/SPNEGO, papel somente leitura)."""
-    return es_cliente(timeout=15)
+    """Cliente Elasticsearch autenticado como api@ENADE.LOCAL (Kerberos/SPNEGO, papel somente leitura).
+    Um cliente por thread: o contexto GSSAPI do requests-gssapi não é seguro para uso concorrente."""
+    cli = getattr(_local, "es", None)
+    if cli is None:
+        cli = _local.es = es_cliente(timeout=15)
+    return cli

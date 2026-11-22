@@ -1,0 +1,7 @@
+2026-11-22T21:36:22Z publicando: produtor 
+{"ts": "2026-11-22T21:36:23.692Z", "nivel": "INFO", "servico": "produtor", "msg": "publicação iniciada", "arquivos": 84, "topico": "enade.questoes.v1"}
+{"ts": "2026-11-22T21:36:25.111Z", "nivel": "INFO", "servico": "produtor", "msg": "publicação concluída", "entregues": 3360, "falhas": 0, "dlq": 0, "lidos": 3360, "pendentes_apos_flush": 0, "segundos": 1.407, "msgs_por_segundo": 2388.8, "arquivos": 84, "fim": "2026-11-22T21:36:25+00:00"}
+mensagens publicadas nesta execução: 3360
+documentos no índice: antes=3360 depois=3360 (variação 0)
+lag máximo observado: 3360 mensagens
+tempo do início da publicação até lag=0: 17.3 s  ->  vazão ponta a ponta ≈ 193.7 msgs/s

@@ -98,3 +98,16 @@ def test_classificador_temas():
                     "Considerando o texto, avalie as asserções a seguir. PORQUE", [], False, False, "objetiva")
     assert "T07" in r["objetos_ids"]
     assert "C7" in r["competencias_ids"]
+
+
+def test_campo_desconhecido_vai_para_dlq():
+    ruim = copy.deepcopy(doc_valido())
+    ruim["campo_inexistente"] = "x"
+    doc, erro = validar(ruim)
+    assert doc is None and "extra_forbidden" in erro
+
+
+def test_quatro_alternativas_aceitas():
+    d = copy.deepcopy(doc_valido())
+    d["alternativas"] = d["alternativas"][:4]
+    assert validar(d)[0] is not None

@@ -1,0 +1,501 @@
+{
+ "semente": 2026,
+ "n_solicitado": 60,
+ "populacao": 3360,
+ "estratos": {
+  "2021|CE|discursiva": 90,
+  "2021|CE|objetiva": 810,
+  "2021|FG|discursiva": 60,
+  "2021|FG|objetiva": 240,
+  "2022|CE|discursiva": 78,
+  "2022|CE|objetiva": 702,
+  "2022|FG|discursiva": 52,
+  "2022|FG|objetiva": 208,
+  "2023|CE|discursiva": 28,
+  "2023|CE|objetiva": 812,
+  "2023|FG|discursiva": 28,
+  "2023|FG|objetiva": 252
+ },
+ "itens": [
+  {
+   "id": "5e1b2afd8ac923ebc0e2d7b2",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "b2635a1ee6bfb68fa477ce0c",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "2a50eef56458729945a43267",
+   "estrato": [
+    2021,
+    "CE",
+    "discursiva"
+   ]
+  },
+  {
+   "id": "fe17a55fabe288b2971abefc",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "a2126d8db2cf7641006d40d4",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "78fbf540a3fb97da14e25002",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "cc289805776ce96ec24855e7",
+   "estrato": [
+    2021,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "c60e11fa24a66753f49e735e",
+   "estrato": [
+    2023,
+    "FG",
+    "discursiva"
+   ]
+  },
+  {
+   "id": "e50e6feb197cc7e3f1457bc0",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "b9ee444dcba4f5dd3fa3b6e7",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "8210e60718b3ec94c311b1d4",
+   "estrato": [
+    2021,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "eaccc5b7547fc3f2ad74137f",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "88ebf2cbca30f8cb5b239541",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "4382e3d1f577943d088d0b82",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "243d0d3b33fcc2ac7882b4dd",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "cda46eb9c1251563c891af50",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "9dfa58f7f3a7670cf1c00283",
+   "estrato": [
+    2021,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "b54d5a65653aac3ebfd19150",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "729b337dcee9ed99fb42163c",
+   "estrato": [
+    2022,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "6e4ada5b27ad9c09de5a909c",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "ef4942bd5258841fa1760ee3",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "d06c9483ac0a05b367fd68ec",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "fb205129b3960d4745e3e288",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "b0960e7b119588960ccc8482",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "d0ab8ab80091c14dd4b8142a",
+   "estrato": [
+    2021,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "91f7c170e655ae7863fe2853",
+   "estrato": [
+    2023,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "a9c91d3fc0e2d3e48ad0aad0",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "bdbfb1a6afd13945fbbb8164",
+   "estrato": [
+    2022,
+    "CE",
+    "discursiva"
+   ]
+  },
+  {
+   "id": "f74c3e1eccafe1a6a2c2dade",
+   "estrato": [
+    2023,
+    "CE",
+    "discursiva"
+   ]
+  },
+  {
+   "id": "5b71da1bf14abbb37560f424",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "afc930b10b017ef2afde760f",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "a448625e142fc5c00053543f",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "c97482f118da4aa81291bda1",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "edd76baa3deecab23030eb0e",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "47e116445c75cc631ea3d6af",
+   "estrato": [
+    2023,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "7aed4c8779f2d2e912293664",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "b50d2e215622b6902baee82b",
+   "estrato": [
+    2023,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "03dd79c5742b146bff0a25be",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "789e1dead2d0ae96a1c7f516",
+   "estrato": [
+    2022,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "28ae6e3c48a5273e92c61f4a",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "cf397cfa2918bfa5ba28ed13",
+   "estrato": [
+    2021,
+    "FG",
+    "discursiva"
+   ]
+  },
+  {
+   "id": "fd43c4d753589212d3ab1c4c",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "5f1ee62133bc66a4e5be1f78",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "20a7bd1eb6be1f55627949d3",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "6f9a7e885426e00deb747f9a",
+   "estrato": [
+    2022,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "bc0c3a6645018fd836eec1f0",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "9659db782426b9b6b97be749",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "c39e7456480a69da8d17fb6d",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "ff37e72eaf70c4e6a1b2e4fd",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "373ec4c15c23c009b9faba8e",
+   "estrato": [
+    2022,
+    "FG",
+    "discursiva"
+   ]
+  },
+  {
+   "id": "57f77663d494067537836ee0",
+   "estrato": [
+    2022,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "1c5580bc76acfc1281a34842",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "1fc13729f09a8df4670789f6",
+   "estrato": [
+    2021,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "707d6d1d8632bb11831ba0d9",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "ab8ae6e91229036af7d7961a",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "b0e11d4ab28dd058864c6b94",
+   "estrato": [
+    2023,
+    "FG",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "007dc353ad39beb0e9291bfb",
+   "estrato": [
+    2022,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "1c29aed285966d37aa70c433",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "2ea53bf6641b06730935462f",
+   "estrato": [
+    2023,
+    "CE",
+    "objetiva"
+   ]
+  },
+  {
+   "id": "6f3d1d837a1af60c377fb49c",
+   "estrato": [
+    2021,
+    "CE",
+    "discursiva"
+   ]
+  }
+ ]
+}

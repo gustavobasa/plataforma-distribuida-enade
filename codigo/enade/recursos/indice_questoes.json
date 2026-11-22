@@ -23,7 +23,7 @@
         "pt_busca": {
           "type": "custom",
           "tokenizer": "standard",
-          "filter": ["lowercase", "pt_stop", "asciifolding", "pt_sinonimos", "pt_stem"]
+          "filter": ["lowercase", "pt_stop", "asciifolding", "pt_stem", "pt_sinonimos"]
         }
       },
       "normalizer": {

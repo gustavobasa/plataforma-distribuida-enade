@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Validação da Extração</title>
+  <link rel="stylesheet" href="/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="/static/estilo.css">
+  <link rel="stylesheet" href="/static/validacao.css">
+</head>
+<body>
+  <header class="topo">
+    <strong>Validação manual da extração (RNF03)</strong>
+    <span id="progresso" class="sutil"></span>
+    <a class="botao" href="/api/validacao/resultado?formato=csv">Baixar CSV</a>
+    <a class="botao sec-link" href="/">Voltar à busca</a>
+  </header>
+  <main>
+    <p class="sutil">Compare a página original (esquerda) com o que foi extraído (direita) e marque cada critério.
+      Use <b>N/A</b> quando o critério não se aplica (ex.: alternativas em questão discursiva, mídia em questão só de texto).
+      Use as setas ou os botões para navegar. As respostas são salvas no servidor ao clicar em “Salvar e próxima”.</p>
+    <nav class="paginacao"><button id="ant" class="sec">‹ Anterior</button><span id="pos"></span><button id="prox" class="sec">Próxima ›</button></nav>
+    <div class="val-grade">
+      <section class="val-pdf" aria-label="Páginas originais do PDF"><div id="paginas"></div></section>
+      <section class="val-ext" aria-label="Dados extraídos">
+        <div id="extraido"></div>
+        <form id="form-val" class="cartao">
+          <div id="criterios"></div>
+          <label>Observação <textarea id="obs" rows="2" maxlength="1000"></textarea></label>
+          <button type="submit">Salvar e próxima</button>
+          <span id="salvo" class="sutil" role="status"></span>
+        </form>
+      </section>
+    </div>
+  </main>
+  <script src="/vendor/purify.min.js"></script>
+  <script src="/vendor/marked.min.js"></script>
+  <script src="/vendor/katex/katex.min.js"></script>
+  <script src="/vendor/katex/auto-render.min.js"></script>
+  <script src="/static/validacao.js"></script>
+</body>
+</html>
