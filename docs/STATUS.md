@@ -63,7 +63,10 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 - RF04: conversão de diagramas para Mermaid não implementada (sem LLM).
 - RF05: acurácia do classificador de competências não medida (poderia entrar na validação manual).
 - Licença trial do Elasticsearch expira em 30 dias (realm Kerberos).
-- Relatório SBC (PDF ≤ 12 páginas) e vídeo: em produção.
+- Relatório SBC gerado (`relatorio/relatorio.pdf`, 8 páginas); falta preencher nome/instituição do autor e incluir a taxa de acerto manual (RNF03).
+- Vídeo: roteiro pronto (`docs/ROTEIRO-VIDEO.md`); gravação depende do usuário.
 
 ## Próxima ação
-Finalizar reprocessamento com nomes de curso corrigidos, README final, relatório SBC e roteiro do vídeo.
+1. Usuário: validar a amostra em http://localhost:8000/validacao (login professor1) e exportar o CSV.
+2. Agente: calcular a taxa de acerto, atualizar relatório §8 e este arquivo.
+3. Com autorização do usuário: `docker compose down -v` + roteiro do README do zero (RNF07).
