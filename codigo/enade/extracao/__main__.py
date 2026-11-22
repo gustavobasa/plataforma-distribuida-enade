@@ -38,6 +38,8 @@ def montar_documentos(pv: Path, ano: int, slug: str, url: str | None, sha: str |
     gabarito: dict[tuple[str, int], ItemGabarito] = ler_gabarito(gb) if gb else {}
     padroes = ler_padrao_resposta(pr) if pr else {}
     curso = prova.curso_nome or _titulo(slug)
+    if slug.startswith(("bacharelado_", "licenciatura_")):
+        curso = f"{curso} ({grau_do_curso(slug)})"  # distingue bacharelado e licenciatura de mesmo nome
     agora = datetime.now(timezone.utc).isoformat(timespec="seconds")
     docs, invalidos = [], []
     for q in prova.questoes:

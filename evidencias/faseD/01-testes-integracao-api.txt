@@ -1,5 +1,5 @@
- Container enade-testes-run-7b569711b5c7 Creating 
- Container enade-testes-run-7b569711b5c7 Created 
+ Container enade-testes-run-8b95690e1d33 Creating 
+ Container enade-testes-run-8b95690e1d33 Created 
 ============================= test session starts ==============================
 platform linux -- Python 3.12.16, pytest-8.3.5, pluggy-1.7.0 -- /usr/local/bin/python
 rootdir: /app
@@ -37,4 +37,4 @@ testes/test_integracao_api.py::test_carrinho_e_exportacao PASSED         [ 93%]
 testes/test_integracao_api.py::test_agregacoes PASSED                    [ 96%]
 testes/test_integracao_api.py::test_health_e_metricas PASSED             [100%]
 
-============================== 30 passed in 3.14s ==============================
+============================== 30 passed in 2.73s ==============================

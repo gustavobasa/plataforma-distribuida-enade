@@ -1,4 +1,4 @@
-TOTAL {'provas': 84, 'questoes_validas': 3360, 'questoes_invalidas': 0, 'falhas': 0, 'segundos': 640.9}
+TOTAL {'provas': 84, 'questoes_validas': 3360, 'questoes_invalidas': 0, 'falhas': 0, 'segundos': 728.4}
 provas por ano Counter({2021: 30, 2023: 28, 2022: 26})
 confianca {'alta': 3318, 'baixa': 11, 'media': 31}
 alertas {'alternativas_nao_detectadas': 11, 'quatro_alternativas': 29, 'citacao_no_fim_do_corpo': 2}

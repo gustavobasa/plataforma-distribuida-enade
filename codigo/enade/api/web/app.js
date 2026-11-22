@@ -127,6 +127,7 @@ function renderFacetas(facetas) {
     if (!itens.length && !sel.length) continue;
     const fs = document.createElement("fieldset");
     fs.innerHTML = `<legend>${esc(ROTULOS[nome])}</legend>`;
+    itens.forEach((i) => { if (i.rotulo) estado.cursos[i.valor] = i.rotulo; });
     const valores = new Map(itens.map((i) => [String(i.valor), i.total]));
     sel.forEach((v) => valores.has(String(v)) || valores.set(String(v), 0));
     for (const [valor, total] of valores) {

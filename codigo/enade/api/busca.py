@@ -70,6 +70,7 @@ def buscar(q: str | None, f: dict, pagina: int, por_pagina: int, professor: bool
         },
         "aggs": {nome: {"terms": {"field": campo, "size": 100}} for nome, campo in FACETAS.items()},
     }
+    corpo["aggs"]["curso"]["aggs"] = {"nome": {"terms": {"field": "curso.kw", "size": 1}}}
     if ordenar == "ano":
         corpo["sort"] = [{"ano": "desc"}, {"curso_slug": "asc"}, {"numero": "asc"}]
     elif not q:
@@ -90,7 +91,9 @@ def buscar(q: str | None, f: dict, pagina: int, por_pagina: int, professor: bool
         if colapsar:
             doc["cursos_equivalentes"] = h.get("inner_hits", {}).get("cursos", {}).get("hits", {}).get("total", {}).get("value")
         itens.append(doc)
-    facetas = {nome: [{"valor": b["key"], "total": b["doc_count"]} for b in agg["buckets"]]
+    facetas = {nome: [{"valor": b["key"], "total": b["doc_count"],
+                       **({"rotulo": b["nome"]["buckets"][0]["key"]} if b.get("nome", {}).get("buckets") else {})}
+                      for b in agg["buckets"]]
                for nome, agg in resp["aggregations"].items() if "buckets" in agg}
     return {"total": total, "pagina": pagina, "por_pagina": por_pagina,
             "paginas": max(1, -(-min(total, 10000) // por_pagina)), "tempo_es_ms": resp["took"],

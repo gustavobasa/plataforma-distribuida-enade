@@ -103,6 +103,38 @@ def componente_capa(capa: dict, tipo: str, numero: int) -> str | None:
     return capa.get((tipo, numero))
 
 
+def nome_do_curso(paginas_linhas: list[list[Linha]], alturas: list[float]) -> str | None:
+    """Nome do curso = texto mais frequente na faixa extrema de cabeçalho/rodapé (ex.: "Engenharia de Computação"
+    em 2023, "CIÊNCIA DA COMPUTAÇÃO" em 2021), ignorando códigos de barras, marca d'água, nº de página e rótulos
+    de diagramação. Nomes só em maiúsculas são convertidos para caixa de título."""
+    ignorar = {"MATÉRIA", "MATERIA", "ÁREA LIVRE", "AREA LIVRE", "RASCUNHO", "LOGO"}
+    cont: Counter[str] = Counter()
+    for linhas, h in zip(paginas_linhas[1:], alturas[1:]):
+        vistos = set()
+        for l in linhas:
+            if not (l.y0 < 45 or l.y0 > h - 40):
+                continue
+            t = re.sub(r"\s*\d+\s*", " ", l.texto).strip()
+            tu = t.upper()
+            if ("*" in t or "VALIDINEP" in tu or tu in ignorar or len(re.findall(r"[A-Za-zÀ-ú]", t)) < 4
+                    or RE_OBJETIVA.match(tu) or RE_DISCURSIVA.match(tu)):
+                continue
+            if t not in vistos:
+                vistos.add(t)
+                cont[t] += 1
+    if not cont:
+        return None
+    # prefere a grafia com minúsculas quando o mesmo nome aparece nas duas formas
+    nome, n = max(cont.items(), key=lambda kv: (kv[1] + (0.5 if kv[0].upper() != kv[0] else 0)))
+    if n < 3:
+        return None
+    if nome.upper() == nome:
+        minusculas = {"de", "da", "do", "das", "dos", "e", "em", "a", "o"}
+        nome = " ".join(p.lower() if p.lower() in minusculas and i else p.capitalize()
+                        for i, p in enumerate(nome.lower().split()))
+    return nome
+
+
 def _cabecalhos_correntes(paginas_linhas: list[list[Linha]], alturas: list[float]) -> set[str]:
     """Textos que se repetem nas margens de muitas páginas (cabeçalho/rodapé corrente)."""
     cont: Counter[str] = Counter()
@@ -313,8 +345,7 @@ def extrair_prova(caminho: str | Path, recortar_figuras: bool = True) -> ProvaEx
         figuras_pag.append(_figuras(pagina, n, h, rects_tab))
     correntes = _cabecalhos_correntes(paginas_linhas, alturas)
     capa = ler_capa(paginas_linhas[0] if paginas_linhas else [])
-    curso_nome = None
-    cont_curso: Counter[str] = Counter()
+    curso_nome = nome_do_curso(paginas_linhas, alturas)
 
     questoes: list[QuestaoBruta] = []
     alertas_prova: list[str] = []
@@ -337,8 +368,6 @@ def extrair_prova(caminho: str | Path, recortar_figuras: bool = True) -> ProvaEx
             ultima = l
             chave = re.sub(r"\d+", "", t).strip().lower()
             if chave in correntes and (l.y0 < 75 or l.y0 > h - 120):
-                if re.search(r"[a-zà-ú]", t):
-                    cont_curso[re.sub(r"\s*\d+\s*", " ", t).strip()] += 1
                 continue
             if RE_FIM.search(tu) and questoes:
                 encerrou = True
@@ -367,8 +396,6 @@ def extrair_prova(caminho: str | Path, recortar_figuras: bool = True) -> ProvaEx
             if l.y0 > h - 60 and re.fullmatch(r"\d{1,3}", t):
                 continue  # número de página isolado
             atual.linhas.append(l)
-    if cont_curso:
-        curso_nome = cont_curso.most_common(1)[0][0]
 
     # figuras: atribuídas à questão cuja região (início até início da próxima) contém a figura
     extraidas: list[QuestaoExtraida] = []
