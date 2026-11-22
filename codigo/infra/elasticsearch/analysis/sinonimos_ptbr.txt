@@ -1,0 +1,22 @@
+# Sinônimos PT-BR usados em tempo de busca (formato Solr). Termos já minúsculos e sem acento.
+etica, moral, deontologia
+sustentabilidade, desenvolvimento sustentavel, ecologia, meio ambiente
+inclusao, acessibilidade, diversidade
+desigualdade, iniquidade, disparidade
+saude publica, saude coletiva, sus
+democracia, cidadania, participacao social
+tecnologia, inovacao
+inteligencia artificial, ia, aprendizado de maquina, machine learning
+algoritmo, procedimento computacional
+banco de dados, base de dados, sgbd
+software, programa, aplicativo
+rede de computadores, redes, internet
+violencia, agressao
+direitos humanos, dignidade humana
+educacao, ensino, escolarizacao
+trabalho, emprego, ocupacao
+populacao idosa, idosos, terceira idade, envelhecimento
+etarismo, idadismo, ageismo
+fome, inseguranca alimentar
+saneamento, saneamento basico, esgotamento sanitario
+vacina, vacinacao, imunizacao

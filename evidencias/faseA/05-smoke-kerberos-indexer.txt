@@ -1,0 +1,5 @@
+librdkafka ('2.10.0', 34210047)
+topics visiveis para indexer: ['enade.questoes.dlq', 'enade.questoes.v1']
+ES status 200 {"username":"indexer@ENADE.LOCAL","roles":[],"full_name":null,"email":null,"metadata":{"kerberos_user_principal_name":"indexer@ENADE.LOCAL","kerberos_realm":"ENADE.LOCAL"},"enabled":true,"authentication_realm":{"name":"kerb1","type":"kerberos"},"lookup_realm":{"name":"kerb1","type":"kerberos"},"authentication_type":"realm"}
+WWW-Authenticate (resposta mutua): Negotiate oYGEMIGBoAMKAQChCwYJKoZIhvcSAQ
+ES sem credencial -> 401

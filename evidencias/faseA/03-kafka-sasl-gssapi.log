@@ -1,0 +1,10 @@
+kafka-1  | [2026-11-22 20:28:47,162] INFO [Principal=kafka/kafka.enade.local@ENADE.LOCAL]: TGT valid starting at: Sun Nov 22 20:28:46 GMT 2026 (org.apache.kafka.common.security.kerberos.KerberosLogin)
+kafka-1  | [2026-11-22 20:28:49,452] INFO Successfully authenticated client: authenticationID=kafka/kafka.enade.local@ENADE.LOCAL; authorizationID=kafka/kafka.enade.local@ENADE.LOCAL. (org.apache.kafka.common.security.authenticator.SaslServerCallbackHandler)
+kafka-1  | [2026-11-22 20:28:49,951] INFO Successfully authenticated client: authenticationID=kafka/kafka.enade.local@ENADE.LOCAL; authorizationID=kafka/kafka.enade.local@ENADE.LOCAL. (org.apache.kafka.common.security.authenticator.SaslServerCallbackHandler)
+kafka-1  | 	authorizer.class.name = org.apache.kafka.metadata.authorizer.StandardAuthorizer
+kafka-1  | 	sasl.enabled.mechanisms = [GSSAPI]
+kafka-1  | [2026-11-22 20:28:58,704] INFO Successfully authenticated client: authenticationID=kafka/kafka.enade.local@ENADE.LOCAL; authorizationID=kafka/kafka.enade.local@ENADE.LOCAL. (org.apache.kafka.common.security.authenticator.SaslServerCallbackHandler)
+kafka-1  | [2026-11-22 20:28:58,824] INFO Successfully authenticated client: authenticationID=kafka/kafka.enade.local@ENADE.LOCAL; authorizationID=kafka/kafka.enade.local@ENADE.LOCAL. (org.apache.kafka.common.security.authenticator.SaslServerCallbackHandler)
+kafka-1  | [2026-11-22 20:29:24,355] INFO Successfully authenticated client: authenticationID=kafka/kafka.enade.local@ENADE.LOCAL; authorizationID=kafka/kafka.enade.local@ENADE.LOCAL. (org.apache.kafka.common.security.authenticator.SaslServerCallbackHandler)
+kafka-1  | [2026-11-22 20:29:24,409] INFO Successfully authenticated client: authenticationID=kafka/kafka.enade.local@ENADE.LOCAL; authorizationID=kafka/kafka.enade.local@ENADE.LOCAL. (org.apache.kafka.common.security.authenticator.SaslServerCallbackHandler)
+kafka-1  | [2026-11-22 20:29:46,565] INFO Successfully authenticated client: authenticationID=kafka/kafka.enade.local@ENADE.LOCAL; authorizationID=kafka/kafka.enade.local@ENADE.LOCAL. (org.apache.kafka.common.security.authenticator.SaslServerCallbackHandler)

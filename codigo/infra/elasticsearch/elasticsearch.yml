@@ -1,0 +1,19 @@
+cluster.name: enade-cluster
+node.name: es01
+network.host: 0.0.0.0
+discovery.type: single-node
+
+xpack.security.enabled: true
+# O realm Kerberos é recurso de licença paga: usa-se a licença trial autogerada (30 dias).
+xpack.license.self_generated.type: trial
+xpack.security.http.ssl.enabled: false
+xpack.security.transport.ssl.enabled: false
+
+# Ordem dos realms: native (usuário elastic, só para bootstrap) e kerberos (serviços via SPNEGO)
+xpack.security.authc.realms.native.native1.order: 0
+xpack.security.authc.realms.kerberos.kerb1.order: 1
+xpack.security.authc.realms.kerberos.kerb1.keytab.path: krb/http.keytab
+xpack.security.authc.realms.kerberos.kerb1.remove_realm_name: false
+
+xpack.ml.enabled: false
+xpack.watcher.enabled: false

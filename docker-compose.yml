@@ -1,0 +1,221 @@
+# Plataforma Distribuída de Busca e Indexação do ENADE
+# Uso: copie .env.example para .env (ou rode scripts/gerar-env.ps1) e execute `docker compose up -d --build`.
+name: enade
+
+x-krb5: &krb5-conf
+  type: bind
+  source: ./codigo/infra/krb5.conf
+  target: /etc/krb5.conf
+  read_only: true
+
+x-app: &app
+  build:
+    context: ./codigo
+    dockerfile: Dockerfile
+  image: enade-app:1.0
+  env_file: .env
+  environment: &app-env
+    KRB5_CONFIG: /etc/krb5.conf
+    KAFKA_BOOTSTRAP: kafka.enade.local:9092
+    ES_URL: http://elasticsearch.enade.local:9200
+    REDIS_HOST: redis.enade.local
+    LDAP_URL: ldap://ldap.enade.local:389
+  networks: [enade-net]
+  restart: unless-stopped
+
+services:
+  # ---------------------------------------------------------------- Kerberos KDC
+  kdc:
+    build: ./codigo/infra/kdc
+    image: enade-kdc:1.0
+    hostname: kdc.enade.local
+    environment:
+      KDC_MASTER_PASSWORD: ${KDC_MASTER_PASSWORD:?defina no .env}
+      KRB5_REALM: ENADE.LOCAL
+    volumes:
+      - *krb5-conf
+      - kdc-data:/var/lib/krb5kdc
+      - keytabs:/keytabs
+    networks:
+      enade-net:
+        aliases: [kdc.enade.local]
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------- OpenLDAP
+  ldap:
+    image: osixia/openldap:1.5.0
+    hostname: ldap.enade.local
+    command: --loglevel info
+    environment:
+      LDAP_ORGANISATION: "ENADE Distribuido"
+      LDAP_DOMAIN: enade.local
+      LDAP_ADMIN_PASSWORD: ${LDAP_ADMIN_PASSWORD:?defina no .env}
+      LDAP_CONFIG_PASSWORD: ${LDAP_CONFIG_PASSWORD:?defina no .env}
+      LDAP_READONLY_USER: "true"
+      LDAP_READONLY_USER_USERNAME: readonly
+      LDAP_READONLY_USER_PASSWORD: ${LDAP_READONLY_PASSWORD:?defina no .env}
+      LDAP_TLS_VERIFY_CLIENT: try
+    volumes:
+      - ldap-data:/var/lib/ldap
+      - ldap-config:/etc/ldap/slapd.d
+    networks:
+      enade-net:
+        aliases: [ldap.enade.local]
+    healthcheck:
+      test: ["CMD-SHELL", "ldapsearch -x -H ldap://localhost -D cn=readonly,dc=enade,dc=local -w \"$$LDAP_READONLY_USER_PASSWORD\" -b dc=enade,dc=local -s base >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  ldap-setup:
+    image: osixia/openldap:1.5.0
+    entrypoint: ["/bin/bash", "/setup/setup.sh"]
+    environment:
+      LDAP_ADMIN_PASSWORD: ${LDAP_ADMIN_PASSWORD}
+      LDAP_SENHA_ESTUDANTES: ${LDAP_SENHA_ESTUDANTES:?defina no .env}
+      LDAP_SENHA_PROFESSORES: ${LDAP_SENHA_PROFESSORES:?defina no .env}
+    volumes:
+      - ./codigo/infra/ldap/setup.sh:/setup/setup.sh:ro
+    networks: [enade-net]
+    depends_on:
+      ldap: { condition: service_healthy }
+    restart: "no"
+
+  # ---------------------------------------------------------------- Kafka (KRaft + SASL/GSSAPI)
+  kafka:
+    image: apache/kafka:3.9.1
+    hostname: kafka.enade.local
+    environment:
+      CLUSTER_ID: ${KAFKA_CLUSTER_ID:-4L6g3nShT-eMCtK--X86sw}
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: SASL_PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: SASL_PLAINTEXT://kafka.enade.local:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:SASL_PLAINTEXT,SASL_PLAINTEXT:SASL_PLAINTEXT
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka.enade.local:9093
+      KAFKA_INTER_BROKER_LISTENER_NAME: SASL_PLAINTEXT
+      KAFKA_SASL_ENABLED_MECHANISMS: GSSAPI
+      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: GSSAPI
+      KAFKA_SASL_MECHANISM_CONTROLLER_PROTOCOL: GSSAPI
+      KAFKA_SASL_KERBEROS_SERVICE_NAME: kafka
+      KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
+      KAFKA_SUPER_USERS: User:kafka;User:admin
+      KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "false"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      KAFKA_HEAP_OPTS: -Xms512m -Xmx512m
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/custom/kafka_server_jaas.conf -Djava.security.krb5.conf=/etc/krb5.conf
+    volumes:
+      - *krb5-conf
+      - ./codigo/infra/kafka:/etc/kafka/custom:ro
+      - kafka-data:/var/lib/kafka/data
+      - type: volume
+        source: keytabs
+        target: /keytabs
+        read_only: true
+        volume: { subpath: kafka }
+    networks:
+      enade-net:
+        aliases: [kafka.enade.local]
+    depends_on:
+      kdc: { condition: service_healthy }
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server kafka.enade.local:9092 --command-config /etc/kafka/custom/client-broker.properties >/dev/null 2>&1"]
+      interval: 20s
+      timeout: 25s
+      retries: 15
+      start_period: 30s
+    restart: unless-stopped
+
+  kafka-setup:
+    image: apache/kafka:3.9.1
+    entrypoint: ["/bin/bash", "/etc/kafka/custom/setup.sh"]
+    env_file: .env
+    environment:
+      KAFKA_OPTS: -Djava.security.krb5.conf=/etc/krb5.conf
+    volumes:
+      - *krb5-conf
+      - ./codigo/infra/kafka:/etc/kafka/custom:ro
+      - type: volume
+        source: keytabs
+        target: /keytabs
+        read_only: true
+        volume: { subpath: admin }
+    networks: [enade-net]
+    depends_on:
+      kafka: { condition: service_healthy }
+    restart: "no"
+
+  # ---------------------------------------------------------------- Elasticsearch (realm Kerberos)
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.19.4
+    hostname: elasticsearch.enade.local
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:?defina no .env}
+      ES_JAVA_OPTS: -Xms1g -Xmx1g -Djava.security.krb5.conf=/usr/share/elasticsearch/config/krb5.conf
+    volumes:
+      - ./codigo/infra/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - ./codigo/infra/elasticsearch/analysis:/usr/share/elasticsearch/config/analysis:ro
+      - ./codigo/infra/krb5.conf:/usr/share/elasticsearch/config/krb5.conf:ro
+      - es-data:/usr/share/elasticsearch/data
+      - type: volume
+        source: keytabs
+        target: /usr/share/elasticsearch/config/krb
+        read_only: true
+        volume: { subpath: elasticsearch }
+    ports:
+      - "127.0.0.1:9200:9200"
+    networks:
+      enade-net:
+        aliases: [elasticsearch.enade.local]
+    depends_on:
+      kdc: { condition: service_healthy }
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+      nofile: { soft: 65536, hard: 65536 }
+    mem_limit: 2g
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -u \"elastic:$$ELASTIC_PASSWORD\" http://localhost:9200/_cluster/health | grep -qE '\"status\":\"(green|yellow)\"'"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------- Redis
+  redis:
+    image: redis:7.4.2-alpine
+    hostname: redis.enade.local
+    command: ["sh", "-c", "exec redis-server --requirepass \"$$REDIS_PASSWORD\" --appendonly yes --maxmemory 256mb --maxmemory-policy volatile-lru"]
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?defina no .env}
+    volumes:
+      - redis-data:/data
+    networks:
+      enade-net:
+        aliases: [redis.enade.local]
+    healthcheck:
+      test: ["CMD-SHELL", "REDISCLI_AUTH=\"$$REDIS_PASSWORD\" redis-cli ping | grep -q PONG"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+networks:
+  enade-net:
+    name: enade-net
+
+volumes:
+  kdc-data:
+  keytabs:
+  ldap-data:
+  ldap-config:
+  kafka-data:
+  es-data:
+  redis-data:
