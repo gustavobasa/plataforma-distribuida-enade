@@ -8,8 +8,8 @@ from ..config import CFG
 from ..esquema import CAMPOS_RESTRITOS
 from .estado import M_ES, es
 
-CAMPOS_BUSCA = ["enunciado^3", "texto_base^1.5", "alternativas.texto", "curso^0.5"]
-CAMPOS_HIGHLIGHT = ["enunciado", "texto_base", "alternativas.texto"]
+CAMPOS_BUSCA = ["enunciado^3", "texto_base^1.5", "alternativas.texto", "midia.descricao_figuras^0.7", "curso^0.5"]
+CAMPOS_HIGHLIGHT = ["enunciado", "texto_base", "alternativas.texto", "midia.descricao_figuras"]
 CAMPOS_LISTA = ["id", "ano", "area", "curso", "curso_slug", "grau", "componente", "tipo_questao", "numero",
                 "rotulo", "anulada", "gabarito_status", "competencias", "competencias_ids", "objetos_conhecimento",
                 "objetos_ids", "origem.pdf", "origem.paginas", "grupo_equivalencia", "enunciado",

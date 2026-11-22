@@ -111,3 +111,38 @@ def test_quatro_alternativas_aceitas():
     d = copy.deepcopy(doc_valido())
     d["alternativas"] = d["alternativas"][:4]
     assert validar(d)[0] is not None
+
+
+def _doc_com_figuras():
+    from enade.extracao import figuras_llm  # noqa: F401  (garante import sem chave da API)
+    d = validar(doc_valido())[0]
+    d["midia"]["figuras"] = [
+        {"pagina": 16, "bbox": [0, 0, 10, 10], "tipo": "vetorial", "arquivo": "2023/abc-1.png"},
+        {"pagina": 16, "bbox": [0, 20, 10, 30], "tipo": "imagem", "arquivo": "2023/abc-2.png"},
+    ]
+    d["midia"]["pendencias"] = ["figura/diagrama preservado como imagem PNG; conversão para Mermaid não realizada (sem LLM)"]
+    return d
+
+
+def test_conversao_llm_aplica_mermaid_valido_e_descarta_invalido():
+    from enade.extracao.figuras_llm import aplicar_no_documento
+    d = _doc_com_figuras()
+    conv = lambda m: {"classe": "diagrama", "legivel": True, "mermaid": m, "markdown": "Fluxo.",  # noqa: E731
+                      "latex": "", "observacao": ""}
+    resultados = {"2023/abc-1.png": {"modelo": "claude-opus-5-5", "conversao": conv("flowchart TD\n A-->B")},
+                  "2023/abc-2.png": {"modelo": "claude-opus-5-5", "conversao": conv("flowchart TD\n A[[[")}}
+    validos = {"2023_abc-1": True, "2023_abc-2": False}
+    assert aplicar_no_documento(d, resultados, validos)
+    f1, f2 = d["midia"]["figuras"]
+    assert f1["mermaid"].startswith("flowchart") and f2["mermaid"] == ""
+    assert d["midia"]["mermaid"] == ["flowchart TD\n A-->B"]
+    assert "mermaid_invalido" in d["extracao"]["alertas"]
+    assert not any("Mermaid" in p for p in d["midia"]["pendencias"])
+    assert validar(d)[0] is not None  # continua válido no esquema estrito
+
+
+def test_figura_sem_conversao_mantem_pendencia():
+    from enade.extracao.figuras_llm import aplicar_no_documento
+    d = _doc_com_figuras()
+    assert not aplicar_no_documento(d, {}, {})
+    assert d["midia"]["mermaid"] == [] and d["midia"]["pendencias"]

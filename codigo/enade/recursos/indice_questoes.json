@@ -82,6 +82,10 @@
           "tabelas_md": { "type": "text", "index": false },
           "figuras": { "type": "object", "enabled": false },
           "mermaid": { "type": "text", "index": false },
+          "descricao_figuras": {
+            "type": "text", "analyzer": "pt_indice", "search_analyzer": "pt_busca",
+            "term_vector": "with_positions_offsets", "copy_to": "texto_completo"
+          },
           "pendencias": { "type": "keyword" }
         }
       },

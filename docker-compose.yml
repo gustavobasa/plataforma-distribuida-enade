@@ -296,6 +296,8 @@ services:
       <<: *app-env
       KRB5_PRINCIPAL: ingestor@ENADE.LOCAL
       KRB5_CLIENT_KTNAME: /keytabs/ingestor.keytab
+      # só o job de ingestão recebe a chave da API da Anthropic (conversão de figuras com LLM, RF04)
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
     command: ["python", "-m", "enade.produtor", "--help"]
     volumes:
       - *krb5-conf

@@ -61,3 +61,4 @@ dialog::backdrop { background: rgb(0 0 0 / .45); }
 pre { white-space: pre-wrap; font-size: 12px; margin: 0; }
 [hidden] { display: none !important; }
 button.na-lista { background: transparent; color: var(--ok); border: 1px solid var(--ok); }
+.conv-llm { border: 1px dashed var(--borda); border-radius: 8px; padding: 6px 10px; margin: 6px 0 10px; } .conv-llm summary { cursor: pointer; font-size: 13px; color: var(--sutil); } .conv-llm pre.mermaid { background: #fff; border-radius: 6px; }

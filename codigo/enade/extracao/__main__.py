@@ -20,12 +20,23 @@ from pathlib import Path
 from ..config import CFG
 from ..esquema import grupo_equivalencia, id_questao, validar
 from ..logs import evento, obter_logger
+from . import figuras_llm
 from .gabarito import ItemGabarito, ler_gabarito, ler_padrao_resposta
 from .metadados import area_do_curso, classificar, grau_do_curso
 from .segmentador import extrair_prova
 
 LOG = obter_logger("extracao")
 VERSAO = "1.0"
+
+
+_CACHE_LLM: tuple | None = None
+
+
+def _conversoes_llm() -> tuple[dict, dict]:
+    global _CACHE_LLM
+    if _CACHE_LLM is None:
+        _CACHE_LLM = (figuras_llm._resultados(), figuras_llm._validos())
+    return _CACHE_LLM
 
 
 def _titulo(slug: str) -> str:
@@ -96,6 +107,8 @@ def montar_documentos(pv: Path, ano: int, slug: str, url: str | None, sha: str |
             "grupo_equivalencia": grupo_equivalencia(q.enunciado, q.alternativas),
             "extracao": {"versao": VERSAO, "confianca": confianca, "alertas": alertas, "extraido_em": agora},
         }
+        # conversões de figuras já feitas pelo LLM sobrevivem a uma nova extração (não são refeitas nem pagas de novo)
+        figuras_llm.aplicar_no_documento(doc, *_conversoes_llm())
         ok, erro = validar(doc)
         if ok:
             docs.append(ok)

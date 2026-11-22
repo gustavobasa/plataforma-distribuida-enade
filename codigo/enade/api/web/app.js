@@ -208,11 +208,21 @@ async function abrirDetalhe(id) {
     for (const f of q.midia?.figuras || []) {
       if (!f.arquivo) continue;
       const img = document.createElement("img");
-      img.src = `/api/figuras/${f.arquivo}`; img.alt = `Figura recortada da página ${f.pagina} do PDF original`; img.loading = "lazy";
+      img.src = `/api/figuras/${f.arquivo}`; img.loading = "lazy";
+      img.alt = f.descricao_md ? `Figura: ${f.descricao_md.slice(0, 300)}` : `Figura recortada da página ${f.pagina} do PDF original`;
       corpo.appendChild(img);
-    }
-    for (const m of q.midia?.mermaid || []) {
-      const d = document.createElement("pre"); d.className = "mermaid"; d.textContent = m; corpo.appendChild(d);
+      if (f.classe_llm) {
+        // representação textual gerada por LLM (Mermaid validado no mermaid-cli, LaTeX ou Markdown)
+        const det = document.createElement("details");
+        det.className = "conv-llm"; det.open = Boolean(f.mermaid);
+        const resumo = document.createElement("summary");
+        resumo.textContent = `Versão textual da figura (${f.classe_llm}; gerada por ${f.modelo_llm}${f.legivel === false ? "; figura com trechos ilegíveis" : ""})`;
+        det.appendChild(resumo);
+        if (f.mermaid) { const d = document.createElement("pre"); d.className = "mermaid"; d.textContent = f.mermaid; det.appendChild(d); }
+        if (f.latex) det.appendChild(renderMarkdown(`$$${f.latex}$$`));
+        if (f.descricao_md) det.appendChild(renderMarkdown(f.descricao_md));
+        corpo.appendChild(det);
+      }
     }
     corpo.appendChild(renderMarkdown(q.enunciado_md || esc(q.enunciado)));
     for (const a of q.alternativas || []) {

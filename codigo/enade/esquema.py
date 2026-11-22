@@ -46,6 +46,13 @@ class Figura(Estrito):
     bbox: list[float]
     tipo: str
     arquivo: str | None = None
+    # preenchidos pela conversão com LLM (enade.extracao.figuras_llm); ausentes enquanto não convertida
+    classe_llm: str | None = None
+    descricao_md: str | None = None
+    mermaid: str | None = None  # só presente quando compilou no mermaid-cli
+    latex: str | None = None
+    legivel: bool | None = None
+    modelo_llm: str | None = None
 
 
 class Midia(Estrito):
@@ -54,6 +61,7 @@ class Midia(Estrito):
     tabelas_md: list[str] = []
     figuras: list[Figura] = []
     mermaid: list[str] = []
+    descricao_figuras: str = ""  # texto das figuras convertidas (pesquisável)
     pendencias: list[str] = []
 
 

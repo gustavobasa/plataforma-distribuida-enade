@@ -66,7 +66,12 @@ def main() -> int:
         r.raise_for_status()
         evento(LOG, "índice criado", indice=CFG.es_indice)
     else:
-        evento(LOG, "índice já existe", indice=CFG.es_indice)
+        # migração aditiva: campos novos do mapping (ex.: midia.descricao_figuras) são acrescentados ao índice
+        # existente; mudança incompatível em campo antigo faz o ES recusar (exige --recriar + reprocessamento)
+        props = json.loads(MAPPING.read_text(encoding="utf-8"))["mappings"]["properties"]
+        r = s.put(f"{base}/{CFG.es_indice}/_mapping", json={"properties": props})
+        r.raise_for_status()
+        evento(LOG, "índice já existe; mapping atualizado (aditivo)", indice=CFG.es_indice)
     r = s.post(f"{base}/_aliases", json={"actions": [
         {"add": {"index": CFG.es_indice, "alias": CFG.es_alias, "is_write_index": True}}]})
     r.raise_for_status()
