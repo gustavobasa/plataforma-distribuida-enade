@@ -60,3 +60,4 @@ dialog::backdrop { background: rgb(0 0 0 / .45); }
 .grade2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
 pre { white-space: pre-wrap; font-size: 12px; margin: 0; }
 [hidden] { display: none !important; }
+button.na-lista { background: transparent; color: var(--ok); border: 1px solid var(--ok); }

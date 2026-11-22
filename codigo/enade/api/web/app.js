@@ -6,7 +6,7 @@ const $ = (s, el = document) => el.querySelector(s);
 const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const sanitizar = (html, extra = {}) => DOMPurify.sanitize(html, { USE_PROFILES: { html: true }, ...extra });
 const ROTULOS = { area: "Área", curso: "Curso", ano: "Ano", componente: "Componente (FG/CE)", tipo: "Tipo de questão", competencia: "Competência", objeto: "Tema / objeto de conhecimento", grau: "Grau" };
-const estado = { usuario: null, q: "", pagina: 1, filtros: {}, tax: { competencias: {}, temas: {} }, cursos: {} };
+const estado = { usuario: null, q: "", pagina: 1, filtros: {}, tax: { competencias: {}, temas: {} }, cursos: {}, lista: new Set() };
 
 mermaid.initialize({ startOnLoad: false, securityLevel: "strict" });
 
@@ -92,6 +92,7 @@ async function buscar() {
     const { corpo, r } = await api(`/api/busca?${parametros(extra)}`);
     $("#resumo").textContent = `${corpo.total} resultado(s) · página ${corpo.pagina} de ${corpo.paginas} · ES ${corpo.tempo_es_ms} ms · resposta ${r.headers.get("X-Tempo-Resposta-ms")} ms · cache ${r.headers.get("X-Cache")}`;
     renderResultados(corpo);
+    sincronizarBotoesLista();
     renderFacetas(corpo.facetas);
     renderPaginacao(corpo);
   } catch (e) { $("#resumo").textContent = `Erro: ${e.message}`; }
@@ -172,8 +173,12 @@ document.addEventListener("click", async (ev) => {
   const rem = ev.target.closest("[data-rem]");
   if (ver) abrirDetalhe(ver.dataset.ver);
   if (add) {
-    try { await api(`/api/carrinho/${encodeURIComponent(add.dataset.add)}`, { method: "POST" }); add.textContent = "Na lista ✓"; atualizarContador(); }
-    catch (e) { alert(e.message); }
+    // o mesmo botão adiciona ou remove, conforme o estado real da lista (sincronizado com o Redis)
+    const id = add.dataset.add;
+    const naLista = estado.lista.has(id);
+    try { await api(`/api/carrinho/${encodeURIComponent(id)}`, { method: naLista ? "DELETE" : "POST" }); }
+    catch (e) { if (e.status !== 404) alert(e.message); }
+    await atualizarContador();
   }
   if (rem) { await api(`/api/carrinho/${encodeURIComponent(rem.dataset.rem)}`, { method: "DELETE" }); carregarLista(); }
 });
@@ -228,6 +233,7 @@ async function abrirDetalhe(id) {
     const acoes = document.createElement("div"); acoes.className = "acoes";
     acoes.innerHTML = `<button id="btn-gab">Ver gabarito</button><button class="sec" id="btn-eq">Questões equivalentes em outros cursos</button><button class="sec" data-add="${esc(q.id)}">Adicionar à lista</button>`;
     corpo.appendChild(acoes);
+    sincronizarBotoesLista();
     const saida = document.createElement("div"); corpo.appendChild(saida);
     $("#btn-gab").addEventListener("click", async () => {
       try {
@@ -252,12 +258,26 @@ async function abrirDetalhe(id) {
 $("#fechar").addEventListener("click", () => $("#detalhe").close());
 
 // ------------------------------------------------------------------ lista
+// Todos os botões "Adicionar/Remover da lista" (resultados e detalhe) refletem estado.lista.
+function sincronizarBotoesLista() {
+  document.querySelectorAll("[data-add]").forEach((b) => {
+    const naLista = estado.lista.has(b.dataset.add);
+    b.textContent = naLista ? "Na lista ✓ — remover" : "Adicionar à lista";
+    b.setAttribute("aria-pressed", String(naLista));
+    b.classList.toggle("na-lista", naLista);
+  });
+}
+function aplicarLista(corpo) {
+  estado.lista = new Set(corpo.itens.map((q) => q.id));
+  $("#cont-lista").textContent = corpo.total;
+  sincronizarBotoesLista();
+}
 async function atualizarContador() {
-  try { const { corpo } = await api("/api/carrinho"); $("#cont-lista").textContent = corpo.total; } catch {}
+  try { const { corpo } = await api("/api/carrinho"); aplicarLista(corpo); } catch {}
 }
 async function carregarLista() {
   const { corpo } = await api("/api/carrinho");
-  $("#cont-lista").textContent = corpo.total;
+  aplicarLista(corpo);
   $("#ttl-lista").textContent = corpo.ttl_segundos > 0 ? `Expira em ${Math.round(corpo.ttl_segundos / 60)} min sem uso.` : "";
   const ol = $("#itens-lista"); ol.replaceChildren();
   for (const q of corpo.itens) {
