@@ -33,3 +33,8 @@ Thumbs.db
 
 # Exceção: certificado PÚBLICO da CA intermediária do INEP/RNP (não é segredo; necessário para validar TLS)
 !codigo/infra/certs/*.pem
+relatorio/*.aux
+relatorio/*.log
+relatorio/*.bbl
+relatorio/*.blg
+relatorio/*.out

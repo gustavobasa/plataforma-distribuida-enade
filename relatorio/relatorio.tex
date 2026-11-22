@@ -1,0 +1,399 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{booktabs,tabularx,array}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\sloppy
+\setlength{\tabcolsep}{4pt}
+\newcommand{\cod}[1]{\texttt{\small #1}}
+
+\title{Plataforma Distribuída de Busca e Indexação\\ do Acervo de Provas do ENADE}
+
+% PREENCHER: nome do(a) autor(a) e instituição (dados pessoais não foram inseridos automaticamente)
+\author{Nome do(a) Autor(a)\inst{1}}
+\address{Curso / Instituição -- Disciplina de Sistemas Distribuídos}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper describes the design, implementation and evaluation of a distributed platform that makes the
+ENADE exam archive searchable. Official PDFs published by INEP (84 exams, 2021--2023) are parsed into 3,360
+question documents with source page, answer key and metadata; documents flow through Apache Kafka to
+Elasticsearch, and a FastAPI service with Redis cache serves a web client. Users authenticate against OpenLDAP
+and services authenticate mutually with Kerberos. We measured p95 search latency of 19.8\,ms without cache
+and 6.6\,ms with cache, and no message loss or duplication after induced crashes.
+\end{abstract}
+
+\begin{resumo}
+Este artigo descreve o projeto, a implementação e a avaliação de uma plataforma distribuída que torna
+pesquisável o acervo do ENADE. PDFs oficiais do INEP (84 provas, 2021--2023) são convertidos em 3.360
+documentos de questão com página de origem, gabarito e metadados; os documentos trafegam pelo Apache Kafka até
+o Elasticsearch, e uma API FastAPI com cache Redis atende um cliente web. Usuários autenticam-se no OpenLDAP e
+os serviços, mutuamente, via Kerberos. Medimos latência p95 de busca de 19,8\,ms sem cache e 6,6\,ms com
+cache, e nenhuma perda ou duplicação após falhas induzidas.
+\end{resumo}
+
+\section{Introdução}
+
+O ENADE acumula, desde 2004, provas, gabaritos e padrões de resposta de dezenas de cursos, publicados em PDFs
+heterogêneos \cite{inepprovas}. O objetivo deste trabalho é transformar esse acervo em uma base pesquisável,
+resiliente e segura, seguindo a arquitetura de cinco camadas do enunciado (ingestão, Kafka, Elasticsearch,
+API/Redis e cliente web) e uma camada transversal de segurança (Kerberos entre serviços e LDAP para usuários).
+O trabalho é individual; todo o código, configurações e evidências estão no repositório
+(\cod{docker-compose.yml}, \cod{codigo/}, \cod{evidencias/}). As métricas deste texto foram produzidas por
+execução real no ambiente descrito na Seção~\ref{sec:avaliacao}; requisitos não atendidos integralmente são
+apontados explicitamente.
+
+\section{Arquitetura}\label{sec:arq}
+
+A Figura~\ref{fig:arq} mostra os serviços (todos em Docker Compose, rede \cod{enade-net}, domínio interno
+\cod{enade.local}). O \textbf{ingestor} coleta e extrai os PDFs e publica um JSON por questão no tópico
+\cod{enade.questoes.v1}; o \textbf{indexer} consome, valida e indexa em lote no Elasticsearch, desviando
+mensagens inválidas para \cod{enade.questoes.dlq}; a \textbf{API} consulta o Elasticsearch, usa o Redis para
+cache, sessão e carrinho, autentica usuários no OpenLDAP e serve a interface web.
+
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[font=\sffamily\footnotesize,
+  caixa/.style={draw, rounded corners=2pt, align=center, text width=25mm, minimum height=12mm, fill=white, inner sep=2pt},
+  seta/.style={-{Latex[length=1.8mm]}, thick}, rot/.style={font=\sffamily\scriptsize, fill=white, inner sep=1pt}]
+\node[caixa] (inep) at (0,0) {PDFs oficiais\\do INEP};
+\node[caixa] (ing) at (3.25,0) {ingestor\\(coleta, extração,\\produtor)};
+\node[caixa] (kafka) at (6.5,0) {Kafka 3.9 (KRaft)\\questoes.v1: 3 part.\\dlq: 1 part.};
+\node[caixa] (idx) at (9.75,0) {indexer\\(consumidor,\\DLQ, commit)};
+\node[caixa] (es) at (13,0) {Elasticsearch\\8.19, índice\\PT-BR};
+\node[caixa] (redis) at (9.75,-2.4) {Redis\\(cache, sessão,\\carrinho)};
+\node[caixa] (api) at (13,-2.4) {API FastAPI\\+ interface web};
+\node[caixa] (ldap) at (9.75,-4.6) {OpenLDAP\\(usuários,\\grupos)};
+\node[caixa] (nav) at (13,-4.6) {Navegador\\(Estudante,\\Professor)};
+\node[caixa, text width=52mm] (kdc) at (3.25,-2.6) {MIT Kerberos KDC\\realm ENADE.LOCAL\\(um keytab por serviço)};
+\draw[seta] (inep) -- (ing);
+\draw[seta] (ing) -- (kafka);
+\draw[seta] (kafka) -- (idx);
+\draw[seta] (idx) -- (es);
+\draw[seta] (api) -- node[rot, right=1pt]{SPNEGO} (es);
+\draw[seta, <->] (api) -- (redis);
+\draw[seta] (idx) -- node[rot, left=1pt]{versão} (redis);
+\draw[seta] (api) -- node[rot, sloped, above=1pt]{bind} (ldap);
+\draw[seta, <->] (nav) -- node[rot, right=1pt]{HTTP} (api);
+\draw[seta, dashed, gray] (kdc) -- node[rot, left=1pt]{tickets} (ing);
+\draw[seta, dashed, gray] (kdc.north east) -- (kafka.south);
+\end{tikzpicture}}
+\caption{Arquitetura implantada. As setas do pipeline são autenticadas por Kerberos: SASL/GSSAPI entre ingestor, Kafka e indexer; SPNEGO (com autenticação mútua) do indexer e da API para o Elasticsearch. Tracejado: emissão de tickets pelo KDC (todos os serviços usam seus keytabs).}
+\label{fig:arq}
+\end{figure}
+
+\textbf{Topologia e justificativas.} O laboratório dispõe de 4 vCPUs e 5,8\,GB de RAM para o Docker, o que
+limita o cluster a um nó de cada componente (decisão ADR-01). O tópico principal tem \textbf{3 partições}: a
+chave da mensagem é o \textit{id} determinístico da questão, o que preserva a ordem das versões de uma mesma
+questão e permite até três consumidores paralelos no grupo \cod{enade-indexer}; a DLQ tem 1 partição (baixo
+volume, ordem de chegada útil para diagnóstico). O índice \cod{enade-questoes-v1} tem \textbf{1 shard e 0
+réplicas}: o acervo ocupa poucos MB, muito abaixo da faixa usual de 10--50\,GB por shard, e réplicas não podem
+ser alocadas com um único nó; o alias \cod{enade-questoes} permite reindexar para um índice com mais shards
+sem alterar a API. Em produção, a mesma configuração escalaria horizontalmente com 3 brokers
+(\cod{replication.factor=3}, \cod{min.insync.replicas=2}), 3 nós Elasticsearch com 1 réplica e réplicas da
+API sem estado (sessão e cache já estão no Redis).
+
+\section{Coleta e Engenharia de Dados}\label{sec:coleta}
+
+\textbf{Coleta (RF01).} O coletor lê as páginas anuais do INEP \cite{inepprovas}, descobre os links de prova
+(\cod{PV}), gabarito (\cod{GB}) e padrão de resposta, descarta versões acessíveis duplicadas (ampliada, ledor)
+e registra URL, tamanho, SHA-256 e data. Dois problemas reais foram tratados sem atalhos: o servidor de
+download envia cadeia TLS incompleta (adicionamos a CA intermediária pública da RNP ao \textit{bundle}, mantendo
+a verificação) e, em 2022, os gabaritos têm nomes diferentes das provas (pareamento pela ordem da página). Foram
+coletados 252 PDFs (972\,MB) de 2021, 2022 e 2023; as demais edições não foram processadas por limite de tempo e
+por usarem layouts distintos.
+
+\textbf{Extração (RF02--RF04, RF06).} A extração é determinística, com PyMuPDF. As linhas são reconstruídas a
+partir das posições de cada caractere, o que permitiu corrigir: (i) espaços espúrios gerados pelas ligaduras
+``ti''/``fi'' da fonte Calibri (``Insti tuto''), identificados por se sobreporem ao glifo anterior; (ii) a
+codificação da fonte Symbol (``Î''$\to\in$, ``Û''$\to\Leftrightarrow$); (iii) índices e expoentes, detectados por
+tamanho de fonte e deslocamento da linha de base e convertidos em LaTeX inline (ex.: \cod{\$Z\_\{k-1\}\$});
+(iv) páginas em duas colunas (2021/2022). Cabeçalhos \textit{QUESTÃO NN} e \textit{QUESTÃO DISCURSIVA NN}
+delimitam as questões; o componente (FG/CE) vem da tabela de distribuição da capa ou do título de seção; as
+alternativas são encontradas por busca reversa da sequência A--E (ou A--D, formato real de Medicina 2023);
+o texto-base é separado do enunciado pela última referência bibliográfica. Tabelas com borda viram Markdown e
+figuras (imagens e agrupamentos de desenhos vetoriais) são recortadas como PNG. Cada documento guarda o PDF, a
+URL e as páginas de origem.
+
+\textbf{Metadados (RF05).} Área (mapeamento próprio do curso para a grande área), curso (lido do cabeçalho
+corrente da prova), ano, grau e componente. Os PDFs não informam as competências de cada questão; usamos a
+taxonomia oficial da Portaria Inep 289/2023 (8 competências e 13 temas de Formação Geral)
+\cite{inep2023portaria289} e um classificador léxico explícito, marcado no documento como \textit{inferido}.
+A mesma taxonomia é aplicada às três edições para permitir séries temporais comparáveis.
+
+\textbf{LLM.} Nenhum LLM foi usado no pipeline de dados (custo zero e resultado reprodutível). Consequência:
+diagramas não são convertidos para Mermaid; ficam como imagem (RF04 parcial).
+
+\begin{table}[ht]
+\centering
+\caption{Volume do acervo extraído (execução de 22/11/2026).}\label{tab:volume}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+ & 2021 & 2022 & 2023 & Total \\
+\midrule
+Provas (cursos) & 30 & 26 & 28 & 84 \\
+PDFs coletados (prova+gabarito+padrão) & 90 & 78 & 84 & 252 \\
+Questões & 1.200 & 1.040 & 1.120 & 3.360 \\
+\quad objetivas / discursivas & 1.050 / 150 & 910 / 130 & 1.064 / 56 & 3.024 / 336 \\
+\quad anuladas (sinalizadas) & 7 & 2 & 5 & 14 \\
+\quad com figura recortada & 375 & 409 & 408 & 1.192 \\
+Grupos de FG idênticos entre cursos & 10 & 10 & 10 & 30 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A Tabela~\ref{tab:volume} resume o acervo. Todas as 3.024 objetivas receberam gabarito ou marca de anulação a
+partir do gabarito oficial; 281 questões têm fórmulas em LaTeX e 280 têm tabelas em Markdown. A última linha
+mostra que as 10 questões de Formação Geral de cada ano, repetidas em todos os cursos daquele ano, foram
+reconhecidas como idênticas pelo \textit{hash} de conteúdo --- base da busca interdisciplinar (Seção~\ref{sec:busca}).
+
+\section{Ingestão Kafka/Elasticsearch}\label{sec:ingestao}
+
+\textbf{Produtor (RF07).} Publica cada questão com chave = \textit{id}, \cod{acks=all},
+\cod{enable.idempotence=true} e compressão zstd. O mesmo esquema Pydantic (com \cod{extra=forbid}) valida no
+produtor e no consumidor.
+
+\textbf{Consumidor e resiliência (RF08, RF09).} O indexer usa \cod{enable.auto.commit=false}: consome lotes de
+até 200 mensagens, envia um \textit{bulk} ao Elasticsearch e só então confirma o offset (síncrono). Falhas
+transitórias (conexão, 429, 5xx) disparam novas tentativas com \textit{backoff} exponencial, sem confirmar o
+offset. Assim, a entrega é \textit{at-least-once}; somada à idempotência, o efeito no índice é de
+\textit{exactly-once}.
+
+\textbf{Idempotência (RF10).} O \textit{id} é o SHA-256 de (ano, curso, tipo, número), usado como chave Kafka e
+\cod{\_id} no Elasticsearch: reprocessar sobrescreve o documento em vez de duplicá-lo.
+
+\textbf{DLQ (RF11).} JSON inválido, esquema inválido (campo ausente, campo desconhecido, \textit{id}
+inconsistente) ou rejeição 4xx do mapping vão para a DLQ com cabeçalhos de diagnóstico (motivo, tópico,
+partição e offset de origem); o offset só é confirmado depois que a DLQ confirma a escrita.
+
+\textbf{Modelagem Elasticsearch.} Mapping explícito com \cod{dynamic: strict}. Campos textuais (texto-base,
+enunciado, alternativas) usam o analisador de indexação \cod{lowercase} $\to$ \cod{stop}
+(\cod{\_brazilian\_}) $\to$ \cod{asciifolding} $\to$ \cod{stemmer light\_portuguese} \cite{savoy2006light}; o
+analisador de busca acrescenta \cod{synonym\_graph} (dicionário próprio, recarregável) \emph{depois} do
+\textit{stemmer} --- ordem corrigida após um teste mostrar que ``desigualdade'' e ``desigualdades'' expandiam
+sinônimos de forma diferente. Os campos têm \cod{term\_vector} com offsets para \textit{highlight} rápido e
+\cod{copy\_to} para \cod{texto\_completo} (usado em \textit{More Like This}). Filtros e agregações usam campos
+\cod{keyword}; o gabarito e o padrão de resposta não são indexados para busca textual, evitando que um
+Estudante infira a resposta por meio de consultas.
+
+\section{Busca e API}\label{sec:busca}
+
+A API (FastAPI, documentação OpenAPI em \cod{/docs}) expõe, entre outras: \cod{GET /api/busca} (texto, filtros
+combináveis por área, curso, ano, componente, tipo, competência, tema e grau; paginação; \textit{highlight};
+facetas), \cod{GET /api/questoes/\{id\}}, \cod{/gabarito} (Professor), \cod{/equivalentes},
+\cod{/api/carrinho} (lista), \cod{/api/carrinho/exportar} (PDF/JSON, Professor), \cod{/api/analitico}
+(Professor), \cod{/health/ready} e \cod{/metrics}. Os códigos HTTP seguem a semântica: 201 ao incluir na lista,
+204 em remoções, 400/422 para parâmetros inválidos, 401 sem sessão, 403 sem permissão, 404, 409 (lista cheia),
+429 (bloqueio após 5 falhas de login) e 503 (dependência indisponível).
+
+\textbf{Full-text e relevância (RF13).} \cod{multi\_match} \textit{best\_fields} com pesos (enunciado$^3$,
+texto-base$^{1{,}5}$, alternativas) e reforço por frase (\textit{phrase}, \textit{slop} 2). \textbf{Interdisciplinaridade
+(RF14).} Uma mesma busca percorre todos os cursos; a opção ``agrupar'' usa \textit{field collapsing} por grupo de
+equivalência, e a rota \cod{/equivalentes} retorna a mesma questão em outros cursos e as mais semelhantes de
+outros cursos (\textit{More Like This}). Por exemplo, ``ética'' retorna 179 questões de 67 cursos diferentes e
+destaca também ``moral'' (sinônimo); ``idadismo'', que não ocorre no acervo, recupera 28 questões sobre
+etarismo via dicionário de sinônimos. \textbf{Agregações (RF15).} Histograma de competências e de temas por ano
+(\textit{terms} + \textit{histogram} sobre o ano) e distribuição de questões por curso (com FG/CE e anuladas),
+exibidos no painel analítico.
+
+\section{Cache e Sessão}\label{sec:cache}
+
+\textbf{Cache (RF18).} A chave é \cod{cache:busca:v\{versão\}:\{perfil\}:\{sha256(parâmetros)\}} com TTL de 300\,s.
+A invalidação é por versão: o indexer incrementa \cod{indice:versao} no Redis a cada lote indexado, de modo que
+respostas antigas nunca são reutilizadas após uma atualização e expiram pelo TTL; Professores também podem
+invalidar manualmente. Incluir o perfil na chave impede que uma resposta com gabarito seja servida a um
+Estudante (há teste para isso). Se o Redis cair, a busca degrada para consulta direta. \textbf{Sessão e
+carrinho (RF19).} Após o login, um token aleatório de 256 bits é gravado no Redis com TTL deslizante de 1\,h e
+enviado em \textit{cookie} \cod{HttpOnly}/\cod{SameSite=Strict}; o carrinho é um \textit{sorted set} por sessão
+(ordem de inclusão, limite de 200). \textbf{Exportação (RF21).} PDF (ReportLab) com texto, figuras recortadas,
+origem e folha de respostas, ou JSON completo.
+
+\section{Segurança}\label{sec:seguranca}
+
+\textbf{Kerberos (RF22).} Um KDC MIT (realm \cod{ENADE.LOCAL}) é criado na subida e exporta um
+\textit{keytab} por serviço, montado apenas no contêiner correspondente (Tabela~\ref{tab:principals}). No
+Kafka, todos os listeners (clientes, inter-broker e controller KRaft) usam SASL/GSSAPI \cite{kafkadocs}, com
+\cod{StandardAuthorizer} e ACLs mínimas. No Elasticsearch, o realm \cod{kerberos} valida tokens SPNEGO
+\cite{elastickerberos} e \textit{role mappings} associam cada principal a um papel. O cliente exige
+autenticação mútua (\cod{mutual\_authentication=REQUIRED}): o servidor precisa provar sua identidade na
+resposta \cite{neuman1994kerberos}.
+
+\begin{table}[ht]
+\centering
+\caption{Principals Kerberos e permissões efetivas.}\label{tab:principals}
+\small
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+Principal & Uso e permissão \\
+\midrule
+\cod{kafka/kafka.enade.local} & identidade do broker/controller (super usuário do cluster) \\
+\cod{HTTP/elasticsearch.enade.local} & aceitar SPNEGO no Elasticsearch \\
+\cod{ingestor} & Kafka: \textit{Write} em questoes.v1 e DLQ \\
+\cod{indexer} & Kafka: \textit{Read} questoes.v1 e grupo; \textit{Write} DLQ. ES: papel \cod{enade\_indexer} (escrita) \\
+\cod{api} & ES: papel \cod{enade\_api} (somente leitura). Kafka: \textit{Describe} (lag) e leitura da DLQ \\
+\cod{admin} & criação de tópicos e ACLs (job de setup) \\
+\cod{intruso} & principal válido sem permissões (testes negativos) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{LDAP e perfis (RF23--RF25).} A árvore \cod{dc=enade,dc=local} tem \cod{ou=usuarios} e \cod{ou=grupos}
+(\cod{cn=estudantes}, \cod{cn=professores}), com usuários sintéticos de teste. O login faz \textit{bind} direto
+com o DN do usuário (a API não armazena senhas) e o perfil vem do grupo, consultado com uma conta somente
+leitura; o \textit{uid} é validado para impedir injeção LDAP. A autorização é feita no backend: para Estudante,
+\cod{gabarito} e \cod{padrao\_resposta} são excluídos de todas as respostas (busca, detalhe, carrinho) e as rotas
+de gabarito, painel analítico, exportação e operação retornam \textbf{HTTP 403}.
+
+\textbf{Testes.} Sete testes automatizados de Kerberos passam: emissão de TGT (\cod{klist}); Elasticsearch
+rejeita requisição sem credencial (401), aceita SPNEGO mútuo do \cod{indexer} e nega (403) o principal
+\cod{intruso}, que autentica mas não tem papel; o Kafka não fornece metadados a cliente sem SASL e recusa a
+publicação do \cod{intruso} (\cod{TOPIC\_AUTHORIZATION\_FAILED}). Trinta testes de integração da API cobrem 401,
+injeção LDAP, ausência de gabarito para Estudante, 403 em sete rotas restritas e a não contaminação do cache
+entre perfis. \textbf{Segredos (RNF08):} \cod{.env} e keytabs ficam fora do Git, cada contêiner recebe apenas
+as variáveis de que precisa e cada \textit{commit} passa por varredura das senhas do \cod{.env}.
+
+\section{Avaliação Experimental}\label{sec:avaliacao}
+
+\textbf{Ambiente.} Windows 11 + Docker Desktop (WSL2), 4 vCPUs e 5,8\,GB de RAM para os contêineres; um nó de
+cada serviço; acervo de 3.360 documentos. Os números abaixo vêm dos arquivos em \cod{evidencias/}.
+
+\textbf{Qualidade da extração (RNF03).} Indicadores estruturais automáticos: 40 questões por prova em todas as
+84 provas, 0 documentos inválidos, 3.318 questões (98,8\%) sem alertas, 29 com quatro alternativas
+(Medicina 2023, formato real) e 11 (0,3\%) sem alternativas detectadas. Esses indicadores \emph{não}
+substituem a validação humana exigida: foi sorteada uma amostra estratificada e reprodutível de 60 questões
+(semente 2026) e construída a tela \cod{/validacao}, que mostra a página original do PDF ao lado do conteúdo
+extraído com seis critérios; \textbf{a taxa de acerto manual ainda não foi medida} e será incluída quando a
+revisão humana for concluída.
+
+\textbf{Vazão de ingestão e lag (RNF02).} A extração levou 641--728\,s para as 84 provas (7,6--8,7\,s por
+prova, um núcleo). O produtor publicou as 3.360 mensagens em 3,2\,s (1.046\,msg/s; 2.645\,msg/s com conexões
+aquecidas). A Figura~\ref{fig:lag} mostra a carga inicial: o lag do grupo sobe a 3.360 quando a publicação
+termina e cai a zero em cerca de 10\,s; o indexer processou 3.360 documentos em 17 lotes, $\approx$313\,docs/s de tempo
+efetivo de processamento ($\approx$371\,docs/s de relógio entre o primeiro e o último lote). Do início da publicação ao
+lag zero foram 14\,s (variando entre 14 e 25\,s em quatro execuções, conforme a carga da máquina). O
+\textit{refresh} de 1\,s explica o atraso entre lag e contagem visível.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.86\textwidth, height=5.2cm, xlabel={tempo desde o início da medição (s)},
+  ylabel={mensagens / documentos}, legend style={font=\footnotesize, at={(0.5,1.03)}, anchor=south, legend columns=2},
+  xmin=0, xmax=23, ymin=0, ymax=3700, grid=major, grid style={gray!25}, ticklabel style={font=\footnotesize}]
+\addplot[thick, red!70!black, mark=*, mark size=1.2pt] coordinates
+ {(0.0,0) (3.2,0) (4.7,0) (6.1,0) (7.6,3360) (9.1,3360) (10.4,3360) (11.8,3160) (13.2,3160) (14.6,2560)
+  (16.0,1960) (17.4,760) (18.8,360) (20.1,0) (21.5,0) (22.8,0)};
+\addlegendentry{lag do consumidor (mensagens)}
+\addplot[thick, blue!70!black, dashed, mark=square*, mark size=1.2pt] coordinates
+ {(0.0,0) (3.2,0) (4.7,0) (6.1,0) (7.6,0) (9.1,0) (10.4,1) (11.8,200) (13.2,200) (14.6,759) (16.0,1405)
+  (17.4,2400) (18.8,2787) (20.1,3200) (21.5,3360) (22.8,3360)};
+\addlegendentry{documentos visíveis no índice}
+\end{axis}
+\end{tikzpicture}
+\caption{Carga inicial do acervo (amostragem a cada $\approx$1,4\,s via \cod{/api/admin/ingestao}).}
+\label{fig:lag}
+\end{figure}
+
+\textbf{Idempotência e DLQ.} Republicar o mesmo acervo adicionou 3.360 mensagens ao tópico e variou em
+\textbf{0} o número de documentos. Cinco mensagens malformadas injetadas (não-JSON, JSON não-objeto, campos
+ausentes, \textit{id} inconsistente e campo desconhecido) foram para a DLQ com o motivo correto; o índice
+permaneceu com 3.360 documentos e o consumo seguiu.
+
+\textbf{Resiliência (RNF04).} O script \cod{experimento-falha.sh} recria o índice, reposiciona o grupo no início
+do tópico (10.085 mensagens: três versões do acervo e as cinco inválidas) e: (1) mata o indexer com
+\cod{SIGKILL} quando o índice tem 2.056 documentos --- nesse instante havia 4.600 offsets confirmados; (2)
+reinicia o indexer e mata o Elasticsearch por 30\,s --- o lag ficou parado em 5.485 e o indexer fez 6
+retentativas sem confirmar offsets; (3) religa o Elasticsearch. Em 144\,s o lag voltou a zero com
+\textbf{3.360 de 3.360 documentos}: nenhuma perda e nenhuma duplicata. Efeito colateral esperado do
+\textit{at-least-once}: no reprocessamento as cinco mensagens inválidas voltaram à DLQ (10 registros).
+
+\textbf{Latência de busca e cache (RNF01).} Teste k6 com taxa constante de 20\,req/s por 60\,s em cada cenário,
+180 consultas distintas (30 termos $\times$ 6 combinações de filtros), usuário Estudante. ``Sem cache'' força
+\cod{cache=false}; ``com cache'' roda após um aquecimento. A Figura~\ref{fig:lat} mostra os percentis; ambos
+ficam bem abaixo das metas (p95 $<$ 500\,ms e $<$ 50\,ms), com 0 erros em 2.583 requisições. O
+\textbf{hit rate} foi 100\% nessa rodada; numa rodada anterior foi 85,3\% porque as 176 chaves aquecidas
+expiraram (TTL) no meio da fase --- exatamente 176 \textit{misses} --- o que confirma a política de expiração.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ybar, width=0.8\textwidth, height=5cm, bar width=14pt, ymin=0, ymax=30,
+  ylabel={latência (ms)}, symbolic x coords={p50,p95,p99}, xtick=data, enlarge x limits=0.25,
+  legend style={font=\footnotesize, at={(0.5,1.03)}, anchor=south, legend columns=2}, nodes near coords,
+  nodes near coords style={font=\scriptsize}, ticklabel style={font=\footnotesize}, grid=major, grid style={gray!20}]
+\addplot[fill=red!55] coordinates {(p50,14.4) (p95,19.8) (p99,24.7)};
+\addplot[fill=blue!50] coordinates {(p50,4.1) (p95,6.6) (p99,11.7)};
+\legend{sem cache (Elasticsearch), com cache (Redis)}
+\end{axis}
+\end{tikzpicture}
+\caption{Latência de \cod{GET /api/busca} medida pelo k6 (n = 1.201 requisições por cenário).}
+\label{fig:lat}
+\end{figure}
+
+\section{Gargalos e Lições}\label{sec:licoes}
+
+(1) \textbf{Biblioteca não thread-safe derrubou a API.} Na primeira rodada do k6, 349 requisições falharam e a
+latência chegou a 43\,s: a API abortava com \textit{double free or corruption}. A causa era um único objeto de
+autenticação SPNEGO (\cod{requests-gssapi}) compartilhado entre as threads do FastAPI. A correção --- um cliente
+Elasticsearch por thread e envio oportunista do token --- eliminou as falhas (0 erros, p95 19,8\,ms). Lição:
+segurança forte em todas as chamadas tem custo e precisa de testes de concorrência. (2) \textbf{Kerberos em
+Python:} o \textit{wheel} do \cod{confluent-kafka} não traz GSSAPI; compilamos o librdkafka com Cyrus SASL. (3)
+\textbf{Heterogeneidade dos PDFs:} duas colunas, quatro alternativas, nomes divergentes de arquivos e rótulos
+ocultos de diagramação (um ``MATÉRIA'' de rodapé que vazava para a alternativa E) só apareceram ao processar o
+acervo inteiro; os indicadores agregados (grupos de FG por ano, alertas por prova) foram decisivos para
+encontrá-los. (4) \textbf{Ordem dos filtros} do analisador muda a semântica dos sinônimos. (5) O gargalo da
+ingestão é a extração (um núcleo, $\approx$8\,s por prova), não o Kafka nem o Elasticsearch; ela poderia ser
+paralelizada por arquivo. (6) \textbf{Limitações:} sem TLS interno (Kerberos autentica, mas não cifra), licença
+\textit{trial} do realm Kerberos do Elasticsearch (30 dias), um nó por componente, diagramas sem Mermaid e
+competências inferidas sem acurácia medida.
+
+\section{Conclusão}
+
+\begin{table}[ht]
+\centering
+\caption{Situação dos requisitos ao final do trabalho (evidências em \cod{docs/STATUS.md}).}\label{tab:status}
+\small
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+Situação & Requisitos \\
+\midrule
+Concluído e testado & RF02, RF03, RF06--RF25; RNF01, RNF02, RNF04, RNF05, RNF06, RNF08 \\
+Parcial & RF01 (só 2021--2023), RF04 (diagramas sem Mermaid), RF05 (competências inferidas, sem acurácia medida);
+          RNF07 (roteiro não repetido em máquina limpa) \\
+Pendente & RNF03 (validação manual da amostra de 60 questões) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+A plataforma cumpre o fluxo completo PDF $\to$ extração $\to$ Kafka $\to$ Elasticsearch $\to$ API/Redis $\to$
+web com dados reais e rastreáveis do INEP, autenticação mútua Kerberos entre serviços, login LDAP e perfis com
+negação 403 verificada no backend. Medimos latência p95 de 19,8\,ms (sem cache) e 6,6\,ms (com cache), vazão de
+centenas de documentos por segundo e ausência de perda/duplicação sob falhas induzidas. Ficam como trabalhos
+futuros: concluir a validação manual da extração, ampliar o acervo para todas as edições, TLS interno,
+conversão de diagramas assistida por LLM com validação e um cluster multinó.
+
+\section{Divisão de Tarefas}
+
+Trabalho individual: o(a) autor(a) foi responsável por todas as etapas (requisitos, arquitetura, implementação,
+testes, medições e redação). \textbf{Uso declarado de IA generativa:} um assistente de programação baseado em
+LLM (Claude Opus 5.5, Anthropic) foi usado como ferramenta de desenvolvimento para gerar e revisar código,
+scripts e documentação, sob supervisão do autor; o custo desse uso não foi medido. Nenhum LLM foi usado no
+pipeline de extração (custo zero), por isso não há taxa de erro de LLM a reportar; a qualidade da extração é
+avaliada pelos indicadores da Seção~\ref{sec:avaliacao} e pela validação manual em andamento.
+
+\bibliographystyle{sbc}
+\bibliography{referencias}
+
+\end{document}
