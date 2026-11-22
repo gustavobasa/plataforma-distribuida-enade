@@ -1,0 +1,294 @@
+ Container enade-ingestor-run-afd171ee804f Creating 
+ Container enade-ingestor-run-afd171ee804f Created 
+{"ts": "2026-11-22T21:07:29.421Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2021_artes_visuais.pdf", "curso": "licenciatura_artes_visuais"}
+{"ts": "2026-11-22T21:07:29.422Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2021_licenciatura_letras_portugues_espanhol.pdf", "curso": "licenciatura_letras_portugues_e_espanhol"}
+{"ts": "2026-11-22T21:07:29.422Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2021_licenciatura_letras_portugues_ingles.pdf", "curso": "licenciatura_letras_portugues_e_ingles"}
+{"ts": "2026-11-22T21:07:29.422Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2021_bacharelado_sistema_de_informacao.pdf", "curso": "bacharelado_sistema_informacao"}
+{"ts": "2026-11-22T21:07:29.422Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2021_tecnologia_em_analise_e_desenvolvimento_de_sistemas.pdf", "curso": "tecnologia_analise_desenvolvimento_sistemas"}
+{"ts": "2026-11-22T21:07:29.422Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2021_tecnologia_em_redes_de_computadores.pdf", "curso": "tecnologia_redes_computadores"}
+{"ts": "2026-11-22T21:07:29.422Z", "nivel": "INFO", "servico": "coleta", "msg": "links descobertos", "ano": 2021, "pagina": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enade/provas-e-gabaritos/2021", "total": 90, "provas": 30, "gabaritos": 30}
+{"ts": "2026-11-22T21:07:29.566Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_artes_visuais.pdf", "bytes": 11869552, "sha256": "854dac5cae38"}
+{"ts": "2026-11-22T21:07:29.590Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_artes_visuais.pdf", "bytes": 506769, "sha256": "0a592637741e"}
+{"ts": "2026-11-22T21:07:36.068Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_artes_visuais.pdf", "bytes": 1860580, "sha256": "5195ed21c280"}
+{"ts": "2026-11-22T21:07:36.195Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_ciencia_computacao.pdf", "bytes": 8169650, "sha256": "0254b274cc4a"}
+{"ts": "2026-11-22T21:07:36.199Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_ciencia_computacao.pdf", "bytes": 509018, "sha256": "62e5d3812e9b"}
+{"ts": "2026-11-22T21:07:36.219Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_ciencia_computacao.pdf", "bytes": 1486319, "sha256": "c0348ce00062"}
+{"ts": "2026-11-22T21:07:36.233Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_ciencia_computacao.pdf", "bytes": 6926341, "sha256": "9537deb2d2d7"}
+{"ts": "2026-11-22T21:07:36.260Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_ciencia_computacao.pdf", "bytes": 510632, "sha256": "92874d01d2cf"}
+{"ts": "2026-11-22T21:07:36.292Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_ciencia_computacao.pdf", "bytes": 1412073, "sha256": "e8083c85e549"}
+{"ts": "2026-11-22T21:07:36.310Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_ciencias_biologicas.pdf", "bytes": 8569601, "sha256": "a4e20a2cb8da"}
+{"ts": "2026-11-22T21:07:36.316Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_ciencias_biologicas.pdf", "bytes": 129524, "sha256": "e273ed517afc"}
+{"ts": "2026-11-22T21:07:36.320Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_ciencias_biologicas.pdf", "bytes": 1572279, "sha256": "b2f365b2d422"}
+{"ts": "2026-11-22T21:07:36.358Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_ciencias_biologicas.pdf", "bytes": 8912227, "sha256": "1d4a80975cbe"}
+{"ts": "2026-11-22T21:07:36.379Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_ciencias_biologicas.pdf", "bytes": 507267, "sha256": "ead1a7f1370c"}
+{"ts": "2026-11-22T21:07:36.391Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_ciencias_biologicas.pdf", "bytes": 2259763, "sha256": "0e13f20cb08a"}
+{"ts": "2026-11-22T21:07:36.533Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_ciencias_sociais.pdf", "bytes": 8268974, "sha256": "75df3737a1cc"}
+{"ts": "2026-11-22T21:07:36.540Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_ciencias_sociais.pdf", "bytes": 129263, "sha256": "949d60c150c7"}
+{"ts": "2026-11-22T21:07:36.623Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_ciencias_sociais.pdf", "bytes": 1310396, "sha256": "a51777c92645"}
+{"ts": "2026-11-22T21:07:36.859Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_ciencias_sociais.pdf", "bytes": 7995672, "sha256": "963a9d363fe8"}
+{"ts": "2026-11-22T21:07:36.881Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_ciencias_sociais.pdf", "bytes": 510474, "sha256": "b6fe343ff995"}
+{"ts": "2026-11-22T21:07:36.892Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_ciencias_sociais.pdf", "bytes": 620523, "sha256": "dfc1955af9d3"}
+{"ts": "2026-11-22T21:07:37.446Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_design.pdf", "bytes": 8775200, "sha256": "53b22e8da0fb"}
+{"ts": "2026-11-22T21:07:37.452Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_design.pdf", "bytes": 126683, "sha256": "769e551915d9"}
+{"ts": "2026-11-22T21:07:37.456Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_design.pdf", "bytes": 1563434, "sha256": "62270fbdca17"}
+{"ts": "2026-11-22T21:07:37.538Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_educacao_fisica.pdf", "bytes": 6774787, "sha256": "628e94752870"}
+{"ts": "2026-11-22T21:07:37.560Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_educacao_fisica.pdf", "bytes": 516485, "sha256": "5777f0823c72"}
+{"ts": "2026-11-22T21:07:37.600Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_educacao_fisica.pdf", "bytes": 759396, "sha256": "a6096594f7a4"}
+{"ts": "2026-11-22T21:07:37.940Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_educacao_fisica.pdf", "bytes": 6623544, "sha256": "01a96a14c6df"}
+{"ts": "2026-11-22T21:07:37.961Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_educacao_fisica.pdf", "bytes": 514570, "sha256": "179c5a015fd7"}
+{"ts": "2026-11-22T21:07:37.980Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_educacao_fisica.pdf", "bytes": 750378, "sha256": "2babe5c5a35f"}
+{"ts": "2026-11-22T21:07:38.274Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_filosofia.pdf", "bytes": 5832400, "sha256": "d944abc056c8"}
+{"ts": "2026-11-22T21:07:38.295Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_filosofia.pdf", "bytes": 512929, "sha256": "1005f6783754"}
+{"ts": "2026-11-22T21:07:38.302Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_filosofia.pdf", "bytes": 753417, "sha256": "c0c27e209bba"}
+{"ts": "2026-11-22T21:07:38.590Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_filosofia.pdf", "bytes": 5631069, "sha256": "d1256fab2a05"}
+{"ts": "2026-11-22T21:07:38.616Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_filosofia.pdf", "bytes": 514452, "sha256": "4649b776c5ba"}
+{"ts": "2026-11-22T21:07:38.673Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_filosofia.pdf", "bytes": 784335, "sha256": "681fb3c23ccc"}
+{"ts": "2026-11-22T21:07:38.824Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_fisica.pdf", "bytes": 9951846, "sha256": "f4c979160d3e"}
+{"ts": "2026-11-22T21:07:38.844Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_fisica.pdf", "bytes": 512876, "sha256": "b1c835e58416"}
+{"ts": "2026-11-22T21:07:38.915Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_fisica.pdf", "bytes": 1150804, "sha256": "14666fe14d53"}
+{"ts": "2026-11-22T21:07:38.932Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_geografia.pdf", "bytes": 7900728, "sha256": "b8f161a269b5"}
+{"ts": "2026-11-22T21:07:38.950Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_geografia.pdf", "bytes": 509141, "sha256": "1b583ead1013"}
+{"ts": "2026-11-22T21:07:38.953Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_geografia.pdf", "bytes": 1146322, "sha256": "a3ca9add8978"}
+{"ts": "2026-11-22T21:07:39.260Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_geografia.pdf", "bytes": 7051888, "sha256": "2bd5b82c4e1c"}
+{"ts": "2026-11-22T21:07:39.284Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_geografia.pdf", "bytes": 510798, "sha256": "3d11869c848f"}
+{"ts": "2026-11-22T21:07:39.327Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_geografia.pdf", "bytes": 1140935, "sha256": "7064d602116d"}
+{"ts": "2026-11-22T21:07:39.351Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_historia.pdf", "bytes": 7132383, "sha256": "9d22706cc95b"}
+{"ts": "2026-11-22T21:07:39.371Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_historia.pdf", "bytes": 508584, "sha256": "3e17433ad6dc"}
+{"ts": "2026-11-22T21:07:39.379Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_historia.pdf", "bytes": 702648, "sha256": "c414fdfc4a6e"}
+{"ts": "2026-11-22T21:07:39.443Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_historia.pdf", "bytes": 7144672, "sha256": "80f1c6ba9812"}
+{"ts": "2026-11-22T21:07:39.466Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_historia.pdf", "bytes": 509454, "sha256": "08b5e7069e15"}
+{"ts": "2026-11-22T21:07:39.506Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_historia.pdf", "bytes": 703119, "sha256": "af165622690a"}
+{"ts": "2026-11-22T21:07:39.845Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_letras_ingles.pdf", "bytes": 9206614, "sha256": "c99cb8f6e898"}
+{"ts": "2026-11-22T21:07:39.867Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_letras_ingles.pdf", "bytes": 509822, "sha256": "a2c6f74a91fb"}
+{"ts": "2026-11-22T21:07:39.914Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_letras_ingles.pdf", "bytes": 635527, "sha256": "847c3d1f43a2"}
+{"ts": "2026-11-22T21:07:40.082Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_letras_portugues.pdf", "bytes": 7531719, "sha256": "c5b9d10f7329"}
+{"ts": "2026-11-22T21:07:40.104Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_letras_portugues.pdf", "bytes": 511038, "sha256": "3f6903fc53ef"}
+{"ts": "2026-11-22T21:07:40.135Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_letras_portugues.pdf", "bytes": 627759, "sha256": "7db0341d64b8"}
+{"ts": "2026-11-22T21:07:40.305Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_letras_portugues_e_espanhol.pdf", "bytes": 9300767, "sha256": "a518a818e0ca"}
+{"ts": "2026-11-22T21:07:40.323Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_letras_portugues_e_espanhol.pdf", "bytes": 513336, "sha256": "2f3627a3bd06"}
+{"ts": "2026-11-22T21:07:42.087Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_letras_portugues_espanhol.pdf", "bytes": 1225917, "sha256": "96174cbc016c"}
+{"ts": "2026-11-22T21:07:42.789Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_letras_portugues_e_ingles.pdf", "bytes": 8476725, "sha256": "b51853461396"}
+{"ts": "2026-11-22T21:07:42.809Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_letras_portugues_e_ingles.pdf", "bytes": 513113, "sha256": "fa277a704e8d"}
+{"ts": "2026-11-22T21:07:44.923Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_letras_portugues_ingles.pdf", "bytes": 769647, "sha256": "3650f0037395"}
+{"ts": "2026-11-22T21:07:45.321Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_matematica.pdf", "bytes": 7057321, "sha256": "d0fbc2c6be41"}
+{"ts": "2026-11-22T21:07:45.344Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_matematica.pdf", "bytes": 516461, "sha256": "c4f9e93e8cec"}
+{"ts": "2026-11-22T21:07:45.386Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_matematica.pdf", "bytes": 1080817, "sha256": "9abbbe9a8501"}
+{"ts": "2026-11-22T21:07:45.469Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_musica.pdf", "bytes": 6492763, "sha256": "d0ac3655e768"}
+{"ts": "2026-11-22T21:07:45.491Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_musica.pdf", "bytes": 517113, "sha256": "f20851c998ff"}
+{"ts": "2026-11-22T21:07:45.523Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_musica.pdf", "bytes": 1017411, "sha256": "ed373e73585c"}
+{"ts": "2026-11-22T21:07:45.704Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_pedagogia.pdf", "bytes": 6180396, "sha256": "82648c7e9428"}
+{"ts": "2026-11-22T21:07:45.720Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_pedagogia.pdf", "bytes": 517533, "sha256": "dcf56469fbed"}
+{"ts": "2026-11-22T21:07:45.742Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_pedagogia.pdf", "bytes": 623134, "sha256": "d4bfa48444ab"}
+{"ts": "2026-11-22T21:07:45.816Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_quimica.pdf", "bytes": 11714897, "sha256": "e30dc7bccd40"}
+{"ts": "2026-11-22T21:07:45.880Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_quimica.pdf", "bytes": 519883, "sha256": "72fa2914a552"}
+{"ts": "2026-11-22T21:07:45.899Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_quimica.pdf", "bytes": 1029283, "sha256": "157139811baf"}
+{"ts": "2026-11-22T21:07:46.306Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_licenciatura_quimica.pdf", "bytes": 9407875, "sha256": "7585f62c76dd"}
+{"ts": "2026-11-22T21:07:46.323Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_licenciatura_quimica.pdf", "bytes": 518525, "sha256": "cc92e93ea749"}
+{"ts": "2026-11-22T21:07:46.335Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_licenciatura_quimica.pdf", "bytes": 1002066, "sha256": "6a058b19a89c"}
+{"ts": "2026-11-22T21:07:46.347Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_bacharelado_sistema_informacao.pdf", "bytes": 6921221, "sha256": "13d81a46488d"}
+{"ts": "2026-11-22T21:07:46.364Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_bacharelado_sistema_informacao.pdf", "bytes": 522400, "sha256": "aba7bbc12f54"}
+{"ts": "2026-11-22T21:07:49.798Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_bacharelado_sistema_de_informacao.pdf", "bytes": 2371401, "sha256": "4c9ea3b83871"}
+{"ts": "2026-11-22T21:07:51.720Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_tecnologia_analise_desenvolvimento_sistemas.pdf", "bytes": 8557655, "sha256": "2f00d0e43c2e"}
+{"ts": "2026-11-22T21:07:51.729Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_tecnologia_analise_desenvolvimento_sistemas.pdf", "bytes": 522015, "sha256": "248bd4dd201a"}
+{"ts": "2026-11-22T21:07:53.427Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_tecnologia_em_analise_e_desenvolvimento_de_sistemas.pdf", "bytes": 1522253, "sha256": "dae18b3e0060"}
+{"ts": "2026-11-22T21:07:53.542Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_tecnologia_gestao_tecnologia_informacao.pdf", "bytes": 7265578, "sha256": "07821239b6a9"}
+{"ts": "2026-11-22T21:07:53.549Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_tecnologia_gestao_tecnologia_informacao.pdf", "bytes": 522069, "sha256": "9e2c73a537aa"}
+{"ts": "2026-11-22T21:07:53.559Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_tecnologia_gestao_tecnologia_informacao.pdf", "bytes": 772555, "sha256": "d0c53f366dfd"}
+{"ts": "2026-11-22T21:07:53.671Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_PV_tecnologia_redes_computadores.pdf", "bytes": 8318597, "sha256": "285a80b6a59c"}
+{"ts": "2026-11-22T21:07:53.677Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_GB_tecnologia_redes_computadores.pdf", "bytes": 523151, "sha256": "d862a5070110"}
+{"ts": "2026-11-22T21:07:55.817Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2021/2021_tecnologia_em_redes_de_computadores.pdf", "bytes": 1467918, "sha256": "680a7f29d992"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_comunicacao_social_publicidade_e_propaganda.pdf", "curso": "com_social_publicidade"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_publicidade_e_propaganda.pdf", "curso": "com_social_publicidade"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_relacoes_internacionais.pdf", "curso": "rel_internacionais"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_relacoes_internacionais.pdf", "curso": "rel_internacionais"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_comercio_exterior.pdf", "curso": "tecnologia_comercio_exterior"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_comercio_exterior.pdf", "curso": "tecnologia_comercio_exterior"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_design_de_interiores.pdf", "curso": "tecnologia_design_interiores"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_design_de_interiores.pdf", "curso": "tecnologia_design_interiores"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_design_de_moda.pdf", "curso": "tecnologia_design_moda"}
+{"ts": "2026-11-22T21:07:55.995Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_design_de_moda.pdf", "curso": "tecnologia_design_moda"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_design_grafico.pdf", "curso": "tecnologia_design_grafico"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_design_grafico.pdf", "curso": "tecnologia_design_grafico"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_gastronomia.pdf", "curso": "tecnologia_gastronomia"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_gastronomia.pdf", "curso": "tecnologia_gastronomia"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_gestao_comercial.pdf", "curso": "tecnologia_gestao_comercial"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_gestao_comercial.pdf", "curso": "tecnologia_gestao_comercial"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_gestao_de_qualidade.pdf", "curso": "tecnologia_gestao_qualidade"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_gestao_de_qualidade.pdf", "curso": "tecnologia_gestao_qualidade"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_gestao_de_rh.pdf", "curso": "tecnologia_gestao_rh"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_gestao_de_rh.pdf", "curso": "tecnologia_gestao_rh"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_gestao_financeira.pdf", "curso": "tecnologia_gestao_financeira"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_gestao_financeira.pdf", "curso": "tecnologia_gestao_financeira"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_gestao_publica.pdf", "curso": "tecnologia_gestao_publica"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_gestao_publica.pdf", "curso": "tecnologia_gestao_publica"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_logistica.pdf", "curso": "tecnologia_logistica"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_logistica.pdf", "curso": "tecnologia_logistica"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_marketing.pdf", "curso": "tecnologia_marketing"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_marketing.pdf", "curso": "tecnologia_marketing"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_GB_tecnologia_em_processos_gerenciais.pdf", "curso": "tecnologia_processos_gerenciais"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo pareado pela ordem da página", "arquivo": "2022_processos_gerenciais.pdf", "curso": "tecnologia_processos_gerenciais"}
+{"ts": "2026-11-22T21:07:55.996Z", "nivel": "INFO", "servico": "coleta", "msg": "links descobertos", "ano": 2022, "pagina": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enade/provas-e-gabaritos/2022", "total": 78, "provas": 26, "gabaritos": 26}
+{"ts": "2026-11-22T21:07:56.177Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_administracao.pdf", "bytes": 13799171, "sha256": "dabb8b5cc025"}
+{"ts": "2026-11-22T21:07:56.181Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_administracao.pdf", "bytes": 147052, "sha256": "6bdf99887f8a"}
+{"ts": "2026-11-22T21:07:56.187Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_administracao.pdf", "bytes": 310338, "sha256": "44076732b1e7"}
+{"ts": "2026-11-22T21:07:56.359Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_administracao_publica.pdf", "bytes": 16036425, "sha256": "ed0b8e06def0"}
+{"ts": "2026-11-22T21:07:56.362Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_administracao_publica.pdf", "bytes": 150015, "sha256": "3c13ddd81d8b"}
+{"ts": "2026-11-22T21:07:56.366Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_administracao_publica.pdf", "bytes": 344508, "sha256": "c6d125209433"}
+{"ts": "2026-11-22T21:07:56.506Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_ciencias_contabeis.pdf", "bytes": 12380663, "sha256": "291eeea718a4"}
+{"ts": "2026-11-22T21:07:56.509Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_ciencias_contabeis.pdf", "bytes": 151524, "sha256": "8c02e689530c"}
+{"ts": "2026-11-22T21:07:56.513Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_ciencias_contabeis.pdf", "bytes": 430708, "sha256": "6a769312d41b"}
+{"ts": "2026-11-22T21:07:56.632Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_ciencias_economicas.pdf", "bytes": 12340666, "sha256": "db126a343f00"}
+{"ts": "2026-11-22T21:07:56.634Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_ciencias_economicas.pdf", "bytes": 147848, "sha256": "e4da1b7c4fc0"}
+{"ts": "2026-11-22T21:07:56.638Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_ciencias_economicas.pdf", "bytes": 346586, "sha256": "57a910cd2155"}
+{"ts": "2026-11-22T21:07:56.837Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_jornalismo.pdf", "bytes": 13178968, "sha256": "2eff28008aeb"}
+{"ts": "2026-11-22T21:07:56.839Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_jornalismo.pdf", "bytes": 146537, "sha256": "3d317b3b5c26"}
+{"ts": "2026-11-22T21:07:56.843Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_jornalismo.pdf", "bytes": 356141, "sha256": "dd2a5d8cc068"}
+{"ts": "2026-11-22T21:07:56.981Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_com_social_publicidade.pdf", "bytes": 13974791, "sha256": "d3b6a1901c39"}
+{"ts": "2026-11-22T21:07:57.721Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_comunicacao_social_publicidade_e_propaganda.pdf", "bytes": 151214, "sha256": "d42eb85881c8"}
+{"ts": "2026-11-22T21:07:58.745Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_publicidade_e_propaganda.pdf", "bytes": 356061, "sha256": "9e381ebaea54"}
+{"ts": "2026-11-22T21:07:58.826Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_direito.pdf", "bytes": 12135887, "sha256": "9fa7c5455814"}
+{"ts": "2026-11-22T21:07:58.827Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_direito.pdf", "bytes": 148800, "sha256": "cce108545b29"}
+{"ts": "2026-11-22T21:07:58.830Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_direito.pdf", "bytes": 299920, "sha256": "b4b4678ac3f1"}
+{"ts": "2026-11-22T21:07:58.942Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_psicologia.pdf", "bytes": 12091195, "sha256": "06e1a4d20ca2"}
+{"ts": "2026-11-22T21:07:58.944Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_psicologia.pdf", "bytes": 150639, "sha256": "1647a0fc92bf"}
+{"ts": "2026-11-22T21:07:58.947Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_psicologia.pdf", "bytes": 295059, "sha256": "05f516b1265b"}
+{"ts": "2026-11-22T21:07:59.081Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_rel_internacionais.pdf", "bytes": 12338038, "sha256": "78247fa202e1"}
+{"ts": "2026-11-22T21:07:59.883Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_relacoes_internacionais.pdf", "bytes": 148445, "sha256": "098765cc0b29"}
+{"ts": "2026-11-22T21:08:00.823Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_relacoes_internacionais.pdf", "bytes": 281602, "sha256": "fbc34d0125fe"}
+{"ts": "2026-11-22T21:08:00.927Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_secretariado_executivo.pdf", "bytes": 12305694, "sha256": "98b607ad7d2c"}
+{"ts": "2026-11-22T21:08:00.928Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_secretariado_executivo.pdf", "bytes": 149773, "sha256": "16a805549041"}
+{"ts": "2026-11-22T21:08:00.931Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_secretariado_executivo.pdf", "bytes": 313813, "sha256": "795ea098e8ad"}
+{"ts": "2026-11-22T21:08:01.049Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_servico_social.pdf", "bytes": 12336855, "sha256": "94dca4677c1f"}
+{"ts": "2026-11-22T21:08:01.050Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_servico_social.pdf", "bytes": 146429, "sha256": "8bde11ba745c"}
+{"ts": "2026-11-22T21:08:01.053Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_servico_social.pdf", "bytes": 327561, "sha256": "b2cd92dcf56d"}
+{"ts": "2026-11-22T21:08:01.166Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_comercio_exterior.pdf", "bytes": 12474398, "sha256": "b931e6b0c606"}
+{"ts": "2026-11-22T21:08:01.905Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_comercio_exterior.pdf", "bytes": 149669, "sha256": "ba9cbecc5bc3"}
+{"ts": "2026-11-22T21:08:02.856Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_comercio_exterior.pdf", "bytes": 393916, "sha256": "32cf1b48f38e"}
+{"ts": "2026-11-22T21:08:03.028Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_design_interiores.pdf", "bytes": 15207293, "sha256": "889b7cd43cf2"}
+{"ts": "2026-11-22T21:08:03.709Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_design_de_interiores.pdf", "bytes": 150479, "sha256": "ff619818027d"}
+{"ts": "2026-11-22T21:08:04.653Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_design_de_interiores.pdf", "bytes": 340734, "sha256": "8270d26e98f8"}
+{"ts": "2026-11-22T21:08:04.812Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_design_moda.pdf", "bytes": 13165324, "sha256": "1cee53041c17"}
+{"ts": "2026-11-22T21:08:05.534Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_design_de_moda.pdf", "bytes": 142763, "sha256": "cb6e5df7789c"}
+{"ts": "2026-11-22T21:08:06.755Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_design_de_moda.pdf", "bytes": 297220, "sha256": "679bf8230a51"}
+{"ts": "2026-11-22T21:08:06.977Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_design_grafico.pdf", "bytes": 18288941, "sha256": "074e79cf66db"}
+{"ts": "2026-11-22T21:08:07.830Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_design_grafico.pdf", "bytes": 147911, "sha256": "de4381fee4c9"}
+{"ts": "2026-11-22T21:08:09.357Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_design_grafico.pdf", "bytes": 513640, "sha256": "0a69eb9eb1b2"}
+{"ts": "2026-11-22T21:08:09.454Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_gastronomia.pdf", "bytes": 12757286, "sha256": "bf6dffbff90b"}
+{"ts": "2026-11-22T21:08:10.372Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_gastronomia.pdf", "bytes": 151387, "sha256": "c8c3c1405172"}
+{"ts": "2026-11-22T21:08:11.463Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_gastronomia.pdf", "bytes": 318026, "sha256": "6c5fbaf43e3f"}
+{"ts": "2026-11-22T21:08:11.591Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_gestao_comercial.pdf", "bytes": 13168654, "sha256": "0216c31f92e8"}
+{"ts": "2026-11-22T21:08:12.362Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_gestao_comercial.pdf", "bytes": 151004, "sha256": "d3b58b7c46d8"}
+{"ts": "2026-11-22T21:08:13.573Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_gestao_comercial.pdf", "bytes": 341941, "sha256": "4c0f058c359a"}
+{"ts": "2026-11-22T21:08:13.678Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_gestao_qualidade.pdf", "bytes": 12802199, "sha256": "f791519db93c"}
+{"ts": "2026-11-22T21:08:14.546Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_gestao_de_qualidade.pdf", "bytes": 152003, "sha256": "c0b2542d6988"}
+{"ts": "2026-11-22T21:08:15.869Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_gestao_de_qualidade.pdf", "bytes": 433110, "sha256": "b0810c8cc96a"}
+{"ts": "2026-11-22T21:08:15.993Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_gestao_rh.pdf", "bytes": 13335818, "sha256": "4083410889af"}
+{"ts": "2026-11-22T21:08:16.843Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_gestao_de_rh.pdf", "bytes": 145298, "sha256": "d151ddec0286"}
+{"ts": "2026-11-22T21:08:17.926Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_gestao_de_rh.pdf", "bytes": 289109, "sha256": "a451b8e61b78"}
+{"ts": "2026-11-22T21:08:18.028Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_gestao_financeira.pdf", "bytes": 12268412, "sha256": "66899309c6f3"}
+{"ts": "2026-11-22T21:08:18.892Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_gestao_financeira.pdf", "bytes": 149617, "sha256": "9914af030571"}
+{"ts": "2026-11-22T21:08:19.978Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_gestao_financeira.pdf", "bytes": 330196, "sha256": "1e089e2ea86b"}
+{"ts": "2026-11-22T21:08:20.122Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_gestao_publica.pdf", "bytes": 12328902, "sha256": "082e89b00bdb"}
+{"ts": "2026-11-22T21:08:20.860Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_gestao_publica.pdf", "bytes": 146607, "sha256": "46fd71a5689e"}
+{"ts": "2026-11-22T21:08:21.742Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_gestao_publica.pdf", "bytes": 299232, "sha256": "7025a18c073e"}
+{"ts": "2026-11-22T21:08:21.877Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_logistica.pdf", "bytes": 10711601, "sha256": "ebce368f49e4"}
+{"ts": "2026-11-22T21:08:22.565Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_logistica.pdf", "bytes": 140576, "sha256": "42e7b822e8f4"}
+{"ts": "2026-11-22T21:08:23.435Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_logistica.pdf", "bytes": 388616, "sha256": "7a3ab5bf01ec"}
+{"ts": "2026-11-22T21:08:23.622Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_marketing.pdf", "bytes": 13407483, "sha256": "8fcc7c185885"}
+{"ts": "2026-11-22T21:08:24.292Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_marketing.pdf", "bytes": 149975, "sha256": "0d600411f27e"}
+{"ts": "2026-11-22T21:08:25.085Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_marketing.pdf", "bytes": 328690, "sha256": "56c5c0ea358c"}
+{"ts": "2026-11-22T21:08:25.225Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_tecnologia_processos_gerenciais.pdf", "bytes": 11837629, "sha256": "3b5e16f89300"}
+{"ts": "2026-11-22T21:08:25.877Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_tecnologia_em_processos_gerenciais.pdf", "bytes": 150743, "sha256": "b0274f269469"}
+{"ts": "2026-11-22T21:08:26.619Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_processos_gerenciais.pdf", "bytes": 327135, "sha256": "b8e0ba9dad55"}
+{"ts": "2026-11-22T21:08:26.772Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_teologia.pdf", "bytes": 12810454, "sha256": "e46e41c23b60"}
+{"ts": "2026-11-22T21:08:26.775Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_teologia.pdf", "bytes": 149110, "sha256": "9a55f44ef593"}
+{"ts": "2026-11-22T21:08:26.781Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_teologia.pdf", "bytes": 356116, "sha256": "8c55553f96a6"}
+{"ts": "2026-11-22T21:08:27.178Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_PV_turismo.pdf", "bytes": 12699414, "sha256": "6f148d1a6f8f"}
+{"ts": "2026-11-22T21:08:27.181Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_GB_turismo.pdf", "bytes": 145197, "sha256": "49c3c6862702"}
+{"ts": "2026-11-22T21:08:27.193Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2022/2022_turismo.pdf", "bytes": 334221, "sha256": "68f9c9bc459d"}
+{"ts": "2026-11-22T21:08:27.301Z", "nivel": "INFO", "servico": "coleta", "msg": "links descobertos", "ano": 2023, "pagina": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enade/provas-e-gabaritos/2023", "total": 84, "provas": 28, "gabaritos": 28}
+{"ts": "2026-11-22T21:08:27.843Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_agronomia.pdf", "bytes": 41385394, "sha256": "33337d55f432"}
+{"ts": "2026-11-22T21:08:27.846Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_agronomia.pdf", "bytes": 139746, "sha256": "33c1be2dbf21"}
+{"ts": "2026-11-22T21:08:27.854Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_agronomia.pdf", "bytes": 320348, "sha256": "f402b9ae8d0a"}
+{"ts": "2026-11-22T21:08:28.281Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_arquitetura_e_urbanismo.pdf", "bytes": 17882559, "sha256": "fe2110dcb321"}
+{"ts": "2026-11-22T21:08:28.284Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_arquitetura_e_urbanismo.pdf", "bytes": 181643, "sha256": "28a9689df7ca"}
+{"ts": "2026-11-22T21:08:28.289Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_arquitetura_e_urbanismo.pdf", "bytes": 348738, "sha256": "c6555ffaea0d"}
+{"ts": "2026-11-22T21:08:28.387Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_biomedicina.pdf", "bytes": 10098505, "sha256": "174424e06a3a"}
+{"ts": "2026-11-22T21:08:28.390Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_biomedicina.pdf", "bytes": 178572, "sha256": "b36a1ab07aeb"}
+{"ts": "2026-11-22T21:08:28.399Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_biomedicina.pdf", "bytes": 347235, "sha256": "dad90183b62f"}
+{"ts": "2026-11-22T21:08:28.620Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_enfermagem.pdf", "bytes": 9117323, "sha256": "41d267263ed3"}
+{"ts": "2026-11-22T21:08:28.622Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_enfermagem.pdf", "bytes": 177471, "sha256": "74a39b14cc72"}
+{"ts": "2026-11-22T21:08:28.627Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_enfermagem.pdf", "bytes": 375603, "sha256": "619a4ce88569"}
+{"ts": "2026-11-22T21:08:28.962Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_ambiental.pdf", "bytes": 12475318, "sha256": "3dce558cf04b"}
+{"ts": "2026-11-22T21:08:28.964Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_ambiental.pdf", "bytes": 181183, "sha256": "95a77140d49e"}
+{"ts": "2026-11-22T21:08:28.970Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_ambiental.pdf", "bytes": 285794, "sha256": "c5be75d9d9f1"}
+{"ts": "2026-11-22T21:08:29.226Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_civil.pdf", "bytes": 9997971, "sha256": "4fc429bd1153"}
+{"ts": "2026-11-22T21:08:29.230Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_civil.pdf", "bytes": 175411, "sha256": "284cf6de5215"}
+{"ts": "2026-11-22T21:08:29.234Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_civil.pdf", "bytes": 431935, "sha256": "a0c00883884a"}
+{"ts": "2026-11-22T21:08:29.492Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_de_alimentos.pdf", "bytes": 9566326, "sha256": "3f980b5e1ed8"}
+{"ts": "2026-11-22T21:08:29.497Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_de_alimentos.pdf", "bytes": 179568, "sha256": "e7bfe6606786"}
+{"ts": "2026-11-22T21:08:29.505Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_de_alimentos.pdf", "bytes": 322465, "sha256": "ed7225dce2a1"}
+{"ts": "2026-11-22T21:08:29.814Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_da_computacao.pdf", "bytes": 10268386, "sha256": "e9939d226a45"}
+{"ts": "2026-11-22T21:08:29.821Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_da_computacao.pdf", "bytes": 181724, "sha256": "617675ef9276"}
+{"ts": "2026-11-22T21:08:29.828Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_da_computacao.pdf", "bytes": 395170, "sha256": "deb26f0349b1"}
+{"ts": "2026-11-22T21:08:30.014Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_de_controle_e_automacao.pdf", "bytes": 12040057, "sha256": "c019e5a131ef"}
+{"ts": "2026-11-22T21:08:30.018Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_de_controle_e_automacao.pdf", "bytes": 180757, "sha256": "6e07fecb1197"}
+{"ts": "2026-11-22T21:08:30.030Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_de_controle_e_automacao.pdf", "bytes": 461246, "sha256": "953739d87294"}
+{"ts": "2026-11-22T21:08:30.122Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_de_producao.pdf", "bytes": 9466261, "sha256": "21cf222d24ad"}
+{"ts": "2026-11-22T21:08:30.124Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_de_producao.pdf", "bytes": 181710, "sha256": "564bff51b32a"}
+{"ts": "2026-11-22T21:08:30.132Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_de_producao.pdf", "bytes": 400192, "sha256": "08e71e1256c2"}
+{"ts": "2026-11-22T21:08:30.237Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_eletrica.pdf", "bytes": 12652128, "sha256": "e312054bd1d2"}
+{"ts": "2026-11-22T21:08:30.241Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_eletrica.pdf", "bytes": 178788, "sha256": "58c9e33ab491"}
+{"ts": "2026-11-22T21:08:30.246Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_eletrica.pdf", "bytes": 361327, "sha256": "2360cdcaa759"}
+{"ts": "2026-11-22T21:08:30.359Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_florestal.pdf", "bytes": 12450755, "sha256": "9546728e5f54"}
+{"ts": "2026-11-22T21:08:30.361Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_florestal.pdf", "bytes": 181135, "sha256": "590f3b0c94b6"}
+{"ts": "2026-11-22T21:08:30.365Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_florestal.pdf", "bytes": 282546, "sha256": "433ff081549f"}
+{"ts": "2026-11-22T21:08:30.442Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_mecanica.pdf", "bytes": 9797943, "sha256": "f263511dabcc"}
+{"ts": "2026-11-22T21:08:30.450Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_mecanica.pdf", "bytes": 181747, "sha256": "657e27c3b0b7"}
+{"ts": "2026-11-22T21:08:30.460Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_mecanica.pdf", "bytes": 391203, "sha256": "22073223a143"}
+{"ts": "2026-11-22T21:08:30.549Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_engenharia_quimica.pdf", "bytes": 11176457, "sha256": "6b2cf2550afa"}
+{"ts": "2026-11-22T21:08:30.551Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_engenharia_quimica.pdf", "bytes": 179806, "sha256": "3ae3f7ce9e7c"}
+{"ts": "2026-11-22T21:08:30.556Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_engenharia_quimica.pdf", "bytes": 327133, "sha256": "a1779d801e34"}
+{"ts": "2026-11-22T21:08:30.633Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_farmacia.pdf", "bytes": 9759931, "sha256": "9fe5b5fa1297"}
+{"ts": "2026-11-22T21:08:30.637Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_farmacia.pdf", "bytes": 176977, "sha256": "2c50aa9eec71"}
+{"ts": "2026-11-22T21:08:30.644Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_farmacia.pdf", "bytes": 295461, "sha256": "0a0993a6e0fb"}
+{"ts": "2026-11-22T21:08:31.131Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_fisioterapia.pdf", "bytes": 8932646, "sha256": "de34c0f53137"}
+{"ts": "2026-11-22T21:08:31.133Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_fisioterapia.pdf", "bytes": 178658, "sha256": "cb1f83ca8a6d"}
+{"ts": "2026-11-22T21:08:31.145Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_fisioterapia.pdf", "bytes": 335552, "sha256": "a2214a6d237c"}
+{"ts": "2026-11-22T21:08:31.251Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_fonoaudiologia.pdf", "bytes": 8873238, "sha256": "c3b9936a8f1b"}
+{"ts": "2026-11-22T21:08:31.260Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_fonoaudiologia.pdf", "bytes": 178280, "sha256": "2acc7e4f0a7a"}
+{"ts": "2026-11-22T21:08:31.264Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_fonoaudiologia.pdf", "bytes": 302297, "sha256": "ef5c621f9a00"}
+{"ts": "2026-11-22T21:08:31.372Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_medicina.pdf", "bytes": 6838667, "sha256": "3fbe4a615169"}
+{"ts": "2026-11-22T21:08:31.377Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_medicina.pdf", "bytes": 177672, "sha256": "b75fefac9643"}
+{"ts": "2026-11-22T21:08:31.383Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_medicina.pdf", "bytes": 357763, "sha256": "1aa8ecf4a291"}
+{"ts": "2026-11-22T21:08:31.507Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_medicina_veterinaria.pdf", "bytes": 9957880, "sha256": "cdafef9e81a9"}
+{"ts": "2026-11-22T21:08:31.511Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_medicina_veterinaria.pdf", "bytes": 181795, "sha256": "5c8135116961"}
+{"ts": "2026-11-22T21:08:31.513Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_medicina_veterinaria.pdf", "bytes": 326917, "sha256": "6c92945d32b7"}
+{"ts": "2026-11-22T21:08:31.587Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_nutricao.pdf", "bytes": 8960169, "sha256": "7ef51dcf5846"}
+{"ts": "2026-11-22T21:08:31.591Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_nutricao.pdf", "bytes": 178136, "sha256": "2c755ffef343"}
+{"ts": "2026-11-22T21:08:31.596Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_nutricao.pdf", "bytes": 331717, "sha256": "d51f33322721"}
+{"ts": "2026-11-22T21:08:31.722Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_odontologia.pdf", "bytes": 9022437, "sha256": "14626ff7b441"}
+{"ts": "2026-11-22T21:08:31.725Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_odontologia.pdf", "bytes": 180375, "sha256": "698a0f531e86"}
+{"ts": "2026-11-22T21:08:31.727Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_odontologia.pdf", "bytes": 307314, "sha256": "03e6032a5d9d"}
+{"ts": "2026-11-22T21:08:31.756Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_zootecnia.pdf", "bytes": 8820833, "sha256": "26895766a0ed"}
+{"ts": "2026-11-22T21:08:31.758Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_zootecnia.pdf", "bytes": 177124, "sha256": "1c020cde56f9"}
+{"ts": "2026-11-22T21:08:31.759Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_zootecnia.pdf", "bytes": 329230, "sha256": "01455557a410"}
+{"ts": "2026-11-22T21:08:31.885Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_tecnologia_em_agronegocio.pdf", "bytes": 8596932, "sha256": "d5f05a594a63"}
+{"ts": "2026-11-22T21:08:31.886Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_tecnologia_em_agronegocio.pdf", "bytes": 183498, "sha256": "4c3329e3eb0b"}
+{"ts": "2026-11-22T21:08:31.888Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_tecnologia_em_agronegocio.pdf", "bytes": 304137, "sha256": "977f67984fab"}
+{"ts": "2026-11-22T21:08:31.932Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_tecnologia_em_estetica_e_cosmetico.pdf", "bytes": 9895608, "sha256": "422be5a92d34"}
+{"ts": "2026-11-22T21:08:31.933Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_tecnologia_em_estetica_e_cosmetico.pdf", "bytes": 180055, "sha256": "0cd36e2211de"}
+{"ts": "2026-11-22T21:08:31.935Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_tecnologia_em_estetica_e_cosmetico.pdf", "bytes": 324072, "sha256": "329182b2248b"}
+{"ts": "2026-11-22T21:08:31.977Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_tecnologia_em_gestao_ambiental.pdf", "bytes": 10698930, "sha256": "f9609d3d001c"}
+{"ts": "2026-11-22T21:08:31.978Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_tecnologia_em_gestao_ambiental.pdf", "bytes": 182207, "sha256": "581178c88ffb"}
+{"ts": "2026-11-22T21:08:31.980Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_tecnologia_em_gestao_ambiental.pdf", "bytes": 341947, "sha256": "af481bfa47dc"}
+{"ts": "2026-11-22T21:08:31.998Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_tecnologia_em_gestao_hospitalar.pdf", "bytes": 9198509, "sha256": "479f4492e3cb"}
+{"ts": "2026-11-22T21:08:32.000Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_tecnologia_em_gestao_hospitalar.pdf", "bytes": 182135, "sha256": "702d0ba22f17"}
+{"ts": "2026-11-22T21:08:32.001Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_tecnologia_em_gestao_hospitalar.pdf", "bytes": 302772, "sha256": "4aef58fe2fbf"}
+{"ts": "2026-11-22T21:08:32.021Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_tecnologia_em_radiologia.pdf", "bytes": 9588069, "sha256": "c1a3e91a091d"}
+{"ts": "2026-11-22T21:08:32.023Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_tecnologia_em_radiologia.pdf", "bytes": 182564, "sha256": "135240373303"}
+{"ts": "2026-11-22T21:08:32.024Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_tecnologia_em_radiologia.pdf", "bytes": 321806, "sha256": "3cf5c65ade00"}
+{"ts": "2026-11-22T21:08:32.052Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_tecnologia_em_seguranca_do_trabalho.pdf", "bytes": 8981614, "sha256": "84390b50d012"}
+{"ts": "2026-11-22T21:08:32.053Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_tecnologia_em_seguranca_do_trabalho.pdf", "bytes": 182151, "sha256": "82d8625be08d"}
+{"ts": "2026-11-22T21:08:32.055Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_tecnologia_em_seguranca_do_trabalho.pdf", "bytes": 292464, "sha256": "806c57f17b63"}
+{"ts": "2026-11-22T21:08:32.057Z", "nivel": "INFO", "servico": "coleta", "msg": "coleta concluída", "arquivos": 252, "falhas": 0}

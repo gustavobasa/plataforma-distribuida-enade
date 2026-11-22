@@ -30,3 +30,6 @@ tmp/
 !evidencias/**/*.log
 .DS_Store
 Thumbs.db
+
+# Exceção: certificado PÚBLICO da CA intermediária do INEP/RNP (não é segredo; necessário para validar TLS)
+!codigo/infra/certs/*.pem

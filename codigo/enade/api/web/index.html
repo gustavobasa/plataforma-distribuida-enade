@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Busca ENADE</title>
+  <link rel="stylesheet" href="/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="/static/estilo.css">
+</head>
+<body>
+  <a class="pular" href="#principal">Pular para o conteúdo</a>
+
+  <section id="tela-login" class="login" hidden>
+    <form id="form-login" class="cartao" autocomplete="on">
+      <h1>Busca ENADE</h1>
+      <p class="sutil">Acervo de provas oficiais do INEP. Entre com seu usuário do diretório (LDAP).</p>
+      <label>Usuário <input name="usuario" autocomplete="username" required maxlength="32"></label>
+      <label>Senha <input name="senha" type="password" autocomplete="current-password" required></label>
+      <button type="submit">Entrar</button>
+      <p id="erro-login" class="erro" role="alert"></p>
+    </form>
+  </section>
+
+  <div id="app" hidden>
+    <header class="topo">
+      <strong>Busca ENADE</strong>
+      <nav aria-label="Seções">
+        <button class="aba ativa" data-aba="busca">Busca</button>
+        <button class="aba" data-aba="lista">Minha lista <span id="cont-lista" class="pilula">0</span></button>
+        <button class="aba so-professor" data-aba="painel">Painel analítico</button>
+        <button class="aba so-professor" data-aba="operacao">Operação</button>
+      </nav>
+      <span id="quem" class="sutil"></span>
+      <button id="sair" class="sec">Sair</button>
+    </header>
+
+    <main id="principal">
+      <section id="aba-busca">
+        <form id="form-busca" class="barra-busca" role="search">
+          <input id="q" name="q" type="search" placeholder="Ex.: ética, desigualdade social, algoritmo de ordenação" aria-label="Texto da busca">
+          <button type="submit">Buscar</button>
+        </form>
+        <div class="layout">
+          <aside class="filtros" aria-label="Filtros">
+            <h2>Filtros</h2>
+            <div id="facetas"></div>
+            <label class="linha"><input type="checkbox" id="colapsar"> Agrupar questões idênticas entre cursos</label>
+            <label class="linha"><input type="checkbox" id="semcache"> Ignorar cache (medição)</label>
+            <button id="limpar-filtros" class="sec">Limpar filtros</button>
+          </aside>
+          <section>
+            <p id="resumo" class="sutil" aria-live="polite"></p>
+            <ol id="resultados" class="resultados"></ol>
+            <nav id="paginacao" class="paginacao" aria-label="Paginação"></nav>
+          </section>
+        </div>
+      </section>
+
+      <section id="aba-lista" hidden>
+        <h2>Minha lista (sessão)</h2>
+        <p class="sutil">A lista fica no Redis enquanto a sessão estiver ativa. <span id="ttl-lista"></span></p>
+        <div class="acoes so-professor">
+          <a class="botao" href="/api/carrinho/exportar?formato=pdf">Exportar PDF</a>
+          <a class="botao" href="/api/carrinho/exportar?formato=json">Exportar JSON</a>
+        </div>
+        <p class="sutil so-estudante">Exportação disponível apenas para o perfil Professor.</p>
+        <button id="esvaziar" class="sec">Esvaziar lista</button>
+        <ol id="itens-lista" class="resultados"></ol>
+      </section>
+
+      <section id="aba-painel" hidden>
+        <h2>Painel analítico</h2>
+        <p class="sutil">Competências e temas: taxonomia da Portaria Inep 289/2023; atribuição por classificador léxico (inferida). Os filtros da aba Busca são aplicados.</p>
+        <h3>Histograma de competências por ano</h3>
+        <div id="graf-competencias" class="grafico"></div>
+        <h3>Temas (objetos de conhecimento) por ano</h3>
+        <div id="graf-objetos" class="grafico"></div>
+        <h3>Distribuição de questões por curso</h3>
+        <div id="graf-cursos" class="grafico"></div>
+      </section>
+
+      <section id="aba-operacao" hidden>
+        <h2>Operação</h2>
+        <div class="grade2">
+          <div class="cartao"><h3>Saúde</h3><pre id="saude"></pre></div>
+          <div class="cartao"><h3>Cache Redis</h3><pre id="cache"></pre><button id="invalidar" class="sec">Invalidar cache</button></div>
+          <div class="cartao"><h3>Ingestão (Kafka)</h3><pre id="ingestao"></pre></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="detalhe" aria-labelledby="det-titulo">
+    <div class="det-topo"><h2 id="det-titulo"></h2><button id="fechar" class="sec" aria-label="Fechar">✕</button></div>
+    <div id="det-corpo"></div>
+  </dialog>
+
+  <script src="/vendor/purify.min.js"></script>
+  <script src="/vendor/marked.min.js"></script>
+  <script src="/vendor/katex/katex.min.js"></script>
+  <script src="/vendor/katex/auto-render.min.js"></script>
+  <script src="/vendor/mermaid.min.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

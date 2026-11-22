@@ -1,0 +1,74 @@
+# Taxonomia de referência de Formação Geral do ENADE.
+# Fonte: Portaria Inep nº 289, de 26 de junho de 2023 (DOU de 27/06/2023, Seção 1, p. 33), arts. 5º e 6º.
+# Cópia consultada em 2026-11-22: https://ec.ufc.br/wp-content/uploads/2025/04/portaria-inep-289-2023-06-26.pdf
+#
+# Os rótulos (nome) são transcrição da portaria. As listas de "pistas" (palavras/expressões sem acento, minúsculas)
+# NÃO são oficiais: foram definidas neste projeto para o classificador léxico (enade/extracao/taxonomia.py).
+# A mesma taxonomia é aplicada às edições 2021–2023 para permitir séries temporais comparáveis
+# (as portarias de 2021/2022 têm listas próprias; essa simplificação está documentada no relatório).
+fonte: "Portaria Inep nº 289/2023, arts. 5º e 6º"
+competencias:
+  - id: C1
+    nome: "Promover diálogo e práticas de convivência, compartilhando saberes e conhecimentos"
+    pistas: [dialogo, convivencia, compartilh, mediacao, conflito, cooperacao, comunidade, participacao]
+  - id: C2
+    nome: "Identificar, compreender e analisar situações-problema a partir de uma abordagem sistêmica da realidade"
+    pistas: [situacao-problema, considere que, suponha que, cenario, caso, problema, contexto, sistemic]
+  - id: C3
+    nome: "Sistematizar e analisar informações para tomada de decisões"
+    pistas: [dados, indicador, taxa, percentual, tabela, grafico, decisao, estatistic, levantamento, pesquisa]
+  - id: C4
+    nome: "Planejar, elaborar e implementar projetos de ação e intervenção a partir da análise de necessidades em contextos diversos"
+    pistas: [projeto, planej, intervencao, plano de acao, implementa, elabore, proponha, estrategia]
+  - id: C5
+    nome: "Compreender, analisar e interpretar as diferentes linguagens, suas formas de representação e suas respectivas variações (verbal, não verbal, gráfica, numérica)"
+    pistas: [grafico, figura, imagem, charge, tirinha, infografico, mapa, diagrama, tabela, representacao, linguagem]
+  - id: C6
+    nome: "Ler, interpretar e produzir textos com clareza e coerência"
+    pistas: [texto, redija, leitura, interpret, autor, trecho, poema, fragmento, considerando o texto]
+  - id: C7
+    nome: "Formular e articular argumentos e contra-argumentos consistentes em diferentes situações"
+    pistas: [assercoes, porque, argument, justificativa, afirmacoes, relacao proposta, contra-argument, posicionamento]
+  - id: C8
+    nome: "Propor soluções inovadoras comprometidas com os princípios de sustentabilidade e equidade na resolução de situações-problema"
+    pistas: [solucao, solucoes, propostas, proponha, inovador, sustentab, equidade, minimizar, mitigar]
+temas:
+  - id: T01
+    nome: "Ética, democracia e cidadania"
+    pistas: [etica, democraci, cidadania, direitos humanos, constituicao, moral, eleicao, voto, liberdade, corrupcao, direito]
+  - id: T02
+    nome: "Estado, sociedade e trabalho"
+    pistas: [trabalho, emprego, previdencia, aposentadoria, mercado de trabalho, estado, politica publica, sindicat, renda, salario, etarismo, idoso]
+  - id: T03
+    nome: "Educação e desenvolvimento humano e social"
+    pistas: [educacao, escola, ensino, aprendizagem, desenvolvimento humano, alfabetiz, formacao, estudante, universidade]
+  - id: T04
+    nome: "Cultura, arte e comunicação"
+    pistas: [cultura, arte, artist, musica, literatura, cinema, pintura, comunicacao, midia, obra, patrimonio, memoria, identidade cultural]
+  - id: T05
+    nome: "Ciência, tecnologia e inovação"
+    pistas: [tecnologia, inovacao, ciencia, inteligencia artificial, digital, internet, algoritmo, dados, ciberne, automacao, chatgpt, rede social]
+  - id: T06
+    nome: "Promoção da saúde e prevenção de doenças"
+    pistas: [saude, doenca, vacina, vacinacao, epidemi, pandemia, sus, prevencao, sanitari, covid, imuniz, obesidade]
+  - id: T07
+    nome: "Segurança alimentar e nutricional"
+    pistas: [fome, alimentar, alimentos, nutricion, alimentacao, agricultura familiar, inseguranca alimentar, desnutricao]
+  - id: T08
+    nome: "Meio ambiente, biodiversidade e sustentabilidade"
+    pistas: [meio ambiente, ambiental, biodiversidade, sustentab, clima, climatic, desmatamento, poluicao, residuos, agua, ecolog, carbono, energia renovavel]
+  - id: T09
+    nome: "Desenvolvimento urbano, rural e populações vulnerabilizadas"
+    pistas: [urbano, urbanizacao, cidade, periferia, rural, saneamento, moradia, habitacao, vulnerab, favela, mobilidade, campo]
+  - id: T10
+    nome: "Relações internacionais e globalização"
+    pistas: [globalizacao, internacional, geopolitic, guerra, refugiad, migra, onu, comercio exterior, mundial, paises]
+  - id: T11
+    nome: "Territórios, sociodiversidade e multiculturalismo"
+    pistas: [indigena, quilombola, territorio, sociodiversidade, multicultural, diversidade, povos, tradicional, etnic, religios]
+  - id: T12
+    nome: "Desigualdades estruturais econômicas, étnico-raciais e de gênero"
+    pistas: [desigualdade, racismo, racial, genero, mulher, feminicidio, negra, negro, pobreza, gini, discriminacao, violencia contra]
+  - id: T13
+    nome: "Acessibilidade e inclusão social"
+    pistas: [acessibilidade, inclusao, deficiencia, pcd, libras, exclusao, inclusiv, barreira]

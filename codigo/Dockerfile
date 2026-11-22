@@ -24,8 +24,22 @@ COPY --from=rdkafka /opt/rdkafka /opt/rdkafka
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir --no-binary confluent-kafka -r requirements.txt
+# Bibliotecas da interface web, versões fixadas e verificadas por SHA-256 (funciona offline após o build)
+COPY vendor.sha256 /tmp/vendor.sha256
+RUN set -eu; mkdir -p /app/vendor/katex && cd /app/vendor \
+ && curl -fsSL -o purify.min.js https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js \
+ && curl -fsSL -o marked.min.js https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js \
+ && curl -fsSL -o mermaid.min.js https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js \
+ && curl -fsSL -o /tmp/katex.tgz https://registry.npmjs.org/katex/-/katex-0.16.9.tgz \
+ && sha256sum -c /tmp/vendor.sha256 \
+ && tar -xzf /tmp/katex.tgz -C /tmp \
+ && cp -r /tmp/package/dist/katex.min.js /tmp/package/dist/katex.min.css /tmp/package/dist/fonts \
+          /tmp/package/dist/contrib/auto-render.min.js katex/ \
+ && rm -rf /tmp/katex.tgz /tmp/package /tmp/vendor.sha256
 RUN useradd -u 1000 -m app && mkdir -p /dados && chown app:app /dados
+COPY --chown=app:app infra/certs ./certs
 COPY --chown=app:app enade ./enade
 COPY --chown=app:app testes ./testes
 USER app
+EXPOSE 8000 8001
 CMD ["python", "-m", "enade.api"]

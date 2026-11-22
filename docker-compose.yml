@@ -13,13 +13,20 @@ x-app: &app
     context: ./codigo
     dockerfile: Dockerfile
   image: enade-app:1.0
-  env_file: .env
+  # Sem env_file: cada serviço recebe só os segredos de que precisa (menor privilégio).
   environment: &app-env
     KRB5_CONFIG: /etc/krb5.conf
+    PYTHONPATH: /app
     KAFKA_BOOTSTRAP: kafka.enade.local:9092
+    KAFKA_TOPIC_QUESTOES: ${KAFKA_TOPIC_QUESTOES:-enade.questoes.v1}
+    KAFKA_TOPIC_DLQ: ${KAFKA_TOPIC_DLQ:-enade.questoes.dlq}
+    KAFKA_GROUP_INDEXER: ${KAFKA_GROUP_INDEXER:-enade-indexer}
     ES_URL: http://elasticsearch.enade.local:9200
     REDIS_HOST: redis.enade.local
+    REDIS_PASSWORD: ${REDIS_PASSWORD}
     LDAP_URL: ldap://ldap.enade.local:389
+    CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-300}
+    SESSION_TTL_SECONDS: ${SESSION_TTL_SECONDS:-3600}
   networks: [enade-net]
   restart: unless-stopped
 
@@ -136,8 +143,10 @@ services:
   kafka-setup:
     image: apache/kafka:3.9.1
     entrypoint: ["/bin/bash", "/etc/kafka/custom/setup.sh"]
-    env_file: .env
     environment:
+      KAFKA_TOPIC_QUESTOES: ${KAFKA_TOPIC_QUESTOES:-enade.questoes.v1}
+      KAFKA_TOPIC_DLQ: ${KAFKA_TOPIC_DLQ:-enade.questoes.dlq}
+      KAFKA_GROUP_INDEXER: ${KAFKA_GROUP_INDEXER:-enade-indexer}
       KAFKA_OPTS: -Djava.security.krb5.conf=/etc/krb5.conf
     volumes:
       - *krb5-conf
@@ -207,11 +216,104 @@ services:
       retries: 20
     restart: unless-stopped
 
+  # ---------------------------------------------------------------- Bootstrap do Elasticsearch (job)
+  es-setup:
+    <<: *app
+    command: ["python", "-m", "enade.setup_es"]
+    environment:
+      <<: *app-env
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD}
+    depends_on:
+      elasticsearch: { condition: service_healthy }
+    restart: "no"
+
+  # ---------------------------------------------------------------- Consumidor / indexador
+  indexer:
+    <<: *app
+    command: ["python", "-m", "enade.indexer"]
+    environment:
+      <<: *app-env
+      KRB5_PRINCIPAL: indexer@ENADE.LOCAL
+      KRB5_CLIENT_KTNAME: /keytabs/indexer.keytab
+    volumes:
+      - *krb5-conf
+      - type: volume
+        source: keytabs
+        target: /keytabs
+        read_only: true
+        volume: { subpath: indexer }
+    depends_on:
+      kafka: { condition: service_healthy }
+      elasticsearch: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      es-setup: { condition: service_completed_successfully }
+      kafka-setup: { condition: service_completed_successfully }
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8001/metrics | grep -q enade_indexer_docs_total"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+
+  # ---------------------------------------------------------------- API REST + interface web
+  api:
+    <<: *app
+    command: ["python", "-m", "enade.api"]
+    environment:
+      <<: *app-env
+      KRB5_PRINCIPAL: api@ENADE.LOCAL
+      KRB5_CLIENT_KTNAME: /keytabs/api.keytab
+      LDAP_READONLY_PASSWORD: ${LDAP_READONLY_PASSWORD}
+    volumes:
+      - *krb5-conf
+      - acervo:/dados:ro
+      - type: volume
+        source: keytabs
+        target: /keytabs
+        read_only: true
+        volume: { subpath: api }
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      elasticsearch: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      ldap: { condition: service_healthy }
+      kafka: { condition: service_healthy }
+      es-setup: { condition: service_completed_successfully }
+      ldap-setup: { condition: service_completed_successfully }
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8000/health/live >/dev/null"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+  # ---------------------------------------------------------------- Ingestão (job sob demanda)
+  # docker compose run --rm ingestor python -m enade.coleta --anos 2023
+  # docker compose run --rm ingestor python -m enade.produtor --anos 2023
+  ingestor:
+    <<: *app
+    profiles: ["ingestao"]
+    environment:
+      <<: *app-env
+      KRB5_PRINCIPAL: ingestor@ENADE.LOCAL
+      KRB5_CLIENT_KTNAME: /keytabs/ingestor.keytab
+    command: ["python", "-m", "enade.produtor", "--help"]
+    volumes:
+      - *krb5-conf
+      - acervo:/dados
+      - ./dados/locais:/dados/locais:ro
+      - type: volume
+        source: keytabs
+        target: /keytabs
+        read_only: true
+        volume: { subpath: ingestor }
+    restart: "no"
+
 networks:
   enade-net:
     name: enade-net
 
 volumes:
+  acervo:
   kdc-data:
   keytabs:
   ldap-data:

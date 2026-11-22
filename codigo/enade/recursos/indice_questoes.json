@@ -1,0 +1,118 @@
+{
+  "settings": {
+    "number_of_shards": 1,
+    "number_of_replicas": 0,
+    "refresh_interval": "1s",
+    "analysis": {
+      "filter": {
+        "pt_stop": { "type": "stop", "stopwords": "_brazilian_" },
+        "pt_stem": { "type": "stemmer", "language": "light_portuguese" },
+        "pt_sinonimos": {
+          "type": "synonym_graph",
+          "synonyms_path": "analysis/sinonimos_ptbr.txt",
+          "updateable": true,
+          "lenient": true
+        }
+      },
+      "analyzer": {
+        "pt_indice": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["lowercase", "pt_stop", "asciifolding", "pt_stem"]
+        },
+        "pt_busca": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["lowercase", "pt_stop", "asciifolding", "pt_sinonimos", "pt_stem"]
+        }
+      },
+      "normalizer": {
+        "folding": { "type": "custom", "filter": ["lowercase", "asciifolding"] }
+      }
+    }
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "id": { "type": "keyword" },
+      "schema_versao": { "type": "integer" },
+      "ano": { "type": "integer" },
+      "area": { "type": "keyword" },
+      "curso": { "type": "text", "analyzer": "pt_indice", "fields": { "kw": { "type": "keyword" } } },
+      "curso_slug": { "type": "keyword" },
+      "grau": { "type": "keyword" },
+      "componente": { "type": "keyword" },
+      "tipo_questao": { "type": "keyword" },
+      "numero": { "type": "integer" },
+      "rotulo": { "type": "keyword", "index": false },
+      "texto_base": {
+        "type": "text", "analyzer": "pt_indice", "search_analyzer": "pt_busca",
+        "term_vector": "with_positions_offsets", "copy_to": "texto_completo"
+      },
+      "enunciado": {
+        "type": "text", "analyzer": "pt_indice", "search_analyzer": "pt_busca",
+        "term_vector": "with_positions_offsets", "copy_to": "texto_completo"
+      },
+      "alternativas": {
+        "properties": {
+          "letra": { "type": "keyword", "index": false },
+          "texto": {
+            "type": "text", "analyzer": "pt_indice", "search_analyzer": "pt_busca",
+            "term_vector": "with_positions_offsets", "copy_to": "texto_completo"
+          },
+          "texto_md": { "type": "text", "index": false }
+        }
+      },
+      "texto_completo": { "type": "text", "analyzer": "pt_indice", "search_analyzer": "pt_busca" },
+      "texto_base_md": { "type": "text", "index": false },
+      "enunciado_md": { "type": "text", "index": false },
+      "gabarito": { "type": "keyword" },
+      "gabarito_status": { "type": "keyword" },
+      "anulada": { "type": "boolean" },
+      "padrao_resposta": { "type": "text", "index": false },
+      "competencias": { "type": "keyword" },
+      "competencias_ids": { "type": "keyword" },
+      "objetos_conhecimento": { "type": "keyword" },
+      "objetos_ids": { "type": "keyword" },
+      "classificacao_metodo": { "type": "keyword", "index": false },
+      "midia": {
+        "properties": {
+          "tem_formula": { "type": "boolean" },
+          "formulas_latex": { "type": "keyword", "index": false },
+          "tabelas_md": { "type": "text", "index": false },
+          "figuras": { "type": "object", "enabled": false },
+          "mermaid": { "type": "text", "index": false },
+          "pendencias": { "type": "keyword" }
+        }
+      },
+      "origem": {
+        "properties": {
+          "pdf": { "type": "keyword" },
+          "url": { "type": "keyword", "index": false },
+          "paginas": { "type": "integer" },
+          "sha256": { "type": "keyword" },
+          "gabarito_pdf": { "type": "keyword" },
+          "gabarito_url": { "type": "keyword", "index": false },
+          "padrao_resposta_pdf": { "type": "keyword" }
+        }
+      },
+      "grupo_equivalencia": { "type": "keyword" },
+      "extracao": {
+        "properties": {
+          "versao": { "type": "keyword" },
+          "confianca": { "type": "keyword" },
+          "alertas": { "type": "keyword" },
+          "extraido_em": { "type": "date" }
+        }
+      },
+      "kafka": {
+        "properties": {
+          "topico": { "type": "keyword" },
+          "particao": { "type": "integer" },
+          "offset": { "type": "long" }
+        }
+      },
+      "indexado_em": { "type": "date" }
+    }
+  }
+}
