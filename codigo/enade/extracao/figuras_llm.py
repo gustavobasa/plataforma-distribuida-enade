@@ -35,6 +35,7 @@ from ..config import CFG
 BASE = Path(CFG.dados_dir)
 DIR_LLM = BASE / "llm"
 RESULTADOS = DIR_LLM / "resultados.jsonl"
+RESULTADOS_VETOR = BASE / "figuras_conv" / "vetorial.jsonl"
 VALIDACAO = DIR_LLM / "mmd" / "validacao.txt"
 MODELO_PADRAO = "claude-opus-5-5"
 # US$ por milhão de tokens (preço padrão da API; o Batches cobra 50%). Fonte: tabela de modelos da Anthropic.
@@ -193,14 +194,17 @@ def coletar(lote_id: str, intervalo: int = 30) -> None:
 
 
 def _resultados() -> dict[str, dict]:
-    if not RESULTADOS.exists():
-        return {}
-    out = {}
-    for l in RESULTADOS.read_text(encoding="utf-8").splitlines():
-        if l.strip():
-            r = json.loads(l)
-            if "conversao" in r or r["arquivo"] not in out:
-                out[r["arquivo"]] = r  # o último resultado bem-sucedido prevalece
+    """Conversões disponíveis por figura: primeiro a determinística (vetores do PDF, custo zero,
+    enade.extracao.figuras_vetor); uma conversão por LLM bem-sucedida, se existir, tem prioridade."""
+    out: dict[str, dict] = {}
+    for arq in (RESULTADOS_VETOR, RESULTADOS):
+        if not arq.exists():
+            continue
+        for l in arq.read_text(encoding="utf-8").splitlines():
+            if l.strip():
+                r = json.loads(l)
+                if "conversao" in r or r["arquivo"] not in out:
+                    out[r["arquivo"]] = r  # o último resultado bem-sucedido prevalece
     return out
 
 
@@ -250,11 +254,14 @@ def aplicar_no_documento(doc: dict, resultados: dict[str, dict], validos: dict[s
         mudou = True
     if mudou:
         midia["mermaid"] = mermaids
-        midia["descricao_figuras"] = "\n\n".join(t for t in textos if t)
-        convertidas = sum(1 for f in midia["figuras"] if f.get("classe_llm"))
-        midia["pendencias"] = [p for p in midia["pendencias"] if "Mermaid" not in p]
-        if convertidas < len([f for f in midia["figuras"] if f.get("arquivo")]):
-            midia["pendencias"].append("há figuras ainda não convertidas pelo LLM")
+        midia["descricao_figuras"] = "\n\n".join(t for f, t in zip(
+            [f for f in midia["figuras"] if f.get("classe_llm")], textos) if t and f.get("classe_llm") != "sem_texto")
+        com_arquivo = [f for f in midia["figuras"] if f.get("arquivo")]
+        sem_repr = [f for f in com_arquivo if not f.get("classe_llm") or f.get("classe_llm") == "sem_texto"]
+        midia["pendencias"] = [p for p in midia["pendencias"] if "Mermaid" not in p and "figura" not in p]
+        if sem_repr:
+            midia["pendencias"].append(f"{len(sem_repr)} de {len(com_arquivo)} figura(s) sem representação textual "
+                                       f"(imagem raster ou desenho sem texto extraível); preservada(s) como PNG")
     return mudou
 
 

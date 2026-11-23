@@ -105,9 +105,11 @@ docs/  evidencias/  relatorio/
 
 ## Limitações conhecidas (honestas)
 - **Anos coletados:** 2021–2023 (84 provas). Edições 2004–2019 e 2025 não foram processadas.
-- **Mermaid:** figuras e diagramas são preservados como imagens PNG recortadas do PDF; não há conversão para Mermaid
-  (exigiria LLM, que não foi usado). Fórmulas viram LaTeX apenas quando o PDF tem texto (índices, expoentes, símbolos);
-  fórmulas desenhadas como imagem ficam na figura.
+- **Figuras (RF04):** convertidas sem LLM a partir dos vetores do PDF (`python -m enade.extracao.figuras_vetor`,
+  depois `bash scripts/validar-mermaid.sh` e `python -m enade.extracao.figuras_llm aplicar`): 44 diagramas viram
+  Mermaid (todos compilam) e 755 figuras viram Markdown com seus textos. Imagens raster sem texto (579) ficam só
+  como PNG. Fórmulas viram LaTeX quando o PDF tem texto (índices, expoentes, símbolos). Há um módulo opcional
+  com LLM (`enade.extracao.figuras_llm`, pago, exige `ANTHROPIC_API_KEY`) que não foi executado.
 - **Competências por questão** são inferidas por classificador léxico (o INEP não publica esse vínculo); a acurácia
   ainda não foi medida.
 - **Kerberos no Elasticsearch** usa a licença *trial* (30 dias). Depois disso o realm Kerberos para de funcionar.

@@ -11,7 +11,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 | RF01 | Coleta do acervo | 🟠 | `evidencias/faseB/01*-coleta*.log`; `enade/coleta.py` | 252 PDFs oficiais (84 provas + 84 gabaritos + 84 padrões de resposta) de **2021, 2022 e 2023**, com URL, tamanho e SHA-256. Anos 2004–2019 e 2025 não coletados (layouts diferentes / escopo de laboratório). PDFs locais: `python -m enade.extracao --local`. |
 | RF02 | Segmentação | ✅ | `evidencias/faseB/03-resumo-extracao.txt`; `testes/test_unitarios.py` | 3.360 questões (40 por prova × 84). Texto-base, enunciado, alternativas e gabarito separados. Qualidade humana ainda não medida (RNF03). |
 | RF03 | Tipos de questão / anuladas | ✅ | resumo de extração; teste `test_gabarito_regex` | 3.024 objetivas, 336 discursivas; 14 anuladas sinalizadas (`anulada=true`, não descartadas). |
-| RF04 | Mídia não textual | 🟠 | resumo de extração; tela de detalhe | 281 questões com fórmulas em LaTeX (índices/expoentes e símbolos), 280 com tabelas em Markdown, 1.192 com figuras recortadas (PNG). **Diagramas não convertidos para Mermaid** (exigiria LLM; não usado). |
+| RF04 | Mídia não textual | 🟠 | `evidencias/faseB/05-figuras-vetor.txt`; `scripts/validar-mermaid.sh`; detalhe da questão na interface | Fórmulas → LaTeX (281 questões), tabelas → Markdown (280). Figuras (1.540) sem LLM, a partir dos vetores do PDF: 44 diagramas → Mermaid (44/44 compilam no mermaid-cli 10.9.1), 755 → Markdown com os textos; 741 sem texto extraível (579 imagens raster) ficam só como PNG. Acurácia semântica dos diagramas não medida por humano. Módulo com LLM implementado, não executado (custo). |
 | RF05 | Metadados mínimos | 🟠 | `recursos/formacao_geral_2023.yaml`; teste `test_classificador_temas` | Área (mapeamento próprio), curso, ano, FG/CE (capa/seção da prova). Competências e objetos de conhecimento da Portaria Inep 289/2023 atribuídos por **classificador léxico (inferido)**; acurácia não medida. |
 | RF06 | Rastreabilidade | ✅ | teste `test_rastreabilidade` | `origem.pdf`, `origem.url`, `origem.paginas`, `origem.sha256`, PDF do gabarito. |
 | RF07 | Publicação Kafka | ✅ | `evidencias/faseC/01-ingestao-inicial.log` | Produtor idempotente (`acks=all`), chave = id, 3.360 msgs em 3,2 s (1.046 msg/s). |
@@ -60,7 +60,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 
 ## Pendências e riscos
 - RNF03: validação manual de 60 questões (ação do usuário, ~40 min na tela `/validacao`).
-- RF04: conversão de diagramas para Mermaid não implementada (sem LLM).
+- RF04: imagens raster sem texto (579) não têm representação textual (exigiriam OCR/LLM); fidelidade dos 44 diagramas a medir.
 - RF05: acurácia do classificador de competências não medida (poderia entrar na validação manual).
 - Licença trial do Elasticsearch expira em 30 dias (realm Kerberos).
 - Relatório SBC gerado (`relatorio/relatorio.pdf`, 8 páginas); falta preencher nome/instituição do autor e incluir a taxa de acerto manual (RNF03).

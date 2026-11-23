@@ -87,3 +87,15 @@ Formato: decisão — justificativa — trade-off. Atualizado a cada fase.
 - Os contêineres não recebem o `.env` inteiro: cada serviço recebe só as variáveis de que precisa
   (ex.: só o `es-setup` conhece `ELASTIC_PASSWORD`; só a API conhece a senha da conta LDAP somente leitura).
 - Cada serviço monta apenas o próprio subdiretório de keytab (volume `keytabs` com `subpath`).
+
+## ADR-17 — Figuras: conversão determinística dos vetores do PDF (sem LLM)
+- **Decisão:** reconstruir diagramas a partir dos objetos vetoriais (formas com texto = nós; linhas, curvas e hastes
+  unidas por extremidades = ligações; triângulos pequenos preenchidos = pontas de seta) e gerar `flowchart` Mermaid;
+  demais figuras recebem seus textos em Markdown (pesquisáveis).
+- **Justificativa:** o RF04 admite LLM apenas "se preciso"; o usuário optou por custo zero. É reprodutível e roda em
+  ~90 s para as 1.540 figuras.
+- **Validação:** todo Mermaid é compilado no mermaid-cli 10.9.1 (44/44 OK); aceite exige maioria de nós rotulados e
+  ligados, o que reduz falsos positivos (ilustrações com círculos, colunas empilhadas).
+- **Trade-off:** imagens raster (579 sem texto) não são convertidas; circuitos e gráficos viram só texto; a fidelidade
+  semântica depende de heurísticas (há falsos positivos em listas com colchetes). Um módulo com LLM (Claude via
+  Batches) ficou implementado como alternativa paga, não executado.

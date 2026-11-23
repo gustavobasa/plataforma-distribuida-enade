@@ -1,0 +1,10 @@
+# Conversão determinística das figuras (enade.extracao.figuras_vetor, método deterministico-vetorial-v1)
+figuras: 1540
+  imagem    -> diagrama     : 2
+  imagem    -> sem_texto    : 579
+  imagem    -> texto_figura : 73
+  vetorial  -> diagrama     : 42
+  vetorial  -> sem_texto    : 162
+  vetorial  -> texto_figura : 682
+diagramas: 44 | arestas totais: 308 | com seta: 241
+validação de sintaxe (mermaid-cli 10.9.1): 44 OK, 0 ERRO

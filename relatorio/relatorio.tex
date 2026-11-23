@@ -133,8 +133,20 @@ taxonomia oficial da Portaria Inep 289/2023 (8 competências e 13 temas de Forma
 \cite{inep2023portaria289} e um classificador léxico explícito, marcado no documento como \textit{inferido}.
 A mesma taxonomia é aplicada às três edições para permitir séries temporais comparáveis.
 
-\textbf{LLM.} Nenhum LLM foi usado no pipeline de dados (custo zero e resultado reprodutível). Consequência:
-diagramas não são convertidos para Mermaid; ficam como imagem (RF04 parcial).
+\textbf{Figuras $\to$ Mermaid/Markdown sem LLM (RF04).} O enunciado admite LLM ``se preciso''; optamos por uma
+conversão determinística, de custo zero e reprodutível, a partir dos objetos vetoriais do PDF. Formas fechadas com
+texto viram nós (retângulos, cantos arredondados, elipses, losangos e triângulos grandes); linhas, curvas e
+hastes desenhadas como polígonos finos são unidas em ``fios'' por extremidades próximas (exceto quando o encontro
+ocorre sobre um nó, que é a própria junção); pequenos triângulos preenchidos são pontas de seta e definem o destino,
+e uma ponta sem haste visível procura a origem na direção oposta. Uma figura só é aceita como diagrama se a maioria
+dos nós tiver rótulo e participar de ligações; o resultado é um \cod{flowchart} Mermaid compilado no
+\cod{mermaid-cli} 10.9.1, a mesma versão que a interface usa. As demais figuras recebem em Markdown os textos que
+contêm, e esse texto passa a ser pesquisável. Das 1.540 figuras, 44 viraram diagramas Mermaid (308 ligações,
+241 com seta; \textbf{44 de 44 compilam}), 755 viraram Markdown e 741 não têm texto extraível (579 delas são
+imagens raster, que exigiriam OCR ou LLM) e permanecem como PNG. A correção semântica dos diagramas ainda não foi
+medida por amostra humana; na inspeção durante o desenvolvimento, um fluxograma (7/7 ligações), uma árvore (9/9) e
+uma rede PERT (13/13, com direções) saíram corretos, e houve falsos positivos em listas com colchetes. Um módulo
+alternativo com LLM (Claude via Batches) foi implementado, mas não executado, por decisão de custo.
 
 \begin{table}[ht]
 \centering
@@ -356,8 +368,8 @@ acervo inteiro; os indicadores agregados (grupos de FG por ano, alertas por prov
 encontrá-los. (4) \textbf{Ordem dos filtros} do analisador muda a semântica dos sinônimos. (5) O gargalo da
 ingestão é a extração (um núcleo, $\approx$8\,s por prova), não o Kafka nem o Elasticsearch; ela poderia ser
 paralelizada por arquivo. (6) \textbf{Limitações:} sem TLS interno (Kerberos autentica, mas não cifra), licença
-\textit{trial} do realm Kerberos do Elasticsearch (30 dias), um nó por componente, diagramas sem Mermaid e
-competências inferidas sem acurácia medida.
+\textit{trial} do realm Kerberos do Elasticsearch (30 dias), um nó por componente, imagens raster sem conversão textual (sem OCR/LLM), acurácia semântica dos
+diagramas e das competências inferidas ainda não medida.
 
 \section{Conclusão}
 
@@ -370,7 +382,7 @@ competências inferidas sem acurácia medida.
 Situação & Requisitos \\
 \midrule
 Concluído e testado & RF02, RF03, RF06--RF25; RNF01, RNF02, RNF04, RNF05, RNF06, RNF08 \\
-Parcial & RF01 (só 2021--2023), RF04 (diagramas sem Mermaid), RF05 (competências inferidas, sem acurácia medida);
+Parcial & RF01 (só 2021--2023), RF04 (Mermaid só para diagramas vetoriais; 579 imagens raster sem texto), RF05 (competências inferidas, sem acurácia medida);
           RNF07 (roteiro não repetido em máquina limpa) \\
 Pendente & RNF03 (validação manual da amostra de 60 questões) \\
 \bottomrule
@@ -382,7 +394,7 @@ web com dados reais e rastreáveis do INEP, autenticação mútua Kerberos entre
 negação 403 verificada no backend. Medimos latência p95 de 19,8\,ms (sem cache) e 6,6\,ms (com cache), vazão de
 centenas de documentos por segundo e ausência de perda/duplicação sob falhas induzidas. Ficam como trabalhos
 futuros: concluir a validação manual da extração, ampliar o acervo para todas as edições, TLS interno,
-conversão de diagramas assistida por LLM com validação e um cluster multinó.
+OCR ou LLM para as imagens raster e um cluster multinó.
 
 \section{Divisão de Tarefas}
 

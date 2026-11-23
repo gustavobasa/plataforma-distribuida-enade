@@ -211,12 +211,15 @@ async function abrirDetalhe(id) {
       img.src = `/api/figuras/${f.arquivo}`; img.loading = "lazy";
       img.alt = f.descricao_md ? `Figura: ${f.descricao_md.slice(0, 300)}` : `Figura recortada da página ${f.pagina} do PDF original`;
       corpo.appendChild(img);
-      if (f.classe_llm) {
+      if (f.classe_llm && f.classe_llm !== "sem_texto") {
         // representação textual gerada por LLM (Mermaid validado no mermaid-cli, LaTeX ou Markdown)
         const det = document.createElement("details");
         det.className = "conv-llm"; det.open = Boolean(f.mermaid);
         const resumo = document.createElement("summary");
-        resumo.textContent = `Versão textual da figura (${f.classe_llm}; gerada por ${f.modelo_llm}${f.legivel === false ? "; figura com trechos ilegíveis" : ""})`;
+        const origemConv = String(f.modelo_llm || "").startsWith("deterministico")
+          ? "conversão automática dos vetores do PDF (heurística)" : `gerada por ${f.modelo_llm}`;
+        const classe = { diagrama: "diagrama → Mermaid", texto_figura: "textos da figura → Markdown" }[f.classe_llm] || f.classe_llm;
+        resumo.textContent = `Versão textual da figura (${classe}; ${origemConv}${f.legivel === false ? "; trechos ilegíveis" : ""})`;
         det.appendChild(resumo);
         if (f.mermaid) { const d = document.createElement("pre"); d.className = "mermaid"; d.textContent = f.mermaid; det.appendChild(d); }
         if (f.latex) det.appendChild(renderMarkdown(`$$${f.latex}$$`));
