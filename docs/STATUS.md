@@ -40,7 +40,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 |---|---|---|---|---|
 | RNF01 | Latência p50/p95/p99 | ✅ | `evidencias/faseF/k6-resumo.json`, `k6-saida.txt` | Sem cache: p50 14,4 ms · p95 19,8 ms · p99 24,7 ms. Com cache: p50 4,1 ms · p95 6,6 ms · p99 11,7 ms (20 req/s, 60 s cada, 0 erros). |
 | RNF02 | Vazão de ingestão | ✅ | `evidencias/faseF/ingestao-*.csv/log` | Produtor 1.046–2.645 msg/s; indexer ≈ 313 docs/s em processamento (3.360 docs em ~9 s); extração ≈ 7,6 s por prova (641 s para 84). |
-| RNF03 | Qualidade da extração (≥ 50) | 🟡 | `dados/validacao/amostra.json`; tela `/validacao` | Amostra estratificada de 60 questões sorteada; **validação humana pendente** (precisa do usuário). |
+| RNF03 | Qualidade da extração (≥ 50) | ✅ | `evidencias/faseB/06-validacao-manual.csv`; relatório §8 | Validação humana de 60 questões (amostra estratificada, semente 2026), extrator v1.0: segmentação 98,3%, texto 71,7%, alternativas 98,1%, gabarito 98,1%, metadados 98,3%, mídia 95,2%; 43/60 (71,7%) sem nenhum erro. Defeito principal (texto-base x enunciado) corrigido na v1.1 (16/17 casos); a v1.1 ainda não foi revalidada por humano. |
 | RNF04 | Falha induzida | ✅ | `evidencias/faseF/falha-*.log` | Zero perda e zero duplicata. |
 | RNF05 | Escalabilidade justificada | ✅ | `docs/DECISOES-ARQUITETURA.md` (ADR-01/03/04) | Discussão no relatório. |
 | RNF06 | Health/logs/métricas | ✅ | `/health/ready`, `/metrics`, Prometheus `:9090`, logs JSON | |
@@ -59,7 +59,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 9. Nome do curso capturado de código de barras → nova heurística de cabeçalho/rodapé.
 
 ## Pendências e riscos
-- RNF03: validação manual de 60 questões (ação do usuário, ~40 min na tela `/validacao`).
+- RNF03: revalidar por humano as 17 questões com erro de Texto na v1.1 (opcional; a métrica oficial é a da v1.0).
 - RF04: imagens raster sem texto (579) não têm representação textual (exigiriam OCR/LLM); fidelidade dos 44 diagramas a medir.
 - RF05: acurácia do classificador de competências não medida (poderia entrar na validação manual).
 - Licença trial do Elasticsearch expira em 30 dias (realm Kerberos).

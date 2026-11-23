@@ -284,11 +284,40 @@ cada serviço; acervo de 3.360 documentos. Os números abaixo vêm dos arquivos 
 
 \textbf{Qualidade da extração (RNF03).} Indicadores estruturais automáticos: 40 questões por prova em todas as
 84 provas, 0 documentos inválidos, 3.318 questões (98,8\%) sem alertas, 29 com quatro alternativas
-(Medicina 2023, formato real) e 11 (0,3\%) sem alternativas detectadas. Esses indicadores \emph{não}
-substituem a validação humana exigida: foi sorteada uma amostra estratificada e reprodutível de 60 questões
-(semente 2026) e construída a tela \cod{/validacao}, que mostra a página original do PDF ao lado do conteúdo
-extraído com seis critérios; \textbf{a taxa de acerto manual ainda não foi medida} e será incluída quando a
-revisão humana for concluída.
+(Medicina 2023, formato real) e 11 (0,3\%) sem alternativas detectadas. Esses indicadores não substituem a
+validação humana: uma amostra estratificada por ano, componente e tipo (60 questões, semente 2026) foi revisada
+pelo autor na tela \cod{/validacao}, que mostra a página original do PDF ao lado do conteúdo extraído
+(Tabela~\ref{tab:validacao}).
+
+\begin{table}[ht]
+\centering
+\caption{Validação manual da extração v1.0 (60 questões; N/A excluídos do denominador).}\label{tab:validacao}
+\small
+\begin{tabular}{lrr}
+\toprule
+Critério & Corretas / avaliadas & Taxa de acerto \\
+\midrule
+Segmentação (limites da questão) & 59 / 60 & 98,3\% \\
+Texto (texto-base e enunciado) & 43 / 60 & 71,7\% \\
+Alternativas & 52 / 53 & 98,1\% \\
+Gabarito (comparado ao PDF oficial) & 52 / 53 & 98,1\% \\
+Metadados (FG/CE, tipo, número, páginas) & 59 / 60 & 98,3\% \\
+Mídia (fórmulas, tabelas, figuras) & 20 / 21 & 95,2\% \\
+\midrule
+Questões sem nenhum erro & 43 / 60 & 71,7\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+O critério mais fraco foi \emph{Texto}: 16 das 17 falhas apontavam o mesmo defeito, texto-base misturado ao
+enunciado. A v1.0 só separava o texto-base na última referência bibliográfica, e as situações-problema escritas
+pelo próprio INEP não têm citação. Uma questão (Comunicação Social 2022, Q25) foi registrada como ``não
+apareceu'' em todos os critérios; o documento estava íntegro no índice e não foi possível reproduzir a falha,
+então a contagem foi mantida como o avaliador registrou. Com esse diagnóstico, a versão 1.1 passou a iniciar o
+enunciado no primeiro parágrafo de comando (``Considerando…'', ``Com base…'', ``Assinale…'') e a tratar notas de
+rodapé como parte do texto-base: 16 das 17 questões marcadas passaram a ter o texto-base separado, e no acervo
+só 81 de 3.360 questões (2,4\%) ficaram sem texto-base. A taxa da Tabela~\ref{tab:validacao} refere-se à v1.0;
+a v1.1 ainda não foi revalidada por humano.
 
 \textbf{Vazão de ingestão e lag (RNF02).} A extração levou 641--728\,s para as 84 provas (7,6--8,7\,s por
 prova, um núcleo). O produtor publicou as 3.360 mensagens em 3,2\,s (1.046\,msg/s; 2.645\,msg/s com conexões
@@ -381,10 +410,9 @@ diagramas e das competências inferidas ainda não medida.
 \toprule
 Situação & Requisitos \\
 \midrule
-Concluído e testado & RF02, RF03, RF06--RF25; RNF01, RNF02, RNF04, RNF05, RNF06, RNF08 \\
+Concluído e testado & RF02, RF03, RF06--RF25; RNF01--RNF06, RNF08 \\
 Parcial & RF01 (só 2021--2023), RF04 (Mermaid só para diagramas vetoriais; 579 imagens raster sem texto), RF05 (competências inferidas, sem acurácia medida);
           RNF07 (roteiro não repetido em máquina limpa) \\
-Pendente & RNF03 (validação manual da amostra de 60 questões) \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -393,7 +421,7 @@ A plataforma cumpre o fluxo completo PDF $\to$ extração $\to$ Kafka $\to$ Elas
 web com dados reais e rastreáveis do INEP, autenticação mútua Kerberos entre serviços, login LDAP e perfis com
 negação 403 verificada no backend. Medimos latência p95 de 19,8\,ms (sem cache) e 6,6\,ms (com cache), vazão de
 centenas de documentos por segundo e ausência de perda/duplicação sob falhas induzidas. Ficam como trabalhos
-futuros: concluir a validação manual da extração, ampliar o acervo para todas as edições, TLS interno,
+futuros: revalidar por humano a extração v1.1, ampliar o acervo para todas as edições, TLS interno,
 OCR ou LLM para as imagens raster e um cluster multinó.
 
 \section{Divisão de Tarefas}

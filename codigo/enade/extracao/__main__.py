@@ -26,7 +26,7 @@ from .metadados import area_do_curso, classificar, grau_do_curso
 from .segmentador import extrair_prova
 
 LOG = obter_logger("extracao")
-VERSAO = "1.0"
+VERSAO = "1.1"  # 1.1: separação texto-base x enunciado por comando (após a validação manual da 1.0)
 
 
 _CACHE_LLM: tuple | None = None

@@ -1,0 +1,61 @@
+id,segmentacao,texto,alternativas,gabarito,metadados,midia,observacao,avaliador,em
+5e1b2afd8ac923ebc0e2d7b2,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:00:36Z
+b2635a1ee6bfb68fa477ce0c,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:02:04Z
+2a50eef56458729945a43267,ok,ok,na,na,ok,na,,professor1,2026-11-23T02:02:58Z
+fe17a55fabe288b2971abefc,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:03:28Z
+a2126d8db2cf7641006d40d4,ok,erro,ok,ok,ok,na,Não identificou o texto base e salvou tudo como enunciado.,professor1,2026-11-23T02:07:17Z
+78fbf540a3fb97da14e25002,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:07:49Z
+cc289805776ce96ec24855e7,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:08:47Z
+c60e11fa24a66753f49e735e,ok,ok,na,na,ok,ok,,professor1,2026-11-23T02:09:30Z
+e50e6feb197cc7e3f1457bc0,ok,erro,ok,ok,ok,na,"Texto base não reconhecido, ficou junto ao enunciado.",professor1,2026-11-23T02:10:47Z
+b9ee444dcba4f5dd3fa3b6e7,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:11:15Z
+8210e60718b3ec94c311b1d4,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:11:42Z
+eaccc5b7547fc3f2ad74137f,ok,erro,ok,ok,ok,ok,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado (comando direto apenas no último parágrafo).,professor1,2026-11-23T02:12:45Z
+88ebf2cbca30f8cb5b239541,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:13:09Z
+4382e3d1f577943d088d0b82,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:13:30Z
+243d0d3b33fcc2ac7882b4dd,ok,erro,ok,ok,ok,na,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado (comando direto apenas no último parágrafo).,professor1,2026-11-23T02:14:01Z
+cda46eb9c1251563c891af50,ok,erro,ok,ok,ok,na,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado (comando direto apenas no último parágrafo).,professor1,2026-11-23T02:14:30Z
+9dfa58f7f3a7670cf1c00283,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:14:57Z
+b54d5a65653aac3ebfd19150,ok,erro,ok,ok,ok,ok,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado (comando direto apenas no último parágrafo).,professor1,2026-11-23T02:15:23Z
+729b337dcee9ed99fb42163c,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:15:50Z
+6e4ada5b27ad9c09de5a909c,ok,erro,ok,ok,ok,na,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado (comando direto apenas no último parágrafo).,professor1,2026-11-23T02:16:30Z
+ef4942bd5258841fa1760ee3,ok,erro,ok,ok,ok,na,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado (comando direto apenas no último parágrafo).,professor1,2026-11-23T02:17:01Z
+d06c9483ac0a05b367fd68ec,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:17:31Z
+fb205129b3960d4745e3e288,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:17:53Z
+b0960e7b119588960ccc8482,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:18:16Z
+d0ab8ab80091c14dd4b8142a,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:18:32Z
+91f7c170e655ae7863fe2853,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:18:48Z
+a9c91d3fc0e2d3e48ad0aad0,ok,erro,ok,ok,ok,na,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado (comando direto apenas no último parágrafo).,professor1,2026-11-23T02:19:07Z
+bdbfb1a6afd13945fbbb8164,ok,ok,na,na,ok,na,,professor1,2026-11-23T02:19:27Z
+f74c3e1eccafe1a6a2c2dade,ok,ok,na,na,ok,na,,professor1,2026-11-23T02:19:52Z
+5b71da1bf14abbb37560f424,ok,erro,ok,ok,ok,na,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado (comando direto apenas no último parágrafo).,professor1,2026-11-23T02:20:15Z
+afc930b10b017ef2afde760f,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:20:31Z
+a448625e142fc5c00053543f,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:20:48Z
+c97482f118da4aa81291bda1,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:21:07Z
+edd76baa3deecab23030eb0e,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:22:30Z
+47e116445c75cc631ea3d6af,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:22:43Z
+7aed4c8779f2d2e912293664,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:22:58Z
+b50d2e215622b6902baee82b,ok,erro,ok,ok,ok,ok,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado.,professor1,2026-11-23T02:23:54Z
+03dd79c5742b146bff0a25be,erro,erro,erro,erro,erro,erro,Questão não apareceu.,professor1,2026-11-23T02:24:28Z
+789e1dead2d0ae96a1c7f516,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:24:48Z
+28ae6e3c48a5273e92c61f4a,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:25:02Z
+cf397cfa2918bfa5ba28ed13,ok,ok,na,na,ok,na,,professor1,2026-11-23T02:25:22Z
+fd43c4d753589212d3ab1c4c,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:25:39Z
+5f1ee62133bc66a4e5be1f78,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:25:51Z
+20a7bd1eb6be1f55627949d3,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:26:05Z
+6f9a7e885426e00deb747f9a,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:26:24Z
+bc0c3a6645018fd836eec1f0,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:26:38Z
+9659db782426b9b6b97be749,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:26:57Z
+c39e7456480a69da8d17fb6d,ok,erro,ok,ok,ok,na,Enunciado não foi reconhecido.,professor1,2026-11-23T02:27:40Z
+ff37e72eaf70c4e6a1b2e4fd,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:28:04Z
+373ec4c15c23c009b9faba8e,ok,ok,na,na,ok,na,,professor1,2026-11-23T02:28:12Z
+57f77663d494067537836ee0,ok,erro,ok,ok,ok,ok,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado.,professor1,2026-11-23T02:28:34Z
+1c5580bc76acfc1281a34842,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:28:46Z
+1fc13729f09a8df4670789f6,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:28:58Z
+707d6d1d8632bb11831ba0d9,ok,erro,ok,ok,ok,na,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado.,professor1,2026-11-23T02:29:09Z
+ab8ae6e91229036af7d7961a,ok,ok,ok,ok,ok,na,,professor1,2026-11-23T02:29:22Z
+b0e11d4ab28dd058864c6b94,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:29:32Z
+007dc353ad39beb0e9291bfb,ok,ok,ok,ok,ok,ok,,professor1,2026-11-23T02:29:46Z
+1c29aed285966d37aa70c433,ok,erro,ok,ok,ok,na,,professor1,2026-11-23T02:30:04Z
+2ea53bf6641b06730935462f,ok,erro,ok,ok,ok,na,Nota de estrutura: Texto-base (contextualização e dados nos parágrafos iniciais) integrado ao enunciado.,professor1,2026-11-23T02:30:23Z
+6f3d1d837a1af60c377fb49c,ok,ok,na,na,ok,ok,,professor1,2026-11-23T02:30:41Z

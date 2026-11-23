@@ -31,6 +31,17 @@ RE_BARRAS = re.compile(r"^\*[A-Z0-9]+\*?$")
 RE_ALT = re.compile(r"^([A-E])(?:\s+(.*))?$")
 RE_CITACAO = re.compile(r"Dispon[ií]vel em|Acesso em|\(adaptado\)|^[A-ZÁÉÍÓÚÂÊÔÃÕÇ]{2,}[A-ZÁÉÍÓÚÂÊÔÃÕÇ\s]*,\s+[A-Z]")
 RE_ITEM = re.compile(r"^(?:[IVX]{1,4}\.|\d{1,2}[.)]|[a-z]\)|•|–|-)\s")
+# nota de rodapé de texto-base: "1 Bebop: gênero musical…", "* Cf. …"
+RE_RODAPE = re.compile(r"^(?:\d{1,2}|\*)\s*[A-ZÀ-Úa-zà-ú][^:]{0,40}:\s")
+# início de comando da questão (a partir daqui é enunciado)
+RE_COMANDO = re.compile(
+    r"^(?:Considerando|Com base|A partir d|Nesse contexto|Nessa situação|Nesse caso|Nesse sentido|"
+    r"Nessa perspectiva|Diante d|De acordo com|Tendo em vista|Acerca d|A respeito d|Em relação|Com relação|"
+    r"No que se refere|No que concerne|Quanto a|Assinale|Avalie|Julgue|Analise|Com referência|Levando em conta|"
+    r"Levando-se em conta|Em face d|Sob essa|Sob a perspectiva|"
+    r"Com o objetivo|Para responder)", re.I)
+RE_COMANDO_MEIO = re.compile(r"assinale|avalie as|julgue|permite concluir|é correto afirmar|pode-se afirmar|"
+                             r"conclui-se|é correto o que se afirma", re.I)
 
 
 @dataclass
@@ -304,13 +315,33 @@ def _separar(q: QuestaoBruta) -> QuestaoExtraida:
             corpo = linhas[: idx["A"]]
         else:
             alertas.append("alternativas_nao_detectadas")
-    # separação texto-base x enunciado: após a última linha de referência bibliográfica
+    # separação texto-base x enunciado (v1.1, revisada após a validação manual):
+    #  1) o texto-base vai, no mínimo, até a última referência bibliográfica ou nota de rodapé;
+    #  2) depois dela (ou desde o início, se não houver citação), o enunciado começa no primeiro parágrafo de
+    #     comando ("Considerando…", "Com base…", "Nesse contexto…", "Assinale…", "Avalie…"); o contexto antes
+    #     dele (situação-problema, dados, casos clínicos) também é texto-base.
     ult_cit = -1
     for i, l in enumerate(corpo):
-        if l.tipo == "texto" and RE_CITACAO.search(l.texto):
+        if l.tipo == "texto" and (RE_CITACAO.search(l.texto) or RE_RODAPE.match(l.texto)):
             ult_cit = i
-    if 0 <= ult_cit < len(corpo) - 1:
-        base, enun = corpo[: ult_cit + 1], corpo[ult_cit + 1:]
+    inicio_enun = ult_cit + 1
+    for i in range(max(ult_cit + 1, 1), len(corpo)):
+        l, ant = corpo[i], corpo[i - 1]
+        inicio_frase = ant.tipo == "tabela" or ant.texto.rstrip().endswith((".", ":", "?", ")")) or \
+            (l.pagina == ant.pagina and l.y0 - ant.y1 > 0.4 * max(l.tamanho, 8))
+        if l.tipo == "texto" and inicio_frase and RE_COMANDO.match(l.texto):
+            inicio_enun = i
+            break
+    else:
+        # reserva: última frase (início de linha) que contenha verbo de comando
+        for i in range(len(corpo) - 1, max(ult_cit + 1, 1) - 1, -1):
+            l, ant = corpo[i], corpo[i - 1]
+            if l.tipo == "texto" and ant.texto.rstrip().endswith((".", ":", "?", ")")) and \
+                    RE_COMANDO_MEIO.search(l.texto) and not RE_ITEM.match(l.texto):
+                inicio_enun = i
+                break
+    if 0 < inicio_enun < len(corpo):
+        base, enun = corpo[:inicio_enun], corpo[inicio_enun:]
     else:
         base, enun = [], corpo
         if ult_cit == len(corpo) - 1 and corpo:
