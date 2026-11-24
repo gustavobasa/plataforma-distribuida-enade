@@ -25,8 +25,8 @@ function mostrar() {
   $("#pos").textContent = ` ${pos + 1} / ${dados.itens.length} `;
   if (!q) { $("#extraido").textContent = "Questão não encontrada no índice."; return; }
   const ano = q.ano, pags = q.origem.paginas;
-  $("#paginas").innerHTML = pags.map((p) => `<img alt="Página ${p} de ${esc(q.origem.pdf)}" src="/api/validacao/pagina/${ano}/${encodeURIComponent(q.origem.pdf)}/${p}.png">`).join("")
-    + (q.origem.gabarito_pdf ? `<details><summary>Gabarito oficial (${esc(q.origem.gabarito_pdf)})</summary><img alt="Gabarito" src="/api/validacao/pagina/${ano}/${encodeURIComponent(q.origem.gabarito_pdf)}/1.png"></details>` : "<p class='erro'>Sem PDF de gabarito associado.</p>");
+  $("#paginas").innerHTML = pags.map((p) => `<img alt="Página ${p} de ${esc(q.origem.pdf)}" src="/api/validacao/${q.id}/prova/${p}.png">`).join("")
+    + (q.origem.gabarito_pdf ? `<details><summary>Gabarito oficial (${esc(q.origem.gabarito_pdf)})</summary><img alt="Gabarito" src="/api/validacao/${q.id}/gabarito/1.png"></details>` : "<p class='erro'>Sem PDF de gabarito associado.</p>");
   const alts = (q.alternativas || []).map((a) => `<p><b>${esc(a.letra)})</b> ${md(a.texto_md || a.texto)}</p>`).join("");
   const figs = (q.midia.figuras || []).filter((f) => f.arquivo).map((f) => `<img src="/api/figuras/${f.arquivo}" alt="figura extraída" style="max-width:100%">`).join("");
   $("#extraido").innerHTML = `

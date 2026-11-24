@@ -317,11 +317,7 @@ iniciar o enunciado no primeiro parágrafo de comando (``Considerando…'', ``Co
 tratar notas de rodapé como parte do texto-base; no acervo, só 81 de 3.360 questões (2,4\%) ficaram sem
 texto-base. A mesma amostra foi então reavaliada pelo autor sobre a v1.1: as 16 questões passaram a
 \emph{Correto} e restou uma falha de \emph{Texto} (Engenharia de Produção, texto-base não identificado).
-Uma questão (Comunicação Social 2022, Q25) não pôde ser avaliada em nenhuma das rodadas: o avaliador
-registrou que ela ``não apareceu'' na tela, mas o documento está íntegro no índice e a falha não foi
-reproduzida pela API nem pelo navegador de teste. Na v1.0 ela foi contada como erro em todos os critérios
-(origem das falhas de alternativas, gabarito e mídia); na v1.1 foi marcada N/A. Contando-a como erro, a v1.1
-fica em 58/60 (96,7\%) questões sem erro. Como o mesmo avaliador é o autor do extrator e as duas rodadas usam
+Uma questão (Comunicação Social 2022, Q25) não pôde ser avaliada em nenhuma das rodadas: a imagem da página original não aparecia para o avaliador. A causa provável é o bloqueador de anúncios do navegador, que oculta URLs contendo ``publicidade'' (o PDF se chama \cod{2022\_PV\_com\_social\_publicidade.pdf}); a rota passou a usar só o identificador da questão. Na v1.0 ela foi contada como erro em todos os critérios (origem das falhas de alternativas, gabarito e mídia); na v1.1 foi marcada N/A. Contando-a como erro, a v1.1 fica em 58/60 (96,7\%) questões sem erro. Como o mesmo avaliador é o autor do extrator e as duas rodadas usam
 a mesma amostra, a taxa da v1.1 tende a ser otimista: o ajuste foi orientado por essas questões.
 
 \textbf{Vazão de ingestão e lag (RNF02).} A extração levou 641--728\,s para as 84 provas (7,6--8,7\,s por

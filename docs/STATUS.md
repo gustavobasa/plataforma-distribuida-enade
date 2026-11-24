@@ -40,7 +40,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 |---|---|---|---|---|
 | RNF01 | Latência p50/p95/p99 | ✅ | `evidencias/faseF/k6-resumo.json`, `k6-saida.txt` | Sem cache: p50 14,4 ms · p95 19,8 ms · p99 24,7 ms. Com cache: p50 4,1 ms · p95 6,6 ms · p99 11,7 ms (20 req/s, 60 s cada, 0 erros). |
 | RNF02 | Vazão de ingestão | ✅ | `evidencias/faseF/ingestao-*.csv/log` | Produtor 1.046–2.645 msg/s; indexer ≈ 313 docs/s em processamento (3.360 docs em ~9 s); extração ≈ 7,6 s por prova (641 s para 84). |
-| RNF03 | Qualidade da extração (≥ 50) | ✅ | `evidencias/faseB/06-validacao-manual.csv` (v1.0), `07-validacao-manual-v1.1.csv` (v1.1); relatório §8 | Validação humana de 60 questões (amostra estratificada, semente 2026). v1.0: texto 71,7%, 43/60 sem erro. v1.1 (mesma amostra, após corrigir texto-base x enunciado): segmentação, alternativas, gabarito, metadados e mídia 100%, texto 58/59 (98,3%); 58/59 sem erro (58/60 = 96,7% contando a Q25 de Com. Social 2022 como erro). A Q25 não aparece na tela do avaliador; não reproduzido (API, imagem e navegador de teste OK). Taxa da v1.1 é otimista: mesma amostra que orientou o ajuste. |
+| RNF03 | Qualidade da extração (≥ 50) | ✅ | `evidencias/faseB/06-validacao-manual.csv` (v1.0), `07-validacao-manual-v1.1.csv` (v1.1); relatório §8 | Validação humana de 60 questões (amostra estratificada, semente 2026). v1.0: texto 71,7%, 43/60 sem erro. v1.1 (mesma amostra, após corrigir texto-base x enunciado): segmentação, alternativas, gabarito, metadados e mídia 100%, texto 58/59 (98,3%); 58/59 sem erro (58/60 = 96,7% contando a Q25 de Com. Social 2022 como erro). A Q25 não aparecia; causa provável: o bloqueador de anúncios do avaliador ocultava a imagem (URL com "publicidade"); rota corrigida para usar o id da questão. Taxa da v1.1 é otimista: mesma amostra que orientou o ajuste. |
 | RNF04 | Falha induzida | ✅ | `evidencias/faseF/falha-*.log` | Zero perda e zero duplicata. |
 | RNF05 | Escalabilidade justificada | ✅ | `docs/DECISOES-ARQUITETURA.md` (ADR-01/03/04) | Discussão no relatório. |
 | RNF06 | Health/logs/métricas | ✅ | `/health/ready`, `/metrics`, Prometheus `:9090`, logs JSON | |
@@ -59,7 +59,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 9. Nome do curso capturado de código de barras → nova heurística de cabeçalho/rodapé.
 
 ## Pendências e riscos
-- RNF03: falha de exibição da Q25 (Com. Social 2022, id 03dd79c5) na tela de validação relatada pelo avaliador e não reproduzida; uma questão de Eng. de Produção (b54d5a65) segue sem texto-base separado.
+- RNF03: a Q25 (Com. Social 2022, id 03dd79c5) ainda não foi avaliada (imagem agora corrigida); uma questão de Eng. de Produção (b54d5a65) segue sem texto-base separado.
 - RF04: imagens raster sem texto (579) não têm representação textual (exigiriam OCR/LLM); fidelidade dos 44 diagramas a medir.
 - RF05: acurácia do classificador de competências não medida (poderia entrar na validação manual).
 - Licença trial do Elasticsearch expira em 30 dias (realm Kerberos).

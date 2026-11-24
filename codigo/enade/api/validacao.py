@@ -68,11 +68,20 @@ def amostra(u: Usuario = Depends(exige_professor)):
                       for i in ids]}
 
 
-@router.get("/api/validacao/pagina/{ano}/{pdf}/{pagina}.png")
-def pagina(ano: int, pdf: str, pagina: int, u: Usuario = Depends(exige_professor)):
-    if not re.fullmatch(r"20\d\d_[A-Za-z0-9_]+\.pdf", pdf) or not (1 <= pagina <= 200):
+# A URL usa só o id da questão, nunca o nome do PDF: nomes como "2022_PV_com_social_publicidade.pdf" contêm
+# "publicidade", palavra bloqueada pelas listas brasileiras de bloqueadores de anúncio (a imagem sumia em silêncio).
+@router.get("/api/validacao/{qid}/{origem}/{pagina}.png")
+def pagina(qid: str, origem: Literal["prova", "gabarito"], pagina: int, u: Usuario = Depends(exige_professor)):
+    if not re.fullmatch(r"[0-9a-f]{24}", qid) or not (1 <= pagina <= 200):
         raise HTTPException(400, "parâmetros inválidos")
-    caminho = BASE / "pdfs" / str(ano) / pdf
+    docs = busca.obter_varios([qid], professor=True)
+    if not docs:
+        raise HTTPException(404, "questão não encontrada")
+    d = docs[0]
+    pdf = d["origem"]["pdf"] if origem == "prova" else d["origem"].get("gabarito_pdf")
+    if not pdf or not re.fullmatch(r"20\d\d_[A-Za-z0-9_]+\.pdf", pdf):
+        raise HTTPException(404, "PDF de origem não registrado")
+    caminho = BASE / "pdfs" / str(d["ano"]) / pdf
     if not caminho.is_file():
         raise HTTPException(404, "PDF não encontrado no acervo")
     with pymupdf.open(str(caminho)) as doc:

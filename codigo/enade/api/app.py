@@ -62,6 +62,8 @@ async def medir_e_proteger(request: Request, call_next):
             "img-src 'self' data:; font-src 'self' data:; object-src 'none'; frame-ancestors 'none'")
     if rota.startswith("/api/") and resp.status_code < 500 and request.method == "GET":
         resp.headers.setdefault("Cache-Control", "no-store")
+    if request.url.path.startswith("/static/"):
+        resp.headers.setdefault("Cache-Control", "no-cache")  # revalida (ETag) para não servir JS/CSS antigo após atualização
     if request.url.path.startswith("/api/") and resp.status_code >= 400:
         evento(LOG, "requisição negada/erro", nivel=30, rota=request.url.path, metodo=request.method,
                status=resp.status_code, perfil=getattr(request.state, "perfil", None))
