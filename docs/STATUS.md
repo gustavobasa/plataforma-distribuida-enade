@@ -9,7 +9,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 | ID | Requisito | Estado | Evidência | Observação / pendência |
 |---|---|---|---|---|
 | RF01 | Coleta do acervo | 🟠 | `evidencias/faseB/01*-coleta*.log`; `enade/coleta.py` | 252 PDFs oficiais (84 provas + 84 gabaritos + 84 padrões de resposta) de **2021, 2022 e 2023**, com URL, tamanho e SHA-256. Anos 2004–2019 e 2025 não coletados (layouts diferentes / escopo de laboratório). PDFs locais: `python -m enade.extracao --local`. |
-| RF02 | Segmentação | ✅ | `evidencias/faseB/03-resumo-extracao.txt`; `testes/test_unitarios.py` | 3.360 questões (40 por prova × 84). Texto-base, enunciado, alternativas e gabarito separados. Validação humana (RNF03): v1.1 com 58/59 questões sem erro. |
+| RF02 | Segmentação | ✅ | `evidencias/faseB/03-resumo-extracao.txt`; `testes/test_unitarios.py` | 3.360 questões (40 por prova × 84). Texto-base, enunciado, alternativas e gabarito separados. Validação humana (RNF03): v1.1 com 59/60 questões sem erro. |
 | RF03 | Tipos de questão / anuladas | ✅ | resumo de extração; teste `test_gabarito_regex` | 3.024 objetivas, 336 discursivas; 14 anuladas sinalizadas (`anulada=true`, não descartadas). |
 | RF04 | Mídia não textual | 🟠 | `evidencias/faseB/05-figuras-vetor.txt`; `scripts/validar-mermaid.sh`; detalhe da questão na interface | Fórmulas → LaTeX (281 questões), tabelas → Markdown (280). Figuras (1.540) sem LLM, a partir dos vetores do PDF: 44 diagramas → Mermaid (44/44 compilam no mermaid-cli 10.9.1), 755 → Markdown com os textos; 741 sem texto extraível (579 imagens raster) ficam só como PNG. Acurácia semântica dos diagramas não medida por humano. Módulo com LLM implementado, não executado (custo). |
 | RF05 | Metadados mínimos | 🟠 | `recursos/formacao_geral_2023.yaml`; teste `test_classificador_temas` | Área (mapeamento próprio), curso, ano, FG/CE (capa/seção da prova). Competências e objetos de conhecimento da Portaria Inep 289/2023 atribuídos por **classificador léxico (inferido)**; acurácia não medida. |
@@ -40,7 +40,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 |---|---|---|---|---|
 | RNF01 | Latência p50/p95/p99 | ✅ | `evidencias/faseF/k6-resumo.json`, `k6-saida.txt` | Sem cache: p50 14,4 ms · p95 19,8 ms · p99 24,7 ms. Com cache: p50 4,1 ms · p95 6,6 ms · p99 11,7 ms (20 req/s, 60 s cada, 0 erros). |
 | RNF02 | Vazão de ingestão | ✅ | `evidencias/faseF/ingestao-*.csv/log` | Produtor 1.046–2.645 msg/s; indexer ≈ 313 docs/s em processamento (3.360 docs em ~9 s); extração ≈ 7,6 s por prova (641 s para 84). |
-| RNF03 | Qualidade da extração (≥ 50) | ✅ | `evidencias/faseB/06-validacao-manual.csv` (v1.0), `07-validacao-manual-v1.1.csv` (v1.1); relatório §8 | Validação humana de 60 questões (amostra estratificada, semente 2026). v1.0: texto 71,7%, 43/60 sem erro. v1.1 (mesma amostra, após corrigir texto-base x enunciado): segmentação, alternativas, gabarito, metadados e mídia 100%, texto 58/59 (98,3%); 58/59 sem erro (58/60 = 96,7% contando a Q25 de Com. Social 2022 como erro). A Q25 não aparecia; causa provável: o bloqueador de anúncios do avaliador ocultava a imagem (URL com "publicidade"); rota corrigida para usar o id da questão. Taxa da v1.1 é otimista: mesma amostra que orientou o ajuste. |
+| RNF03 | Qualidade da extração (≥ 50) | ✅ | `evidencias/faseB/06-validacao-manual.csv` (v1.0), `07-validacao-manual-v1.1.csv` (v1.1); relatório §8 | Validação humana de 60 questões (amostra estratificada, semente 2026). v1.0: texto 71,7%, 43/60 sem erro. v1.1 (mesma amostra, após corrigir texto-base x enunciado): segmentação, alternativas, gabarito, metadados e mídia 100%, texto 59/60 (98,3%); 59/60 (98,3%) sem erro. A Q25 de Com. Social 2022 não aparecia por causa do bloqueador de anúncios (URL com "publicidade"); rota corrigida para usar o id da questão. Taxa da v1.1 é otimista: mesma amostra que orientou o ajuste. |
 | RNF04 | Falha induzida | ✅ | `evidencias/faseF/falha-*.log` | Zero perda e zero duplicata. |
 | RNF05 | Escalabilidade justificada | ✅ | `docs/DECISOES-ARQUITETURA.md` (ADR-01/03/04) | Discussão no relatório. |
 | RNF06 | Health/logs/métricas | ✅ | `/health/ready`, `/metrics`, Prometheus `:9090`, logs JSON | |
@@ -59,7 +59,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 9. Nome do curso capturado de código de barras → nova heurística de cabeçalho/rodapé.
 
 ## Pendências e riscos
-- RNF03: a Q25 (Com. Social 2022, id 03dd79c5) ainda não foi avaliada (imagem agora corrigida); uma questão de Eng. de Produção (b54d5a65) segue sem texto-base separado.
+- RNF03: uma questão de Eng. de Produção (b54d5a65) segue sem texto-base separado; validar com amostra nova e outro avaliador daria uma taxa não enviesada.
 - RF04: imagens raster sem texto (579) não têm representação textual (exigiriam OCR/LLM); fidelidade dos 44 diagramas a medir.
 - RF05: acurácia do classificador de competências não medida (poderia entrar na validação manual).
 - Licença trial do Elasticsearch expira em 30 dias (realm Kerberos).

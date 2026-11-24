@@ -298,14 +298,14 @@ pelo autor na tela \cod{/validacao}, que mostra a página original do PDF ao lad
  & \multicolumn{2}{c}{Extrator v1.0} & \multicolumn{2}{c}{Extrator v1.1} \\
 Critério & Corretas & Taxa & Corretas & Taxa \\
 \midrule
-Segmentação (limites da questão) & 59 / 60 & 98,3\% & 59 / 59 & 100\% \\
-Texto (texto-base e enunciado) & 43 / 60 & 71,7\% & 58 / 59 & 98,3\% \\
-Alternativas & 52 / 53 & 98,1\% & 52 / 52 & 100\% \\
-Gabarito (comparado ao PDF oficial) & 52 / 53 & 98,1\% & 52 / 52 & 100\% \\
-Metadados (FG/CE, tipo, número, páginas) & 59 / 60 & 98,3\% & 59 / 59 & 100\% \\
-Mídia (fórmulas, tabelas, figuras) & 20 / 21 & 95,2\% & 18 / 18 & 100\% \\
+Segmentação (limites da questão) & 59 / 60 & 98,3\% & 60 / 60 & 100\% \\
+Texto (texto-base e enunciado) & 43 / 60 & 71,7\% & 59 / 60 & 98,3\% \\
+Alternativas & 52 / 53 & 98,1\% & 53 / 53 & 100\% \\
+Gabarito (comparado ao PDF oficial) & 52 / 53 & 98,1\% & 53 / 53 & 100\% \\
+Metadados (FG/CE, tipo, número, páginas) & 59 / 60 & 98,3\% & 60 / 60 & 100\% \\
+Mídia (fórmulas, tabelas, figuras) & 20 / 21 & 95,2\% & 19 / 19 & 100\% \\
 \midrule
-Questões sem nenhum erro & 43 / 60 & 71,7\% & 58 / 59 & 98,3\% \\
+Questões sem nenhum erro & 43 / 60 & 71,7\% & 59 / 60 & 98,3\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -317,7 +317,7 @@ iniciar o enunciado no primeiro parágrafo de comando (``Considerando…'', ``Co
 tratar notas de rodapé como parte do texto-base; no acervo, só 81 de 3.360 questões (2,4\%) ficaram sem
 texto-base. A mesma amostra foi então reavaliada pelo autor sobre a v1.1: as 16 questões passaram a
 \emph{Correto} e restou uma falha de \emph{Texto} (Engenharia de Produção, texto-base não identificado).
-Uma questão (Comunicação Social 2022, Q25) não pôde ser avaliada em nenhuma das rodadas: a imagem da página original não aparecia para o avaliador. A causa provável é o bloqueador de anúncios do navegador, que oculta URLs contendo ``publicidade'' (o PDF se chama \cod{2022\_PV\_com\_social\_publicidade.pdf}); a rota passou a usar só o identificador da questão. Na v1.0 ela foi contada como erro em todos os critérios (origem das falhas de alternativas, gabarito e mídia); na v1.1 foi marcada N/A. Contando-a como erro, a v1.1 fica em 58/60 (96,7\%) questões sem erro. Como o mesmo avaliador é o autor do extrator e as duas rodadas usam
+Na v1.0, uma questão (Comunicação Social 2022, Q25) foi registrada como erro em todos os critérios (origem das falhas de alternativas, gabarito e mídia) porque a imagem da página original não aparecia para o avaliador. A causa era o bloqueador de anúncios do navegador, que oculta URLs contendo ``publicidade'' (o PDF se chama \cod{2022\_PV\_com\_social\_publicidade.pdf}); a rota passou a usar só o identificador da questão, e na v1.1 a questão foi avaliada como correta em todos os critérios. Como o mesmo avaliador é o autor do extrator e as duas rodadas usam
 a mesma amostra, a taxa da v1.1 tende a ser otimista: o ajuste foi orientado por essas questões.
 
 \textbf{Vazão de ingestão e lag (RNF02).} A extração levou 641--728\,s para as 84 provas (7,6--8,7\,s por
