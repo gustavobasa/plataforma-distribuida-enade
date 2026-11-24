@@ -1,0 +1,61 @@
+id,segmentacao,texto,alternativas,gabarito,metadados,midia,observacao,avaliador,em
+5e1b2afd8ac923ebc0e2d7b2,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:15:19Z
+b2635a1ee6bfb68fa477ce0c,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:15:50Z
+2a50eef56458729945a43267,ok,ok,na,na,ok,na,,professor1,2026-11-24T01:15:56Z
+fe17a55fabe288b2971abefc,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:16:16Z
+a2126d8db2cf7641006d40d4,ok,ok,ok,ok,ok,na,Não identificou o texto base e salvou tudo como enunciado.,professor1,2026-11-24T01:16:39Z
+78fbf540a3fb97da14e25002,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:16:48Z
+cc289805776ce96ec24855e7,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:16:54Z
+c60e11fa24a66753f49e735e,ok,ok,na,na,ok,ok,,professor1,2026-11-24T01:16:59Z
+e50e6feb197cc7e3f1457bc0,ok,ok,ok,ok,ok,na,Texto base e enunciado corretos depois do ajuste.,professor1,2026-11-24T01:17:26Z
+b9ee444dcba4f5dd3fa3b6e7,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:17:34Z
+8210e60718b3ec94c311b1d4,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:17:38Z
+eaccc5b7547fc3f2ad74137f,ok,ok,ok,ok,ok,ok,Corrigido depois do ajuste.,professor1,2026-11-24T01:18:05Z
+88ebf2cbca30f8cb5b239541,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:18:11Z
+4382e3d1f577943d088d0b82,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:18:18Z
+243d0d3b33fcc2ac7882b4dd,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:18:45Z
+cda46eb9c1251563c891af50,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:18:55Z
+9dfa58f7f3a7670cf1c00283,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:19:00Z
+b54d5a65653aac3ebfd19150,ok,erro,ok,ok,ok,ok,Texto base não identificado.,professor1,2026-11-24T01:19:35Z
+729b337dcee9ed99fb42163c,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:19:43Z
+6e4ada5b27ad9c09de5a909c,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:19:58Z
+ef4942bd5258841fa1760ee3,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:20:11Z
+d06c9483ac0a05b367fd68ec,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:20:23Z
+fb205129b3960d4745e3e288,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:20:30Z
+b0960e7b119588960ccc8482,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:20:34Z
+d0ab8ab80091c14dd4b8142a,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:20:37Z
+91f7c170e655ae7863fe2853,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:20:39Z
+a9c91d3fc0e2d3e48ad0aad0,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:20:47Z
+bdbfb1a6afd13945fbbb8164,ok,ok,na,na,ok,na,,professor1,2026-11-24T01:20:51Z
+f74c3e1eccafe1a6a2c2dade,ok,ok,na,na,ok,na,,professor1,2026-11-24T01:20:55Z
+5b71da1bf14abbb37560f424,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:21:07Z
+afc930b10b017ef2afde760f,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:21:10Z
+a448625e142fc5c00053543f,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:21:13Z
+c97482f118da4aa81291bda1,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:21:20Z
+edd76baa3deecab23030eb0e,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:21:23Z
+47e116445c75cc631ea3d6af,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:21:26Z
+7aed4c8779f2d2e912293664,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:21:28Z
+b50d2e215622b6902baee82b,ok,ok,ok,ok,ok,ok,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:21:35Z
+03dd79c5742b146bff0a25be,na,na,na,na,na,na,Questão continua sem aparecer.,professor1,2026-11-24T01:22:05Z
+789e1dead2d0ae96a1c7f516,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:22:10Z
+28ae6e3c48a5273e92c61f4a,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:22:12Z
+cf397cfa2918bfa5ba28ed13,ok,ok,na,na,ok,na,,professor1,2026-11-24T01:22:16Z
+fd43c4d753589212d3ab1c4c,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:22:19Z
+5f1ee62133bc66a4e5be1f78,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:22:22Z
+20a7bd1eb6be1f55627949d3,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:22:24Z
+6f9a7e885426e00deb747f9a,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:22:27Z
+bc0c3a6645018fd836eec1f0,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:22:30Z
+9659db782426b9b6b97be749,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:22:33Z
+c39e7456480a69da8d17fb6d,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:22:47Z
+ff37e72eaf70c4e6a1b2e4fd,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:22:50Z
+373ec4c15c23c009b9faba8e,ok,ok,na,na,ok,na,,professor1,2026-11-24T01:22:53Z
+57f77663d494067537836ee0,ok,ok,ok,ok,ok,ok,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:23:02Z
+1c5580bc76acfc1281a34842,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:23:05Z
+1fc13729f09a8df4670789f6,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:23:08Z
+707d6d1d8632bb11831ba0d9,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:23:11Z
+ab8ae6e91229036af7d7961a,ok,ok,ok,ok,ok,na,,professor1,2026-11-24T01:23:14Z
+b0e11d4ab28dd058864c6b94,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:23:17Z
+007dc353ad39beb0e9291bfb,ok,ok,ok,ok,ok,ok,,professor1,2026-11-24T01:23:20Z
+1c29aed285966d37aa70c433,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:23:29Z
+2ea53bf6641b06730935462f,ok,ok,ok,ok,ok,na,Texto base e enunciado corrigidos depois do ajuste.,professor1,2026-11-24T01:23:35Z
+6f3d1d837a1af60c377fb49c,ok,ok,na,na,ok,ok,,professor1,2026-11-24T01:24:06Z

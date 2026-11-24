@@ -291,33 +291,38 @@ pelo autor na tela \cod{/validacao}, que mostra a página original do PDF ao lad
 
 \begin{table}[ht]
 \centering
-\caption{Validação manual da extração v1.0 (60 questões; N/A excluídos do denominador).}\label{tab:validacao}
+\caption{Validação manual da extração (60 questões, mesmas nas duas rodadas; N/A excluídos do denominador).}\label{tab:validacao}
 \small
-\begin{tabular}{lrr}
+\begin{tabular}{lrrrr}
 \toprule
-Critério & Corretas / avaliadas & Taxa de acerto \\
+ & \multicolumn{2}{c}{Extrator v1.0} & \multicolumn{2}{c}{Extrator v1.1} \\
+Critério & Corretas & Taxa & Corretas & Taxa \\
 \midrule
-Segmentação (limites da questão) & 59 / 60 & 98,3\% \\
-Texto (texto-base e enunciado) & 43 / 60 & 71,7\% \\
-Alternativas & 52 / 53 & 98,1\% \\
-Gabarito (comparado ao PDF oficial) & 52 / 53 & 98,1\% \\
-Metadados (FG/CE, tipo, número, páginas) & 59 / 60 & 98,3\% \\
-Mídia (fórmulas, tabelas, figuras) & 20 / 21 & 95,2\% \\
+Segmentação (limites da questão) & 59 / 60 & 98,3\% & 59 / 59 & 100\% \\
+Texto (texto-base e enunciado) & 43 / 60 & 71,7\% & 58 / 59 & 98,3\% \\
+Alternativas & 52 / 53 & 98,1\% & 52 / 52 & 100\% \\
+Gabarito (comparado ao PDF oficial) & 52 / 53 & 98,1\% & 52 / 52 & 100\% \\
+Metadados (FG/CE, tipo, número, páginas) & 59 / 60 & 98,3\% & 59 / 59 & 100\% \\
+Mídia (fórmulas, tabelas, figuras) & 20 / 21 & 95,2\% & 18 / 18 & 100\% \\
 \midrule
-Questões sem nenhum erro & 43 / 60 & 71,7\% \\
+Questões sem nenhum erro & 43 / 60 & 71,7\% & 58 / 59 & 98,3\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-O critério mais fraco foi \emph{Texto}: 16 das 17 falhas apontavam o mesmo defeito, texto-base misturado ao
-enunciado. A v1.0 só separava o texto-base na última referência bibliográfica, e as situações-problema escritas
-pelo próprio INEP não têm citação. Uma questão (Comunicação Social 2022, Q25) foi registrada como ``não
-apareceu'' em todos os critérios; o documento estava íntegro no índice e não foi possível reproduzir a falha,
-então a contagem foi mantida como o avaliador registrou. Com esse diagnóstico, a versão 1.1 passou a iniciar o
-enunciado no primeiro parágrafo de comando (``Considerando…'', ``Com base…'', ``Assinale…'') e a tratar notas de
-rodapé como parte do texto-base: 16 das 17 questões marcadas passaram a ter o texto-base separado, e no acervo
-só 81 de 3.360 questões (2,4\%) ficaram sem texto-base. A taxa da Tabela~\ref{tab:validacao} refere-se à v1.0;
-a v1.1 ainda não foi revalidada por humano.
+Na primeira rodada (v1.0), o critério mais fraco foi \emph{Texto}: 16 das 17 falhas apontavam o mesmo defeito,
+texto-base misturado ao enunciado. A v1.0 só separava o texto-base na última referência bibliográfica, e as
+situações-problema escritas pelo próprio INEP não têm citação. Com esse diagnóstico, a versão 1.1 passou a
+iniciar o enunciado no primeiro parágrafo de comando (``Considerando…'', ``Com base…'', ``Assinale…'') e a
+tratar notas de rodapé como parte do texto-base; no acervo, só 81 de 3.360 questões (2,4\%) ficaram sem
+texto-base. A mesma amostra foi então reavaliada pelo autor sobre a v1.1: as 16 questões passaram a
+\emph{Correto} e restou uma falha de \emph{Texto} (Engenharia de Produção, texto-base não identificado).
+Uma questão (Comunicação Social 2022, Q25) não pôde ser avaliada em nenhuma das rodadas: o avaliador
+registrou que ela ``não apareceu'' na tela, mas o documento está íntegro no índice e a falha não foi
+reproduzida pela API nem pelo navegador de teste. Na v1.0 ela foi contada como erro em todos os critérios
+(origem das falhas de alternativas, gabarito e mídia); na v1.1 foi marcada N/A. Contando-a como erro, a v1.1
+fica em 58/60 (96,7\%) questões sem erro. Como o mesmo avaliador é o autor do extrator e as duas rodadas usam
+a mesma amostra, a taxa da v1.1 tende a ser otimista: o ajuste foi orientado por essas questões.
 
 \textbf{Vazão de ingestão e lag (RNF02).} A extração levou 641--728\,s para as 84 provas (7,6--8,7\,s por
 prova, um núcleo). O produtor publicou as 3.360 mensagens em 3,2\,s (1.046\,msg/s; 2.645\,msg/s com conexões
@@ -421,7 +426,7 @@ A plataforma cumpre o fluxo completo PDF $\to$ extração $\to$ Kafka $\to$ Elas
 web com dados reais e rastreáveis do INEP, autenticação mútua Kerberos entre serviços, login LDAP e perfis com
 negação 403 verificada no backend. Medimos latência p95 de 19,8\,ms (sem cache) e 6,6\,ms (com cache), vazão de
 centenas de documentos por segundo e ausência de perda/duplicação sob falhas induzidas. Ficam como trabalhos
-futuros: revalidar por humano a extração v1.1, ampliar o acervo para todas as edições, TLS interno,
+futuros: validar a extração com uma amostra nova e outro avaliador, ampliar o acervo para todas as edições, TLS interno,
 OCR ou LLM para as imagens raster e um cluster multinó.
 
 \section{Divisão de Tarefas}
