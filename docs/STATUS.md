@@ -44,7 +44,7 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 | RNF04 | Falha induzida | ✅ | `evidencias/faseF/falha-*.log` | Zero perda e zero duplicata. |
 | RNF05 | Escalabilidade justificada | ✅ | `docs/DECISOES-ARQUITETURA.md` (ADR-01/03/04) | Discussão no relatório. |
 | RNF06 | Health/logs/métricas | ✅ | `/health/ready`, `/metrics`, Prometheus `:9090`, logs JSON | |
-| RNF07 | Reprodutibilidade | 🟡 | README | Falta executar o roteiro em ambiente limpo (`down -v` exige sua confirmação). |
+| RNF07 | Reprodutibilidade | ✅ | `evidencias/faseF/rnf07-ambiente-limpo.log` | Roteiro do README repetido do zero em clone novo (projeto Docker `enadelimpo`, rede e volumes próprios, sem `.env`, build sem cache; imagens-base já baixadas): subida 79 s, coleta 252 arquivos em 586 s, extração 84 provas/3.360 questões em 722 s, 3.360 indexados; testes 17 unitários + 30 integração + 7 Kerberos passaram. Feito sem `down -v` na instalação principal. |
 | RNF08 | Sem segredos no Git | ✅ | `.gitignore`, varredura antes de cada commit | `.env` e keytabs fora do Git; cada serviço recebe só os próprios segredos. |
 
 ## Incidentes encontrados e corrigidos (para "Gargalos e Lições")
@@ -67,5 +67,4 @@ Legenda: ⬜ não iniciado · 🟡 em andamento · ✅ concluído e testado · �
 - Vídeo: roteiro pronto (`docs/ROTEIRO-VIDEO.md`); gravação depende do usuário.
 
 ## Próxima ação
-1. Com autorização do usuário: `docker compose down -v` + roteiro do README do zero (RNF07).
-2. Usuário: gravar o vídeo (`docs/ROTEIRO-VIDEO.md`).
+1. Usuário: gravar o vídeo (`docs/ROTEIRO-VIDEO.md`).

@@ -1,0 +1,102 @@
+
+=== [01:45:12] ambiente ===
+Engine 29.8.0
+Docker Compose version v5.5.1
+9ea1dff Compose: nome da rede configurável (ENADE_REDE) para teste em ambiente isolado
+
+=== [01:45:13] 0. volumes do projeto antes (deve ser vazio) ===
+
+=== [01:45:14] 1. gerar .env ===
+.env criado com senhas aleatórias.
+--- rc=0 em 1 s
+
+=== [01:45:15] 2a. build sem cache ===
+ Image enade-kdc:1.0 Built 
+ Image enade-app:1.0 Built 
+ Image enade-app:1.0 Built 
+ Image enade-app:1.0 Built 
+
+=== [01:48:39] 2b. up -d --build ===
+ Container enadelimpo-kafka-1 Waiting 
+ Container enadelimpo-redis-1 Waiting 
+ Container enadelimpo-es-setup-1 Waiting 
+ Container enadelimpo-ldap-setup-1 Waiting 
+ Container enadelimpo-es-setup-1 Waiting 
+ Container enadelimpo-elasticsearch-1 Waiting 
+ Container enadelimpo-redis-1 Waiting 
+ Container enadelimpo-kafka-setup-1 Waiting 
+ Container enadelimpo-ldap-1 Waiting 
+ Container enadelimpo-ldap-1 Healthy 
+ Container enadelimpo-elasticsearch-1 Healthy 
+ Container enadelimpo-ldap-setup-1 Exited 
+ Container enadelimpo-redis-1 Healthy 
+ Container enadelimpo-kafka-1 Healthy 
+ Container enadelimpo-redis-1 Healthy 
+ Container enadelimpo-kafka-1 Healthy 
+ Container enadelimpo-elasticsearch-1 Healthy 
+ Container enadelimpo-kafka-setup-1 Exited 
+ Container enadelimpo-es-setup-1 Exited 
+ Container enadelimpo-indexer-1 Starting 
+ Container enadelimpo-es-setup-1 Exited 
+ Container enadelimpo-api-1 Starting 
+ Container enadelimpo-indexer-1 Started 
+ Container enadelimpo-api-1 Started 
+--- rc=0 em 79 s
+
+=== [01:49:58] 2c. aguardando API pronta ===
+{"status":"ok","dependencias":{"elasticsearch":{"ok":true,"status":"green","autenticacao":"kerberos/spnego"},"redis":{"ok":true},"ldap":{"ok":true},"kafka":{"ok":true,"particoes":3,"autenticacao":"sasl/gssapi"}}}
+api	running	Up 8 seconds (health: starting)
+elasticsearch	running	Up About a minute (healthy)
+es-setup	exited	Exited (0) 9 seconds ago
+indexer	running	Up 9 seconds (health: starting)
+kafka	running	Up About a minute (healthy)
+kafka-setup	exited	Exited (0) 10 seconds ago
+kdc	running	Up About a minute (healthy)
+ldap	running	Up About a minute (healthy)
+ldap-setup	exited	Exited (0) About a minute ago
+prometheus	running	Up About a minute
+redis	running	Up About a minute (healthy)
+
+=== [01:50:07] 3a. coleta ===
+{"ts": "2026-11-24T01:59:50.435Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_PV_tecnologia_em_seguranca_do_trabalho.pdf", "bytes": 8981614, "sha256": "84390b50d012"}
+{"ts": "2026-11-24T01:59:51.052Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_GB_tecnologia_em_seguranca_do_trabalho.pdf", "bytes": 182151, "sha256": "82d8625be08d"}
+{"ts": "2026-11-24T01:59:51.707Z", "nivel": "INFO", "servico": "coleta", "msg": "arquivo ok", "arquivo": "2023/2023_tecnologia_em_seguranca_do_trabalho.pdf", "bytes": 292464, "sha256": "806c57f17b63"}
+{"ts": "2026-11-24T01:59:51.718Z", "nivel": "INFO", "servico": "coleta", "msg": "coleta concluída", "arquivos": 252, "falhas": 0}
+--- rc=0 em 586 s
+
+=== [01:59:53] 3b. extração ===
+{"ts": "2026-11-24T02:11:54.246Z", "nivel": "INFO", "servico": "extracao", "msg": "prova extraída", "pdf": "2023_PV_zootecnia.pdf", "questoes": 40, "validas": 40, "com_gabarito": 37, "segundos": 7.48}
+{"ts": "2026-11-24T02:11:54.249Z", "nivel": "INFO", "servico": "extracao", "msg": "extração concluída", "provas": 84, "questoes_validas": 3360, "questoes_invalidas": 0, "falhas": 0, "segundos": 717.9}
+--- rc=0 em 722 s
+
+=== [02:11:55] 4. produtor ===
+{"ts": "2026-11-24T02:11:57.876Z", "nivel": "INFO", "servico": "produtor", "msg": "publicação iniciada", "arquivos": 84, "topico": "enade.questoes.v1"}
+{"ts": "2026-11-24T02:12:00.068Z", "nivel": "INFO", "servico": "produtor", "msg": "publicação concluída", "entregues": 3360, "falhas": 0, "dlq": 0, "lidos": 3360, "pendentes_apos_flush": 0, "segundos": 2.117, "msgs_por_segundo": 1587.3, "arquivos": 84, "fim": "2026-11-24T02:12:00+00:00"}
+--- rc=0 em 5 s
+
+=== [02:12:00] 4b. aguardando indexação ===
+documentos no índice: 3360
+
+=== [02:12:34] testes: unitários ===
+sys:1: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+--- rc=0 em 5 s
+
+=== [02:12:39] testes: integração API ===
+============================== 30 passed in 8.34s ==============================
+--- rc=0 em 11 s
+
+=== [02:12:50] testes: Kerberos/ACL ===
+============================== 7 passed in 1.40s ===============================
+--- rc=0 em 4 s
+
+=== [02:12:54] fim ===
+17 passed, 7 warnings in 0.97s
+enadelimpo_acervo
+enadelimpo_es-data
+enadelimpo_kafka-data
+enadelimpo_kdc-data
+enadelimpo_keytabs
+enadelimpo_ldap-config
+enadelimpo_ldap-data
+enadelimpo_prometheus-data
+enadelimpo_redis-data

@@ -403,6 +403,12 @@ diagramas e das competências inferidas ainda não medida.
 
 \section{Conclusão}
 
+\textbf{Reprodutibilidade (RNF07).} O roteiro do README foi repetido do zero em um clone novo do repositório,
+sem \cod{.env}, com volumes vazios e \textit{build} sem cache (só as imagens-base já estavam baixadas): subida dos
+serviços em 79\,s, coleta de 252 arquivos do INEP em 586\,s, extração das 84 provas em 722\,s (3.360 questões,
+0 inválidas), publicação em 5\,s e 3.360 documentos indexados; os 17 testes unitários, 30 de integração e 7 de
+Kerberos passaram (\cod{evidencias/faseF/rnf07-ambiente-limpo.log}).
+
 \begin{table}[ht]
 \centering
 \caption{Situação dos requisitos ao final do trabalho (evidências em \cod{docs/STATUS.md}).}\label{tab:status}
@@ -411,9 +417,8 @@ diagramas e das competências inferidas ainda não medida.
 \toprule
 Situação & Requisitos \\
 \midrule
-Concluído e testado & RF02, RF03, RF06--RF25; RNF01--RNF06, RNF08 \\
-Parcial & RF01 (só 2021--2023), RF04 (Mermaid só para diagramas vetoriais; 579 imagens raster sem texto), RF05 (competências inferidas, sem acurácia medida);
-          RNF07 (roteiro não repetido em máquina limpa) \\
+Concluído e testado & RF02, RF03, RF06--RF25; RNF01--RNF08 \\
+Parcial & RF01 (só 2021--2023), RF04 (Mermaid só para diagramas vetoriais; 579 imagens raster sem texto), RF05 (competências inferidas, sem acurácia medida) \\
 \bottomrule
 \end{tabularx}
 \end{table}

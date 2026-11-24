@@ -74,6 +74,7 @@ Todos os comandos são executados na raiz do repositório (PowerShell ou Git Bas
 | Falha induzida (RF09/RNF04) | `bash scripts/experimento-falha.sh` (recria o índice e reprocessa o tópico) |
 | Latência p50/p95/p99 (RNF01) | `docker compose --profile carga run --rm k6` |
 | Validação manual da extração (RNF03) | entre como Professor e abra http://localhost:8000/validacao |
+| Ambiente limpo (RNF07) sem apagar a instalação atual | `docker compose stop`; num clone novo, defina `COMPOSE_PROJECT_NAME=enadelimpo` e `ENADE_REDE=enadelimpo-net` e siga os passos 1–4 (volumes e rede próprios) |
 
 Resultados medidos (ambiente do laboratório, 4 vCPU/5,8 GB): ver [docs/STATUS.md](docs/STATUS.md) e `evidencias/`.
 
