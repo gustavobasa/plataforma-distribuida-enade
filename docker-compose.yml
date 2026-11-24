@@ -373,7 +373,8 @@ services:
 
 networks:
   enade-net:
-    name: enade-net
+    # configurável para subir uma segunda cópia isolada (ex.: teste em ambiente limpo com COMPOSE_PROJECT_NAME)
+    name: ${ENADE_REDE:-enade-net}
 
 volumes:
   acervo:
