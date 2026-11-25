@@ -1,6 +1,6 @@
 # Plataforma Distribuída de Busca e Indexação do ENADE
 
-Trabalho prático (individual) de Sistemas Distribuídos. A plataforma coleta as provas oficiais do ENADE no portal do
+Trabalho prático de Sistemas Distribuídos. A plataforma coleta as provas oficiais do ENADE no portal do
 INEP, extrai cada questão como um documento estruturado, publica os documentos no **Apache Kafka**, indexa no
 **Elasticsearch** e oferece uma API REST + interface web com cache e lista de questões no **Redis**, login de usuários
 no **OpenLDAP** e autenticação mútua entre serviços via **Kerberos** (MIT).
